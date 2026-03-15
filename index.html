@@ -1,508 +1,1126 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11th Physics Summit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>11th Physics Summit</title>
+  <style>
+    *{
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:#f5f7ff;
+      color:#1b2f7a;
+      overflow-x:hidden;
+    }
 
-<style>
+    .bg-stars{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(40,80,180,.18) 0 3px, transparent 4px),
+        radial-gradient(circle at 25% 65%, rgba(40,80,180,.18) 0 4px, transparent 5px),
+        radial-gradient(circle at 50% 35%, rgba(40,80,180,.2) 0 3px, transparent 4px),
+        radial-gradient(circle at 70% 15%, rgba(40,80,180,.18) 0 4px, transparent 5px),
+        radial-gradient(circle at 83% 55%, rgba(40,80,180,.2) 0 3px, transparent 4px),
+        radial-gradient(circle at 90% 25%, rgba(40,80,180,.18) 0 4px, transparent 5px),
+        linear-gradient(180deg,#f8f9ff 0%,#eef3ff 100%);
+      animation: floatBg 18s linear infinite alternate;
+    }
 
-*{
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
+    @keyframes floatBg{
+      from{transform:translateY(0);}
+      to{transform:translateY(-20px);}
+    }
 
-body{
-margin:0;
-font-family:Poppins;
-background:#f6f8ff;
-color:#1a2b6b;
-overflow-x:hidden;
-}
+    header{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(1180px,calc(100% - 36px));
+      background:rgba(255,255,255,.82);
+      backdrop-filter:blur(14px);
+      border-radius:26px;
+      box-shadow:0 14px 35px rgba(22,45,120,.12);
+      padding:14px 26px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:999;
+    }
 
-/* ================= NAVBAR ================= */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
 
-header{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-width:85%;
-background:white;
-border-radius:30px;
-padding:12px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 15px 35px rgba(0,0,0,0.1);
-z-index:999;
-}
+    .brand img{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+    }
 
-.logo-nav{
-display:flex;
-align-items:center;
-gap:10px;
-}
+    .brand span{
+      font-weight:800;
+      font-size:18px;
+      color:#1b2f7a;
+      white-space:nowrap;
+    }
 
-.logo-nav img{
-width:40px;
-}
+    nav{
+      display:flex;
+      gap:26px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
 
-nav{
-display:flex;
-gap:30px;
-}
+    nav a{
+      text-decoration:none;
+      color:#1b2f7a;
+      font-weight:600;
+      transition:.25s;
+    }
 
-nav a{
-text-decoration:none;
-color:#1a2b6b;
-font-weight:500;
-}
+    nav a:hover{
+      color:#496dff;
+    }
 
-/* ================= HERO ================= */
+    section{
+      max-width:1180px;
+      margin:0 auto;
+      padding:88px 20px;
+    }
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
-overflow:hidden;
-}
+    .anchor{
+      scroll-margin-top:120px;
+    }
 
-/* hero illustration */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding-top:130px;
+      position:relative;
+    }
 
-.hero::before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:radial-gradient(circle at 30% 20%,#e6ecff 0%,transparent 40%),
-radial-gradient(circle at 70% 30%,#e6ecff 0%,transparent 40%);
-z-index:-1;
-}
+    .hero-logo-wrap{
+      position:relative;
+      width:280px;
+      height:280px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-bottom:10px;
+    }
 
-/* atom animation */
+    .hero-logo{
+      width:170px;
+      z-index:2;
+      filter:drop-shadow(0 10px 25px rgba(27,47,122,.18));
+    }
 
-.atom{
-position:relative;
-width:200px;
-height:200px;
-margin-bottom:20px;
-}
+    .orbit{
+      position:absolute;
+      border:2px solid rgba(73,109,255,.35);
+      border-radius:50%;
+      animation: spin 10s linear infinite;
+    }
 
-.atom img{
-width:120px;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-}
+    .orbit.one{
+      width:240px;
+      height:150px;
+    }
 
-.orbit{
-position:absolute;
-border:2px solid #1a2b6b;
-border-radius:50%;
-animation:spin 8s linear infinite;
-}
+    .orbit.two{
+      width:230px;
+      height:230px;
+      animation-duration:8s;
+      transform:rotate(60deg);
+    }
 
-.orbit:nth-child(1){
-width:200px;
-height:200px;
-}
+    .orbit.three{
+      width:150px;
+      height:240px;
+      animation-duration:6s;
+      transform:rotate(-60deg);
+    }
 
-.orbit:nth-child(2){
-width:160px;
-height:160px;
-animation-duration:6s;
-}
+    .electron{
+      position:absolute;
+      width:14px;
+      height:14px;
+      background:#496dff;
+      border-radius:50%;
+      top:50%;
+      left:100%;
+      transform:translate(-50%,-50%);
+      box-shadow:0 0 18px rgba(73,109,255,.55);
+    }
 
-.orbit:nth-child(3){
-width:120px;
-height:120px;
-animation-duration:4s;
-}
+    @keyframes spin{
+      from{rotate:0deg;}
+      to{rotate:360deg;}
+    }
 
-@keyframes spin{
-from{transform:rotate(0deg)}
-to{transform:rotate(360deg)}
-}
+    .hero h1{
+      margin:0;
+      font-size:64px;
+      line-height:1.05;
+      color:#1b2f7a;
+    }
 
-.hero h1{
-font-size:70px;
-margin:10px 0;
-}
+    .hero p{
+      margin:14px 0 0;
+      max-width:720px;
+      font-size:20px;
+      color:#3e559f;
+    }
 
-/* ================= SECTIONS ================= */
+    .hero-badge{
+      margin-top:20px;
+      background:white;
+      color:#496dff;
+      padding:10px 18px;
+      border-radius:999px;
+      box-shadow:0 8px 24px rgba(27,47,122,.09);
+      font-weight:700;
+    }
 
-section{
-padding:120px 20px;
-max-width:1100px;
-margin:auto;
-}
+    .section-title{
+      text-align:center;
+      font-size:42px;
+      margin:0 0 26px;
+      color:#1b2f7a;
+    }
 
-h2{
-text-align:center;
-margin-bottom:30px;
-}
+    .section-sub{
+      text-align:center;
+      max-width:860px;
+      margin:0 auto 26px;
+      line-height:1.9;
+      font-size:20px;
+      color:#31478f;
+    }
 
-/* ================= TIMELINE CONSTELLATION ================= */
+    .glass-box{
+      background:rgba(255,255,255,.8);
+      backdrop-filter:blur(10px);
+      border-radius:24px;
+      box-shadow:0 14px 34px rgba(27,47,122,.08);
+      padding:28px;
+    }
 
-.constellation{
-position:relative;
-height:300px;
-}
+    .theme-layout{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      align-items:center;
+      margin-top:28px;
+    }
 
-.constellation svg{
-position:absolute;
-width:100%;
-height:100%;
-}
+    .theme-main{
+      background:linear-gradient(135deg,#223b9f 0%,#496dff 100%);
+      color:white;
+      border-radius:28px;
+      padding:34px;
+      box-shadow:0 18px 35px rgba(39,68,170,.22);
+      min-height:280px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
 
-.star{
-position:absolute;
-background:#1a2b6b;
-color:white;
-padding:8px 16px;
-border-radius:20px;
-font-size:14px;
-}
+    .theme-main h3{
+      margin:0 0 10px;
+      font-size:34px;
+    }
 
-.star:nth-child(1){top:40px;left:5%}
-.star:nth-child(2){top:140px;left:20%}
-.star:nth-child(3){top:60px;left:40%}
-.star:nth-child(4){top:170px;left:60%}
-.star:nth-child(5){top:80px;left:80%}
-.star:nth-child(6){top:200px;left:95%}
+    .theme-main p{
+      margin:0;
+      line-height:1.9;
+      color:#eef2ff;
+      font-size:18px;
+    }
 
-/* ================= COMPETITION SLIDER ================= */
+    .coming-badge{
+      display:inline-block;
+      margin-top:18px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.35);
+      font-weight:700;
+      letter-spacing:.08em;
+    }
 
-.slider{
-display:flex;
-gap:20px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding:20px;
-}
+    .theme-visual{
+      position:relative;
+      min-height:320px;
+      border-radius:28px;
+      background:linear-gradient(180deg,#f9fbff 0%,#e8efff 100%);
+      overflow:hidden;
+      box-shadow:0 14px 34px rgba(27,47,122,.08);
+    }
 
-.card{
-min-width:260px;
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
-scroll-snap-align:center;
-cursor:pointer;
-}
+    .planet{
+      position:absolute;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 35%,#8aa4ff 0%,#496dff 70%);
+      box-shadow:0 0 25px rgba(73,109,255,.2);
+    }
 
-.card:hover{
-transform:translateY(-5px);
-}
+    .planet.big{
+      width:120px;
+      height:120px;
+      right:55px;
+      top:55px;
+    }
 
-/* ================= MODAL ================= */
+    .planet.small{
+      width:58px;
+      height:58px;
+      left:55px;
+      bottom:55px;
+    }
 
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.5);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:1000;
-}
+    .line-star{
+      position:absolute;
+      background:#496dff;
+      opacity:.22;
+      transform-origin:left center;
+      height:3px;
+      border-radius:99px;
+    }
 
-.modal-content{
-background:white;
-padding:40px;
-max-width:600px;
-border-radius:15px;
-color:#1a2b6b;
-}
+    .line1{ width:140px; left:72px; top:90px; transform:rotate(25deg); }
+    .line2{ width:160px; left:185px; top:150px; transform:rotate(-18deg); }
+    .line3{ width:120px; left:110px; top:230px; transform:rotate(-40deg); }
 
-.close{
-cursor:pointer;
-float:right;
-font-size:20px;
-}
+    .star-dot{
+      position:absolute;
+      width:14px;
+      height:14px;
+      background:#496dff;
+      border-radius:50%;
+      box-shadow:0 0 18px rgba(73,109,255,.4);
+      animation: pulse 2.4s infinite;
+    }
 
-/* ================= SPONSOR ================= */
+    .sd1{ left:60px; top:80px; }
+    .sd2{ left:205px; top:145px; }
+    .sd3{ left:355px; top:98px; }
+    .sd4{ left:150px; top:238px; }
 
-.carousel{
-overflow:hidden;
-margin-top:40px;
-}
+    @keyframes pulse{
+      0%,100%{ transform:scale(1); opacity:1; }
+      50%{ transform:scale(1.25); opacity:.6; }
+    }
 
-.track{
-display:flex;
-gap:40px;
-animation:scroll 20s linear infinite;
-}
+    .timeline-constellation{
+      position:relative;
+      min-height:360px;
+      margin-top:36px;
+    }
 
-.logo-box{
-background:white;
-height:70px;
-width:140px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
+    .timeline-constellation svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
 
-@keyframes scroll{
-0%{transform:translateX(0)}
-100%{transform:translateX(-50%)}
-}
+    .timeline-line{
+      stroke:#496dff;
+      stroke-width:3;
+      fill:none;
+      stroke-dasharray:8 8;
+      opacity:.55;
+      animation: dash 20s linear infinite;
+    }
 
-/* ================= FOOTER ================= */
+    @keyframes dash{
+      to{ stroke-dashoffset:-200; }
+    }
 
-footer{
-background:#1a2b6b;
-color:white;
-padding:60px 20px;
-margin-top:100px;
-}
+    .node{
+      position:absolute;
+      transform:translate(-50%,-50%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
 
-.footer-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
-max-width:1100px;
-margin:auto;
-}
+    .node-point{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:#496dff;
+      box-shadow:0 0 0 10px rgba(73,109,255,.12), 0 0 24px rgba(73,109,255,.28);
+    }
 
-footer a{
-color:white;
-text-decoration:none;
-}
+    .node-label{
+      background:white;
+      color:#1b2f7a;
+      padding:12px 18px;
+      border-radius:999px;
+      box-shadow:0 10px 22px rgba(27,47,122,.1);
+      font-weight:700;
+      white-space:nowrap;
+    }
 
-</style>
+    .n1{ left:7%; top:120px; }
+    .n2{ left:23%; top:220px; }
+    .n3{ left:42%; top:110px; }
+    .n4{ left:60%; top:240px; }
+    .n5{ left:79%; top:125px; }
+    .n6{ left:93%; top:250px; }
 
+    .slider-wrap{
+      position:relative;
+      margin-top:30px;
+    }
+
+    .slider{
+      display:flex;
+      gap:22px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding:10px 4px 16px;
+      scrollbar-width:none;
+    }
+
+    .slider::-webkit-scrollbar{
+      display:none;
+    }
+
+    .comp-card{
+      min-width:340px;
+      scroll-snap-align:center;
+      background:white;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 15px 34px rgba(27,47,122,.09);
+      position:relative;
+    }
+
+    .comp-card h3{
+      margin:0 0 10px;
+      font-size:28px;
+    }
+
+    .comp-card p{
+      margin:0 0 18px;
+      color:#4b60a4;
+      line-height:1.7;
+    }
+
+    .comp-btn{
+      border:none;
+      background:#496dff;
+      color:white;
+      font-weight:700;
+      padding:12px 18px;
+      border-radius:14px;
+      cursor:pointer;
+    }
+
+    .comp-meta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .tag{
+      background:#eef2ff;
+      color:#3150c4;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(21,34,86,.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:1001;
+    }
+
+    .modal-box{
+      width:min(760px,100%);
+      background:white;
+      border-radius:26px;
+      box-shadow:0 20px 40px rgba(27,47,122,.18);
+      padding:30px;
+      max-height:88vh;
+      overflow:auto;
+      color:#1b2f7a;
+    }
+
+    .modal-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:14px;
+    }
+
+    .modal-top h3{
+      margin:0;
+      font-size:32px;
+    }
+
+    .close-btn{
+      border:none;
+      background:#eef2ff;
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      cursor:pointer;
+      font-size:20px;
+      color:#1b2f7a;
+      flex-shrink:0;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .detail-card{
+      background:#f8faff;
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .detail-card h4{
+      margin:0 0 10px;
+      font-size:18px;
+      color:#3150c4;
+    }
+
+    .detail-card ul{
+      margin:0;
+      padding-left:20px;
+      line-height:1.8;
+    }
+
+    .wa-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#166534;
+      background:#ecfdf3;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:700;
+      margin-top:14px;
+    }
+
+    .wa-link img{
+      width:24px;
+      height:24px;
+    }
+
+    .guidebook-box{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:center;
+      background:white;
+      border-radius:24px;
+      box-shadow:0 15px 34px rgba(27,47,122,.09);
+      padding:28px;
+      margin-top:28px;
+    }
+
+    .guidebook-box h3{
+      margin:0 0 10px;
+      font-size:30px;
+    }
+
+    .guidebook-box p{
+      margin:0;
+      color:#4b60a4;
+      line-height:1.8;
+    }
+
+    .guide-btn{
+      border:none;
+      background:#1b2f7a;
+      color:white;
+      font-weight:700;
+      padding:15px 22px;
+      border-radius:16px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .logos-title{
+      text-align:center;
+      font-size:34px;
+      margin:0 0 22px;
+    }
+
+    .carousel{
+      overflow:hidden;
+      width:100%;
+      margin-top:28px;
+    }
+
+    .track{
+      display:flex;
+      width:max-content;
+      gap:18px;
+      animation: scrollLogos 22s linear infinite;
+    }
+
+    @keyframes scrollLogos{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    .logo-box{
+      flex:0 0 160px;
+      height:84px;
+      background:white;
+      border-radius:18px;
+      box-shadow:0 10px 25px rgba(27,47,122,.09);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#3553cb;
+      font-weight:700;
+    }
+
+    footer{
+      margin-top:90px;
+      background:#1b2f7a;
+      color:white;
+      padding:70px 24px;
+      border-top-left-radius:34px;
+      border-top-right-radius:34px;
+    }
+
+    .footer-top{
+      max-width:1180px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.1fr 1fr 1fr 1fr;
+      gap:30px;
+    }
+
+    footer h4{
+      margin:0 0 16px;
+      font-size:24px;
+    }
+
+    footer p,
+    footer a{
+      margin:8px 0;
+      color:#dbe4ff;
+      text-decoration:none;
+      line-height:1.7;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .footer-brand img{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      background:white;
+      border-radius:12px;
+      padding:6px;
+    }
+
+    @media (max-width: 980px){
+      header{
+        width:calc(100% - 20px);
+        padding:14px 18px;
+        gap:14px;
+      }
+
+      .brand span{
+        font-size:16px;
+      }
+
+      nav{
+        gap:14px;
+      }
+
+      .hero h1{
+        font-size:44px;
+      }
+
+      .theme-layout,
+      .guidebook-box,
+      .detail-grid,
+      .footer-top{
+        grid-template-columns:1fr;
+      }
+
+      .timeline-constellation{
+        min-height:520px;
+      }
+
+      .n1{ left:16%; top:70px; }
+      .n2{ left:55%; top:150px; }
+      .n3{ left:84%; top:95px; }
+      .n4{ left:24%; top:270px; }
+      .n5{ left:67%; top:340px; }
+      .n6{ left:85%; top:445px; }
+
+      .comp-card{
+        min-width:300px;
+      }
+    }
+
+    @media (max-width: 700px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      nav{
+        width:100%;
+        justify-content:space-between;
+      }
+
+      .hero{
+        padding-top:150px;
+      }
+
+      .hero-logo-wrap{
+        width:220px;
+        height:220px;
+      }
+
+      .hero-logo{
+        width:130px;
+      }
+
+      .hero h1{
+        font-size:34px;
+      }
+
+      .section-title{
+        font-size:30px;
+      }
+
+      .section-sub{
+        font-size:17px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-
-<div class="logo-nav">
-<img src="assets/logo.png">
-<strong>11th Physics Summit</strong>
-</div>
-
-<nav>
-<a href="#about">About</a>
-<a href="#competition">Kompetisi</a>
-<a href="#sponsor">Sponsor</a>
-</nav>
-
-</header>
-
-
-<section class="hero">
-
-<div class="atom">
-
-<div class="orbit"></div>
-<div class="orbit"></div>
-<div class="orbit"></div>
-
-<img src="assets/logo.png">
-
-</div>
-
-<h1>11TH PHYSICS SUMMIT</h1>
-
-<p>Kompetisi Fisika Nasional untuk Generasi Inovatif</p>
-
-</section>
-
-
-<section id="about">
-
-<h2>About Physics Summit</h2>
-
-<p style="max-width:700px;margin:auto">
-
-Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika
-Institut Teknologi Sepuluh Nopember melalui HIMASIKA ITS.
-
-</p>
-
-<h2 style="margin-top:60px">Perjalanan Physics Summit</h2>
-
-<div class="constellation">
-
-<svg viewBox="0 0 1000 300">
-
-<polyline points="50,80 200,160 400,90 600,180 800,100 950,210"
-stroke="#1a2b6b"
-stroke-width="2"
-fill="none"/>
-
-</svg>
-
-<div class="star">2011</div>
-<div class="star">2014</div>
-<div class="star">2018</div>
-<div class="star">2020</div>
-<div class="star">2024</div>
-<div class="star">2026</div>
-
-</div>
-
-</section>
-
-
-<section id="competition">
-
-<h2>Kompetisi</h2>
-
-<div class="slider">
-
-<div class="card" onclick="openModal('pso')">
-<h3>Physics Summit Olympiad</h3>
-<p>Olimpiade fisika tingkat nasional</p>
-</div>
-
-<div class="card" onclick="openModal('psec')">
-<h3>Physics Summit Essay Competition</h3>
-<p>Kompetisi esai ilmiah berbasis fisika</p>
-</div>
-
-</div>
-
-</section>
-
-
-<div class="modal" id="pso">
-
-<div class="modal-content">
-
-<span class="close" onclick="closeModal('pso')">✕</span>
-
-<h2>Physics Summit Olympiad</h2>
-
-<ul>
-<li>Biaya: Rp 75.000 / tim</li>
-<li>1 Mei – 20 Juni : Pendaftaran</li>
-<li>5 Juli : Penyisihan</li>
-<li>20 Juli : Semifinal</li>
-<li>5 Agustus : Final</li>
-</ul>
-
-</div>
-
-</div>
-
-
-<div class="modal" id="psec">
-
-<div class="modal-content">
-
-<span class="close" onclick="closeModal('psec')">✕</span>
-
-<h2>Physics Summit Essay Competition</h2>
-
-<ul>
-<li>Biaya: Rp 50.000 / tim</li>
-<li>1 Mei – 25 Juni : Pengumpulan Essay</li>
-<li>10 Juli : Pengumuman</li>
-<li>25 Juli : Semifinal</li>
-<li>5 Agustus : Final</li>
-</ul>
-
-</div>
-
-</div>
-
-
-<section id="sponsor">
-
-<h2>Sponsor</h2>
-
-<div class="carousel">
-
-<div class="track">
-
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-<div class="logo-box">Sponsor</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-
-<div class="footer-grid">
-
-<div>
-
-<h3>Organized by</h3>
-
-<p>Departemen Fisika ITS</p>
-<p>HIMASIKA ITS</p>
-
-</div>
-
-<div>
-
-<h3>Navigasi</h3>
-
-<a href="#about">About</a>
-<a href="#competition">Kompetisi</a>
-<a href="#sponsor">Sponsor</a>
-
-</div>
-
-<div>
-
-<h3>Kompetisi</h3>
-
-<p>PSO</p>
-<p>PSEC</p>
-
-</div>
-
-<div>
-
-<h3>Contact</h3>
-
-<p>Rozan</p>
-<p>Sandy</p>
-
-</div>
-
-</div>
-
-</footer>
-
-
-<script>
-
-function openModal(id){
-document.getElementById(id).style.display="flex";
-}
-
-function closeModal(id){
-document.getElementById(id).style.display="none";
-}
-
-</script>
+  <div class="bg-stars"></div>
+
+  <header>
+    <div class="brand">
+      <img src="assets/logo.png" alt="Logo Physics Summit">
+      <span>11th Physics Summit</span>
+    </div>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#theme">Tema</a>
+      <a href="#competition">Kompetisi</a>
+      <a href="#guidebook">Guidebook</a>
+      <a href="#sponsor">Sponsor</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-logo-wrap">
+      <div class="orbit one"><div class="electron"></div></div>
+      <div class="orbit two"><div class="electron"></div></div>
+      <div class="orbit three"><div class="electron"></div></div>
+      <img src="assets/logo.png" alt="Logo Physics Summit" class="hero-logo">
+    </div>
+
+    <h1>11TH PHYSICS SUMMIT</h1>
+    <p>Kompetisi Fisika Nasional untuk Generasi Inovatif</p>
+    <div class="hero-badge">Departemen Fisika ITS × HIMASIKA ITS</div>
+  </section>
+
+  <section id="about" class="anchor">
+    <h2 class="section-title">About Physics Summit</h2>
+    <p class="section-sub">
+      Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa Fisika ITS (HIMASIKA ITS). Sejak didirikan pada tahun 1965, Departemen Fisika ITS telah banyak menorehkan prestasi dan memberikan kontribusi dalam pengembangan ilmu pengetahuan.
+    </p>
+    <p class="section-sub">
+      Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan dalam bidang akademik sekaligus memperluas citra baik Departemen Fisika ITS. Acara ini menggabungkan kegiatan akademik dan manajerial yang bertujuan untuk mengembangkan kemampuan peserta serta memberikan dampak positif bagi masyarakat luas.
+    </p>
+
+    <h2 class="section-title" style="margin-top:56px;">Perjalanan Physics Summit</h2>
+
+    <div class="timeline-constellation glass-box">
+      <svg viewBox="0 0 1000 360" preserveAspectRatio="none">
+        <path class="timeline-line" d="M70,110 L240,220 L430,110 L610,250 L790,130 L930,265"></path>
+      </svg>
+
+      <div class="node n1">
+        <div class="node-point"></div>
+        <div class="node-label">2011 – First</div>
+      </div>
+
+      <div class="node n2">
+        <div class="node-point"></div>
+        <div class="node-label">2014 – Berganti Nama</div>
+      </div>
+
+      <div class="node n3">
+        <div class="node-point"></div>
+        <div class="node-label">2018 – Dirut PS</div>
+      </div>
+
+      <div class="node n4">
+        <div class="node-point"></div>
+        <div class="node-label">2020 – Vakum</div>
+      </div>
+
+      <div class="node n5">
+        <div class="node-point"></div>
+        <div class="node-label">2024 – Kembali</div>
+      </div>
+
+      <div class="node n6">
+        <div class="node-point"></div>
+        <div class="node-label">2026 – 11th PS</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="theme" class="anchor">
+    <h2 class="section-title">Tema 11th Physics Summit</h2>
+
+    <div class="theme-layout">
+      <div class="theme-main">
+        <h3>COMING SOON</h3>
+        <p>
+          Tema resmi 11th Physics Summit akan diumumkan segera. Section ini sengaja ditampilkan agar posisi tema tetap ada di website dan nanti tinggal diganti ketika tema final sudah diputuskan.
+        </p>
+        <div class="coming-badge">THEME REVEAL SOON</div>
+      </div>
+
+      <div class="theme-visual">
+        <div class="planet big"></div>
+        <div class="planet small"></div>
+
+        <div class="line-star line1"></div>
+        <div class="line-star line2"></div>
+        <div class="line-star line3"></div>
+
+        <div class="star-dot sd1"></div>
+        <div class="star-dot sd2"></div>
+        <div class="star-dot sd3"></div>
+        <div class="star-dot sd4"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="competition" class="anchor">
+    <h2 class="section-title">Kompetisi</h2>
+
+    <div class="slider-wrap">
+      <div class="slider">
+        <div class="comp-card">
+          <h3>Physics Summit Olympiad</h3>
+          <p>
+            Kompetisi olimpiade fisika tingkat nasional untuk siswa SMA/SMK sederajat di seluruh Indonesia.
+          </p>
+
+          <div class="comp-meta">
+            <div class="tag">Rp 75.000 / tim</div>
+            <div class="tag">SMA/SMK</div>
+            <div class="tag">Tim / Individu</div>
+          </div>
+
+          <div style="margin-top:18px;">
+            <button class="comp-btn" onclick="openModal('modalPSO')">Lihat Detail PSO</button>
+          </div>
+        </div>
+
+        <div class="comp-card">
+          <h3>Physics Summit Essay Competition</h3>
+          <p>
+            Kompetisi esai ilmiah tingkat nasional untuk siswa SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
+          </p>
+
+          <div class="comp-meta">
+            <div class="tag">Rp 50.000 / tim</div>
+            <div class="tag">Essay</div>
+            <div class="tag">SMA/SMK & Mahasiswa</div>
+          </div>
+
+          <div style="margin-top:18px;">
+            <button class="comp-btn" onclick="openModal('modalPSEC')">Lihat Detail PSEC</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guidebook" class="anchor">
+    <h2 class="section-title">Guidebook</h2>
+
+    <div class="guidebook-box">
+      <div>
+        <h3>Cek ketentuan lengkap pada guidebook</h3>
+        <p>
+          Section guidebook sengaja ditampilkan agar tidak hilang dari halaman utama. Saat file PDF guidebook sudah siap, tombol di samping tinggal diarahkan ke link download guidebook.
+        </p>
+      </div>
+
+      <button class="guide-btn">Link Guidebook Menyusul</button>
+    </div>
+  </section>
+
+  <section id="sponsor" class="anchor">
+    <h2 class="logos-title">Sponsor</h2>
+
+    <div class="carousel">
+      <div class="track">
+        <div class="logo-box">Sponsor 1</div>
+        <div class="logo-box">Sponsor 2</div>
+        <div class="logo-box">Sponsor 3</div>
+        <div class="logo-box">Sponsor 4</div>
+        <div class="logo-box">Sponsor 5</div>
+        <div class="logo-box">Sponsor 6</div>
+        <div class="logo-box">Sponsor 7</div>
+        <div class="logo-box">Sponsor 8</div>
+        <div class="logo-box">Sponsor 9</div>
+        <div class="logo-box">Sponsor 10</div>
+
+        <div class="logo-box">Sponsor 1</div>
+        <div class="logo-box">Sponsor 2</div>
+        <div class="logo-box">Sponsor 3</div>
+        <div class="logo-box">Sponsor 4</div>
+        <div class="logo-box">Sponsor 5</div>
+        <div class="logo-box">Sponsor 6</div>
+        <div class="logo-box">Sponsor 7</div>
+        <div class="logo-box">Sponsor 8</div>
+        <div class="logo-box">Sponsor 9</div>
+        <div class="logo-box">Sponsor 10</div>
+      </div>
+    </div>
+
+    <h2 class="logos-title" style="margin-top:56px;">Media Partner</h2>
+
+    <div class="carousel">
+      <div class="track" style="animation-duration:18s;">
+        <div class="logo-box">Media 1</div>
+        <div class="logo-box">Media 2</div>
+        <div class="logo-box">Media 3</div>
+        <div class="logo-box">Media 4</div>
+        <div class="logo-box">Media 5</div>
+        <div class="logo-box">Media 6</div>
+
+        <div class="logo-box">Media 1</div>
+        <div class="logo-box">Media 2</div>
+        <div class="logo-box">Media 3</div>
+        <div class="logo-box">Media 4</div>
+        <div class="logo-box">Media 5</div>
+        <div class="logo-box">Media 6</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Logo Physics Summit">
+          <div>
+            <h4 style="margin:0;">11th Physics Summit</h4>
+            <p style="margin:4px 0 0;">Physics for Future Impact</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4>Navigasi</h4>
+        <a href="#about">About</a>
+        <a href="#theme">Tema</a>
+        <a href="#competition">Kompetisi</a>
+        <a href="#guidebook">Guidebook</a>
+        <a href="#sponsor">Sponsor</a>
+      </div>
+
+      <div>
+        <h4>Kompetisi</h4>
+        <p>Physics Summit Olympiad (PSO)</p>
+        <p>Physics Summit Essay Competition (PSEC)</p>
+      </div>
+
+      <div>
+        <h4>Contact Person</h4>
+        <p>PSO — Rozan</p>
+        <p>PSEC — Sandy</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modalPSO">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3>Physics Summit Olympiad (PSO)</h3>
+        <button class="close-btn" onclick="closeModal('modalPSO')">✕</button>
+      </div>
+
+      <p>
+        Physics Summit Olympiad (PSO) merupakan kompetisi olimpiade fisika tingkat nasional yang diperuntukkan bagi siswa SMA/SMK sederajat di seluruh Indonesia. Kompetisi ini bertujuan untuk menguji kemampuan analisis, pemahaman konsep fisika, serta kemampuan peserta dalam menyelesaikan berbagai permasalahan ilmiah.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>Kategori Peserta</h4>
+          <ul>
+            <li>Siswa SMA/SMK sederajat</li>
+            <li>Tim atau individu</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Benefit</h4>
+          <ul>
+            <li>Sertifikat nasional</li>
+            <li>Hadiah uang pembinaan</li>
+            <li>Pengalaman kompetisi akademik tingkat nasional</li>
+            <li>Kesempatan memperluas jaringan akademik</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Biaya</h4>
+          <ul>
+            <li>Rp 75.000 / tim</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Timeline</h4>
+          <ul>
+            <li>1 Mei – 20 Juni 2026 : Pendaftaran Peserta</li>
+            <li>5 Juli 2026 : Babak Penyisihan</li>
+            <li>20 Juli 2026 : Babak Semifinal</li>
+            <li>5 Agustus 2026 : Grand Final</li>
+          </ul>
+        </div>
+      </div>
+
+      <a class="wa-link" href="https://wa.me/6282334827208" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        Contact Person PSO — Rozan
+      </a>
+    </div>
+  </div>
+
+  <div class="modal" id="modalPSEC">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3>Physics Summit Essay Competition (PSEC)</h3>
+        <button class="close-btn" onclick="closeModal('modalPSEC')">✕</button>
+      </div>
+
+      <p>
+        Physics Summit Essay Competition (PSEC) merupakan kompetisi esai ilmiah tingkat nasional yang terbuka bagi siswa SMA/SMK dan mahasiswa aktif dari seluruh Indonesia. Kompetisi ini bertujuan untuk mendorong peserta mengembangkan ide, inovasi, dan solusi kreatif terhadap berbagai permasalahan global melalui pendekatan ilmiah berbasis fisika.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>Kategori Peserta</h4>
+          <ul>
+            <li>Mahasiswa aktif</li>
+            <li>Siswa SMA/SMK sederajat</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Tahapan Kompetisi</h4>
+          <ul>
+            <li>Seleksi Abstrak / Essay</li>
+            <li>Babak Semifinal</li>
+            <li>Grand Final Presentation</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Benefit</h4>
+          <ul>
+            <li>Sertifikat nasional</li>
+            <li>Hadiah uang pembinaan</li>
+            <li>Publikasi karya ilmiah</li>
+            <li>Networking dengan peserta dari berbagai daerah</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Timeline</h4>
+          <ul>
+            <li>1 Mei – 25 Juni 2026 : Pendaftaran dan Pengumpulan Essay</li>
+            <li>10 Juli 2026 : Pengumuman Semifinalis</li>
+            <li>25 Juli 2026 : Presentasi Semifinal</li>
+            <li>5 Agustus 2026 : Grand Final</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; font-weight:700;">Biaya: Rp 50.000 / tim</div>
+
+      <a class="wa-link" href="https://wa.me/6281977966611" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        Contact Person PSEC — Sandy
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id){
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id){
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function(e){
+      const m1 = document.getElementById("modalPSO");
+      const m2 = document.getElementById("modalPSEC");
+      if(e.target === m1){ m1.style.display = "none"; }
+      if(e.target === m2){ m2.style.display = "none"; }
+    }
+  </script>
 
 </body>
 </html>
