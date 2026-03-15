@@ -4,9 +4,119 @@
 
 <title>11th Physics Summit</title>
 
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(180deg,#0b1d51,#1c3faa);
+color:white;
+text-align:center;
+}
+
+header{
+position:sticky;
+top:0;
+background:#0b1d51;
+padding:20px;
+z-index:1000;
+}
+
+nav{
+display:flex;
+justify-content:center;
+gap:30px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+section{
+padding:60px 20px;
+}
+
+.timeline{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-top:20px;
+}
+
+.time{
+background:white;
+color:black;
+padding:10px 20px;
+border-radius:20px;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.card{
+background:white;
+color:black;
+padding:30px;
+width:250px;
+border-radius:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.detail{
+display:none;
+background:white;
+color:black;
+max-width:700px;
+margin:auto;
+padding:30px;
+border-radius:15px;
+margin-top:30px;
+}
+
+ul{
+text-align:left;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+background:#2979ff;
+color:white;
+cursor:pointer;
+}
+
+.cp{
+display:flex;
+align-items:center;
+gap:10px;
+text-decoration:none;
+color:black;
+margin-top:15px;
+}
+
+.cp img{
+width:30px;
+height:30px;
+}
+
+</style>
 
 </head>
 
@@ -17,9 +127,11 @@
 <h1>11th Physics Summit</h1>
 
 <nav>
+
 <a href="#about">About</a>
 <a href="#competition">Kompetisi</a>
 <a href="#guidebook">Guidebook</a>
+
 </nav>
 
 </header>
@@ -45,21 +157,15 @@ yang bertujuan untuk mengembangkan kemampuan peserta serta memberikan
 dampak positif bagi masyarakat luas.
 </p>
 
-
 <h3>Perjalanan Physics Summit</h3>
 
 <div class="timeline">
 
 <div class="time">2011 – First Physics Summit</div>
-
 <div class="time">2014 – Berganti Nama</div>
-
 <div class="time">2018 – Penetapan Dirut PS</div>
-
-<div class="time">2020 – Vakum karena Covid-19</div>
-
+<div class="time">2020 – Vakum karena Covid</div>
 <div class="time">2024 – Mulai kembali</div>
-
 <div class="time">2026 – Physics Summit 11th</div>
 
 </div>
@@ -85,7 +191,6 @@ dampak positif bagi masyarakat luas.
 <p>Klik untuk melihat detail kompetisi</p>
 
 </div>
-
 
 <div class="card" onclick="openPSEC()">
 
@@ -134,14 +239,14 @@ yang diperuntukkan bagi siswa SMA/SMK sederajat di seluruh Indonesia.
 
 <ul>
 <li>1 Mei – 20 Juni 2026 : Pendaftaran</li>
-<li>5 Juli 2026 : Babak Penyisihan</li>
-<li>20 Juli 2026 : Babak Semifinal</li>
+<li>5 Juli 2026 : Penyisihan</li>
+<li>20 Juli 2026 : Semifinal</li>
 <li>5 Agustus 2026 : Grand Final</li>
 </ul>
 
 <h3>Pendaftaran</h3>
 
-<button class="daftar">Link menyusul</button>
+<button>Link menyusul</button>
 
 <h3>Contact Person</h3>
 
@@ -162,8 +267,8 @@ Rozan
 <h2>Physics Summit Essay Competition (PSEC)</h2>
 
 <p>
-Kompetisi esai ilmiah tingkat nasional yang terbuka bagi siswa
-SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
+Kompetisi esai ilmiah tingkat nasional yang terbuka bagi siswa SMA/SMK
+dan mahasiswa aktif dari seluruh Indonesia.
 </p>
 
 <h3>Kategori Peserta</h3>
@@ -177,7 +282,7 @@ SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
 
 <ul>
 <li>Seleksi Abstrak / Essay</li>
-<li>Babak Semifinal</li>
+<li>Semifinal</li>
 <li>Grand Final Presentation</li>
 </ul>
 
@@ -187,7 +292,7 @@ SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
 <li>Sertifikat nasional</li>
 <li>Hadiah uang pembinaan</li>
 <li>Publikasi karya ilmiah</li>
-<li>Networking peserta</li>
+<li>Networking</li>
 </ul>
 
 <h3>Biaya</h3>
@@ -223,22 +328,29 @@ Sandy
 
 <p>Cek ketentuan lengkap pada guidebook di bawah ini</p>
 
-<button class="guide">Download Guidebook</button>
+<button>Download Guidebook</button>
 
 </section>
 
 
 
-<section id="sponsor">
+<script>
 
-<h2>Thanks For Sponsor & Media Partner</h2>
+function openPSO(){
 
-<p>Logo sponsor dan media partner akan ditampilkan di sini</p>
+document.getElementById("pso-detail").style.display="block";
+document.getElementById("psec-detail").style.display="none";
 
-</section>
+}
 
+function openPSEC(){
 
-<script src="script.js"></script>
+document.getElementById("psec-detail").style.display="block";
+document.getElementById("pso-detail").style.display="none";
+
+}
+
+</script>
 
 </body>
 </html>
