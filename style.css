@@ -1,0 +1,16 @@
+body{
+background:#0b0c10;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+nav a{
+margin:10px;
+color:cyan;
+text-decoration:none;
+}
+
+nav a:hover{
+color:white;
+}
