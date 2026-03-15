@@ -3,7 +3,6 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>11th Physics Summit</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -15,12 +14,12 @@
 body{
 margin:0;
 font-family:Poppins;
-background:#0b1d51;
-color:white;
+background:white;
+color:#1a2b6b;
 overflow-x:hidden;
 }
 
-/* particle background */
+/* PARTICLE BACKGROUND */
 
 #particles-js{
 position:fixed;
@@ -29,16 +28,22 @@ height:100%;
 z-index:-1;
 }
 
-/* navbar */
+/* HEADER FLOATING */
 
 header{
-position:sticky;
-top:0;
-background:rgba(10,20,60,0.95);
-padding:15px 40px;
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:85%;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:15px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 z-index:999;
 }
 
@@ -62,14 +67,15 @@ gap:30px;
 }
 
 nav a{
-color:white;
+color:#1a2b6b;
 text-decoration:none;
+font-weight:500;
 }
 
-/* hero */
+/* HERO */
 
 .hero{
-height:90vh;
+height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -78,7 +84,7 @@ text-align:center;
 }
 
 .hero img{
-width:150px;
+width:170px;
 margin-bottom:20px;
 }
 
@@ -87,14 +93,10 @@ font-size:60px;
 margin:0;
 }
 
-.hero p{
-opacity:0.8;
-}
-
-/* about */
+/* SECTIONS */
 
 section{
-padding:80px 20px;
+padding:100px 20px;
 text-align:center;
 }
 
@@ -104,7 +106,7 @@ margin:auto;
 line-height:1.8;
 }
 
-/* timeline */
+/* TIMELINE */
 
 .timeline{
 display:flex;
@@ -115,13 +117,13 @@ margin-top:30px;
 }
 
 .time{
-background:white;
-color:black;
+background:#1a2b6b;
+color:white;
 padding:10px 20px;
 border-radius:20px;
 }
 
-/* competition */
+/* COMPETITION */
 
 .cards{
 display:flex;
@@ -133,11 +135,11 @@ margin-top:40px;
 
 .card{
 background:white;
-color:black;
 padding:30px;
 width:260px;
 border-radius:15px;
 cursor:pointer;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
@@ -145,29 +147,34 @@ transition:0.3s;
 transform:translateY(-10px);
 }
 
-/* sponsor carousel */
+.detail{
+display:none;
+max-width:700px;
+margin:40px auto;
+background:#f6f8ff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
 
-.sponsor{
+/* SPONSOR */
+
+.logo-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:30px;
+max-width:900px;
+margin:auto;
 margin-top:40px;
-overflow:hidden;
 }
 
-.sponsor-track{
-display:flex;
-gap:50px;
-animation:scroll 20s linear infinite;
+.logo-grid img{
+width:100%;
+max-width:120px;
+margin:auto;
 }
 
-.sponsor img{
-height:60px;
-}
-
-@keyframes scroll{
-0%{transform:translateX(0)}
-100%{transform:translateX(-50%)}
-}
-
-/* fade animation */
+/* FADE ANIMATION */
 
 .fade{
 opacity:0;
@@ -191,19 +198,14 @@ transform:translateY(0);
 <header>
 
 <div class="logo-nav">
-
 <img src="assets/logo.png">
-
 <span>11th Physics Summit</span>
-
 </div>
 
 <nav>
-
 <a href="#about">About</a>
 <a href="#competition">Kompetisi</a>
 <a href="#sponsor">Sponsor</a>
-
 </nav>
 
 </header>
@@ -227,14 +229,11 @@ transform:translateY(0);
 <div class="about-box">
 
 <p>
-Physics Summit adalah acara yang diselenggarakan oleh Departemen
-Fisika Institut Teknologi Sepuluh Nopember melalui HIMASIKA ITS.
+Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember melalui HIMASIKA ITS.
 </p>
 
 <p>
-Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan
-dalam bidang akademik sekaligus memperluas citra baik Departemen
-Fisika ITS.
+Physics Summit hadir sebagai wadah untuk mengembangkan kemampuan peserta serta memberikan dampak positif bagi masyarakat luas.
 </p>
 
 </div>
@@ -261,20 +260,14 @@ Fisika ITS.
 
 <div class="cards">
 
-<div class="card">
-
+<div class="card" onclick="openPSO()">
 <h3>Physics Summit Olympiad</h3>
-
-<p>Olimpiade fisika tingkat nasional</p>
-
+<p>Klik untuk melihat detail</p>
 </div>
 
-<div class="card">
-
+<div class="card" onclick="openPSEC()">
 <h3>Physics Summit Essay Competition</h3>
-
-<p>Kompetisi esai ilmiah berbasis fisika</p>
-
+<p>Klik untuk melihat detail</p>
 </div>
 
 </div>
@@ -282,20 +275,67 @@ Fisika ITS.
 </section>
 
 
+<section id="pso-detail" class="detail">
+
+<h2>Physics Summit Olympiad (PSO)</h2>
+
+<p>Kompetisi olimpiade fisika tingkat nasional untuk siswa SMA/SMK.</p>
+
+<ul>
+<li>Biaya: Rp 75.000 / tim</li>
+<li>1 Mei – 20 Juni : Pendaftaran</li>
+<li>5 Juli : Penyisihan</li>
+<li>20 Juli : Semifinal</li>
+<li>5 Agustus : Final</li>
+</ul>
+
+</section>
+
+
+<section id="psec-detail" class="detail">
+
+<h2>Physics Summit Essay Competition (PSEC)</h2>
+
+<p>Kompetisi esai ilmiah berbasis fisika.</p>
+
+<ul>
+<li>Biaya: Rp 50.000 / tim</li>
+<li>1 Mei – 25 Juni : Pendaftaran</li>
+<li>10 Juli : Pengumuman</li>
+<li>25 Juli : Semifinal</li>
+<li>5 Agustus : Final</li>
+</ul>
+
+</section>
+
+
 <section id="sponsor" class="fade">
 
-<h2>Our Sponsor</h2>
+<h2>Sponsor</h2>
 
-<div class="sponsor">
+<div class="logo-grid">
 
-<div class="sponsor-track">
-
-<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
-<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
-<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
-<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor1">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor2">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor3">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor4">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor5">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor6">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor7">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor8">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor9">
+<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor10">
 
 </div>
+
+<h2 style="margin-top:80px">Media Partner</h2>
+
+<div class="logo-grid">
+
+<img src="https://dummyimage.com/150x80/000/fff&text=Media1">
+<img src="https://dummyimage.com/150x80/000/fff&text=Media2">
+<img src="https://dummyimage.com/150x80/000/fff&text=Media3">
+<img src="https://dummyimage.com/150x80/000/fff&text=Media4">
 
 </div>
 
@@ -306,11 +346,24 @@ Fisika ITS.
 
 particlesJS("particles-js",{
 particles:{
-number:{value:80},
-size:{value:3},
-move:{speed:2}
+number:{value:60},
+size:{value:4},
+move:{speed:1.5},
+color:{value:"#1a2b6b"}
 }
 });
+
+function openPSO(){
+document.getElementById("pso-detail").style.display="block";
+document.getElementById("psec-detail").style.display="none";
+window.location="#pso-detail";
+}
+
+function openPSEC(){
+document.getElementById("psec-detail").style.display="block";
+document.getElementById("pso-detail").style.display="none";
+window.location="#psec-detail";
+}
 
 const faders=document.querySelectorAll(".fade");
 
@@ -327,4 +380,3 @@ el.classList.add("show");
 
 </body>
 </html>
-  
