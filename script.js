@@ -1,6 +1,17 @@
-document.addEventListener("mousemove", function(e){
+const acc = document.querySelectorAll(".accordion");
 
-document.body.style.backgroundPosition =
-e.clientX/10 + "px " + e.clientY/10 + "px";
+acc.forEach(button => {
+
+button.addEventListener("click", function(){
+
+const panel = this.nextElementSibling;
+
+if(panel.style.display === "block"){
+panel.style.display = "none";
+}else{
+panel.style.display = "block";
+}
+
+});
 
 });
