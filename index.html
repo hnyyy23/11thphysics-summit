@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>11th Physics Summit</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <header>
+
 <h1>11th Physics Summit</h1>
 
 <nav>
@@ -15,6 +21,7 @@
 <a href="#competition">Kompetisi</a>
 <a href="#guidebook">Guidebook</a>
 </nav>
+
 </header>
 
 
@@ -24,66 +31,190 @@
 
 <p>
 Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika
-Institut Teknologi Sepuluh Nopember (ITS) melalui HIMASIKA ITS.
+Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa
+Fisika ITS (HIMASIKA ITS). Sejak didirikan pada tahun 1965,
+Departemen Fisika ITS telah banyak menorehkan prestasi dan memberikan
+kontribusi dalam pengembangan ilmu pengetahuan.
 </p>
 
-<h3>Timeline</h3>
+<p>
+Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan
+dalam bidang akademik sekaligus memperluas citra baik Departemen
+Fisika ITS. Acara ini menggabungkan kegiatan akademik dan manajerial
+yang bertujuan untuk mengembangkan kemampuan peserta serta memberikan
+dampak positif bagi masyarakat luas.
+</p>
 
-<ul>
-<li>2011 : First Physics Summit</li>
-<li>2014 : Berganti Nama</li>
-<li>2018 : Penetapan Dirut PS</li>
-<li>2020 : Vakum karena covid-19</li>
-<li>2024 : Mulai lagi</li>
-<li>2026 : Physics Summit 11th</li>
-</ul>
+
+<h3>Perjalanan Physics Summit</h3>
+
+<div class="timeline">
+
+<div class="time">2011 – First Physics Summit</div>
+
+<div class="time">2014 – Berganti Nama</div>
+
+<div class="time">2018 – Penetapan Dirut PS</div>
+
+<div class="time">2020 – Vakum karena Covid-19</div>
+
+<div class="time">2024 – Mulai kembali</div>
+
+<div class="time">2026 – Physics Summit 11th</div>
+
+</div>
 
 <h3>Tema Physics Summit 11th</h3>
+
 <p>COMING SOON</p>
 
 </section>
+
 
 
 <section id="competition">
 
 <h2>Kompetisi</h2>
 
-<button class="accordion">Physics Summit Olympiad (PSO)</button>
+<div class="cards">
 
-<div class="panel">
+<div class="card" onclick="openPSO()">
 
-<p>
-Kompetisi olimpiade fisika tingkat nasional untuk siswa SMA/SMK sederajat.
-</p>
+<h3>Physics Summit Olympiad</h3>
 
-<p><b>Biaya:</b> Rp 75.000 / tim</p>
-
-<p>
-Contact Person  
-<a href="https://wa.me/6282334827208">Rozan</a>
-</p>
+<p>Klik untuk melihat detail kompetisi</p>
 
 </div>
 
 
-<button class="accordion">Physics Summit Essay Competition (PSEC)</button>
+<div class="card" onclick="openPSEC()">
 
-<div class="panel">
+<h3>Physics Summit Essay Competition</h3>
 
-<p>
-Kompetisi esai ilmiah tingkat nasional untuk mahasiswa dan siswa SMA/SMK.
-</p>
+<p>Klik untuk melihat detail kompetisi</p>
 
-<p><b>Biaya:</b> Rp 50.000 / tim</p>
-
-<p>
-Contact Person  
-<a href="https://wa.me/6281977966611">Sandy</a>
-</p>
+</div>
 
 </div>
 
 </section>
+
+
+
+<section id="pso-detail" class="detail">
+
+<h2>Physics Summit Olympiad (PSO)</h2>
+
+<p>
+Physics Summit Olympiad merupakan kompetisi olimpiade fisika tingkat nasional
+yang diperuntukkan bagi siswa SMA/SMK sederajat di seluruh Indonesia.
+</p>
+
+<h3>Kategori Peserta</h3>
+
+<ul>
+<li>Siswa SMA/SMK sederajat</li>
+<li>Tim atau individu</li>
+</ul>
+
+<h3>Benefit</h3>
+
+<ul>
+<li>Sertifikat nasional</li>
+<li>Hadiah uang pembinaan</li>
+<li>Pengalaman kompetisi akademik tingkat nasional</li>
+<li>Networking akademik</li>
+</ul>
+
+<h3>Biaya</h3>
+
+<p>Rp 75.000 / tim</p>
+
+<h3>Timeline</h3>
+
+<ul>
+<li>1 Mei – 20 Juni 2026 : Pendaftaran</li>
+<li>5 Juli 2026 : Babak Penyisihan</li>
+<li>20 Juli 2026 : Babak Semifinal</li>
+<li>5 Agustus 2026 : Grand Final</li>
+</ul>
+
+<h3>Pendaftaran</h3>
+
+<button class="daftar">Link menyusul</button>
+
+<h3>Contact Person</h3>
+
+<a href="https://wa.me/6282334827208" class="cp">
+
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+
+Rozan
+
+</a>
+
+</section>
+
+
+
+<section id="psec-detail" class="detail">
+
+<h2>Physics Summit Essay Competition (PSEC)</h2>
+
+<p>
+Kompetisi esai ilmiah tingkat nasional yang terbuka bagi siswa
+SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
+</p>
+
+<h3>Kategori Peserta</h3>
+
+<ul>
+<li>Mahasiswa aktif</li>
+<li>Siswa SMA/SMK sederajat</li>
+</ul>
+
+<h3>Tahapan Kompetisi</h3>
+
+<ul>
+<li>Seleksi Abstrak / Essay</li>
+<li>Babak Semifinal</li>
+<li>Grand Final Presentation</li>
+</ul>
+
+<h3>Benefit</h3>
+
+<ul>
+<li>Sertifikat nasional</li>
+<li>Hadiah uang pembinaan</li>
+<li>Publikasi karya ilmiah</li>
+<li>Networking peserta</li>
+</ul>
+
+<h3>Biaya</h3>
+
+<p>Rp 50.000 / tim</p>
+
+<h3>Timeline</h3>
+
+<ul>
+<li>1 Mei – 25 Juni 2026 : Pendaftaran</li>
+<li>10 Juli 2026 : Pengumuman Semifinal</li>
+<li>25 Juli 2026 : Presentasi Semifinal</li>
+<li>5 Agustus 2026 : Grand Final</li>
+</ul>
+
+<h3>Contact Person</h3>
+
+<a href="https://wa.me/6281977966611" class="cp">
+
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+
+Sandy
+
+</a>
+
+</section>
+
 
 
 <section id="guidebook">
@@ -92,9 +223,20 @@ Contact Person
 
 <p>Cek ketentuan lengkap pada guidebook di bawah ini</p>
 
-<button>Download Guidebook</button>
+<button class="guide">Download Guidebook</button>
 
 </section>
+
+
+
+<section id="sponsor">
+
+<h2>Thanks For Sponsor & Media Partner</h2>
+
+<p>Logo sponsor dan media partner akan ditampilkan di sini</p>
+
+</section>
+
 
 <script src="script.js"></script>
 
