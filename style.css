@@ -55,3 +55,24 @@ width:60%;
 margin:auto;
 border-radius:8px;
 }
+
+.detail{
+display:none;
+max-width:700px;
+margin:40px auto;
+background:#1a1f3a;
+padding:30px;
+border-radius:15px;
+}
+
+.cp{
+display:flex;
+align-items:center;
+gap:10px;
+text-decoration:none;
+color:white;
+}
+
+.cp img{
+width:25px;
+}
