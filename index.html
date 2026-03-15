@@ -31,6 +31,10 @@
       scroll-behavior:smooth;
     }
 
+    html, body{
+      overflow-x:hidden;
+    }
+
     body{
       margin:0;
       font-family:'Poppins',sans-serif;
@@ -40,27 +44,47 @@
         radial-gradient(circle at 85% 15%, rgba(139,92,246,.14) 0, transparent 24%),
         radial-gradient(circle at 70% 60%, rgba(221,214,254,.28) 0, transparent 24%),
         linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);
-      overflow-x:hidden;
+      position:relative;
     }
 
     body::before{
       content:"";
       position:fixed;
-      inset:0;
-      background-image:
-        radial-gradient(circle, rgba(244,114,182,.18) 1.5px, transparent 2px),
-        radial-gradient(circle, rgba(139,92,246,.12) 1px, transparent 1.5px);
-      background-size: 140px 140px, 200px 200px;
-      background-position: 0 0, 60px 80px;
+      inset:-40px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(244,114,182,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 70%, rgba(139,92,246,.14) 0 2px, transparent 3px),
+        radial-gradient(circle at 60% 30%, rgba(244,114,182,.14) 0 2px, transparent 3px),
+        radial-gradient(circle at 85% 60%, rgba(139,92,246,.18) 0 2px, transparent 3px);
+      background-size:220px 220px, 260px 260px, 300px 300px, 240px 240px;
+      opacity:.8;
       pointer-events:none;
-      opacity:.6;
       z-index:-2;
-      animation: bgFloat 18s linear infinite alternate;
+      animation:bgMove 18s linear infinite alternate;
     }
 
-    @keyframes bgFloat{
-      from{transform:translateY(0);}
-      to{transform:translateY(-18px);}
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(244,114,182,.10), transparent 28%),
+        radial-gradient(circle at 78% 22%, rgba(139,92,246,.10), transparent 30%),
+        radial-gradient(circle at 60% 78%, rgba(244,114,182,.08), transparent 26%);
+      z-index:-3;
+      animation:bgGlow 10s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+
+    @keyframes bgMove{
+      0%{ transform:translate3d(0,0,0) scale(1); }
+      50%{ transform:translate3d(-20px,-12px,0) scale(1.03); }
+      100%{ transform:translate3d(18px,10px,0) scale(1.06); }
+    }
+
+    @keyframes bgGlow{
+      from{ transform:scale(1) translateY(0); }
+      to{ transform:scale(1.08) translateY(-10px); }
     }
 
     .container{
@@ -160,6 +184,21 @@
       padding-bottom:48px;
     }
 
+    .hero-left{
+      animation:heroTextFloat 1.2s ease forwards;
+    }
+
+    @keyframes heroTextFloat{
+      from{
+        opacity:0;
+        transform:translateY(35px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
     .hero-left h1{
       margin:0 0 14px;
       font-size:68px;
@@ -243,12 +282,24 @@
       justify-content:center;
       background:
         radial-gradient(circle at 50% 50%, rgba(255,255,255,.98) 0%, rgba(251,232,255,.95) 54%, rgba(243,232,255,.65) 72%, transparent 74%);
+      animation:heroFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat{
+      0%,100%{ transform:translateY(0px); }
+      50%{ transform:translateY(-12px); }
     }
 
     .hero-logo{
       width:210px;
       z-index:3;
       filter:drop-shadow(0 12px 25px rgba(180,120,220,.22));
+      animation:logoPulse 3.5s ease-in-out infinite;
+    }
+
+    @keyframes logoPulse{
+      0%,100%{ transform:scale(1); }
+      50%{ transform:scale(1.04); }
     }
 
     .orbit{
@@ -292,8 +343,8 @@
     }
 
     @keyframes spin{
-      from{rotate:0deg;}
-      to{rotate:360deg;}
+      from{ rotate:0deg; }
+      to{ rotate:360deg; }
     }
 
     .section-title{
@@ -364,7 +415,6 @@
       font-weight:700;
     }
 
-    /* theme visual disesuaikan ke Catalyst of Change */
     .theme-side{
       padding:28px;
       position:relative;
@@ -392,6 +442,12 @@
       background:radial-gradient(circle at 35% 35%, #ffd6ea 0%, #f472b6 45%, #8b5cf6 100%);
       box-shadow:0 0 40px rgba(244,114,182,.22);
       position:relative;
+      animation:coreBeat 4s ease-in-out infinite;
+    }
+
+    @keyframes coreBeat{
+      0%,100%{ transform:scale(1); }
+      50%{ transform:scale(1.06); }
     }
 
     .core::after{
@@ -400,6 +456,7 @@
       inset:18px;
       border-radius:50%;
       border:2px dashed rgba(255,255,255,.55);
+      animation:spin 8s linear infinite;
     }
 
     .react-dot{
@@ -535,6 +592,11 @@
       background:white;
       border-radius:26px;
       box-shadow:var(--shadow);
+      transition:.3s;
+    }
+
+    .comp-card:hover{
+      transform:translateY(-6px);
     }
 
     .comp-card h3{
@@ -694,6 +756,11 @@
       box-shadow:var(--shadow);
       padding:30px;
       text-align:center;
+      transition:.3s;
+    }
+
+    .looking-card:hover{
+      transform:translateY(-5px);
     }
 
     .looking-card h3{
@@ -750,6 +817,34 @@
       text-decoration:none;
       line-height:1.7;
       display:block;
+    }
+
+    .fade-section{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all .9s ease;
+    }
+
+    .fade-section.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal-up{
+      opacity:0;
+      transform:translateY(40px);
+      animation:revealUp 1s ease forwards;
+    }
+
+    .reveal-up.delay-1{ animation-delay:.2s; }
+    .reveal-up.delay-2{ animation-delay:.4s; }
+    .reveal-up.delay-3{ animation-delay:.6s; }
+
+    @keyframes revealUp{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
     }
 
     @media (max-width: 980px){
@@ -898,14 +993,14 @@
   <main class="container">
     <section class="hero">
       <div class="hero-left">
-        <div class="theme">CATALYST OF CHANGE</div>
-        <h1>11TH PHYSICS<br>SUMMIT</h1>
-        <p>
+        <div class="theme reveal-up">CATALYST OF CHANGE</div>
+        <h1 class="reveal-up delay-1">11TH PHYSICS<br>SUMMIT</h1>
+        <p class="reveal-up delay-2">
           Ajang kompetisi nasional yang mempertemukan semangat sains, inovasi, dan potensi generasi muda dalam satu ruang yang kompetitif dan inspiratif.
         </p>
-        <div class="tagline">Mengasah Potensi, Mencetak Prestasi</div>
+        <div class="tagline reveal-up delay-3">Mengasah Potensi, Mencetak Prestasi</div>
 
-        <div class="hero-actions">
+        <div class="hero-actions reveal-up delay-3">
           <button class="btn btn-primary" onclick="document.getElementById('competition').scrollIntoView()">Lihat Kompetisi</button>
           <button class="btn btn-secondary" onclick="document.getElementById('guidebook').scrollIntoView()">Guidebook</button>
         </div>
@@ -921,7 +1016,7 @@
       </div>
     </section>
 
-    <section id="about" class="anchor">
+    <section id="about" class="anchor fade-section">
       <h2 class="section-title">About Physics Summit</h2>
       <p class="section-desc">
         Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa Fisika ITS (HIMASIKA ITS). Sejak didirikan pada tahun 1965, Departemen Fisika ITS telah banyak menorehkan prestasi dan memberikan kontribusi dalam pengembangan ilmu pengetahuan.
@@ -931,7 +1026,7 @@
       </p>
     </section>
 
-    <section id="theme" class="anchor">
+    <section id="theme" class="anchor fade-section">
       <h2 class="section-title">Tema 11th Physics Summit</h2>
 
       <div class="theme-box">
@@ -966,7 +1061,7 @@
       </div>
     </section>
 
-    <section id="timeline" class="anchor">
+    <section id="timeline" class="anchor fade-section">
       <h2 class="section-title">Perjalanan Physics Summit</h2>
 
       <div class="timeline-box glass">
@@ -1008,7 +1103,7 @@
       </div>
     </section>
 
-    <section id="competition" class="anchor">
+    <section id="competition" class="anchor fade-section">
       <div class="slider-head">
         <div>
           <h2 class="section-title" style="text-align:left; margin-bottom:10px;">Kompetisi</h2>
@@ -1051,7 +1146,7 @@
       </div>
     </section>
 
-    <section id="guidebook" class="anchor">
+    <section id="guidebook" class="anchor fade-section">
       <h2 class="section-title">Guidebook</h2>
 
       <div class="guide-box glass">
@@ -1066,7 +1161,7 @@
       </div>
     </section>
 
-    <section id="partner" class="anchor">
+    <section id="partner" class="anchor fade-section">
       <div class="looking-grid">
         <div class="looking-card">
           <h3>LOOKING FOR SPONSOR</h3>
@@ -1258,6 +1353,18 @@
       const psec = document.getElementById("modalPSEC");
       if(e.target === pso){ pso.style.display = "none"; }
       if(e.target === psec){ psec.style.display = "none"; }
+    });
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".fade-section").forEach((el)=>{
+      observer.observe(el);
     });
   </script>
 </body>
