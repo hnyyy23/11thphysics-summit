@@ -2,52 +2,116 @@
 <html>
 <head>
 
-<title>11th Physics Summit</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>11th Physics Summit</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <style>
 
 body{
 margin:0;
 font-family:Poppins;
-background:linear-gradient(180deg,#0b1d51,#1c3faa);
+background:#0b1d51;
 color:white;
-text-align:center;
+overflow-x:hidden;
 }
+
+/* particle background */
+
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* navbar */
 
 header{
 position:sticky;
 top:0;
-background:#0b1d51;
-padding:20px;
-z-index:1000;
+background:rgba(10,20,60,0.95);
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+}
+
+.logo-nav{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-nav img{
+width:40px;
+}
+
+.logo-nav span{
+font-weight:600;
 }
 
 nav{
 display:flex;
-justify-content:center;
 gap:30px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-weight:500;
 }
 
-section{
-padding:60px 20px;
+/* hero */
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
 }
+
+.hero img{
+width:150px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:60px;
+margin:0;
+}
+
+.hero p{
+opacity:0.8;
+}
+
+/* about */
+
+section{
+padding:80px 20px;
+text-align:center;
+}
+
+.about-box{
+max-width:900px;
+margin:auto;
+line-height:1.8;
+}
+
+/* timeline */
 
 .timeline{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:10px;
-margin-top:20px;
+gap:15px;
+margin-top:30px;
 }
 
 .time{
@@ -57,18 +121,21 @@ padding:10px 20px;
 border-radius:20px;
 }
 
+/* competition */
+
 .cards{
 display:flex;
 justify-content:center;
 gap:40px;
 flex-wrap:wrap;
+margin-top:40px;
 }
 
 .card{
 background:white;
 color:black;
 padding:30px;
-width:250px;
+width:260px;
 border-radius:15px;
 cursor:pointer;
 transition:0.3s;
@@ -78,42 +145,39 @@ transition:0.3s;
 transform:translateY(-10px);
 }
 
-.detail{
-display:none;
-background:white;
-color:black;
-max-width:700px;
-margin:auto;
-padding:30px;
-border-radius:15px;
-margin-top:30px;
+/* sponsor carousel */
+
+.sponsor{
+margin-top:40px;
+overflow:hidden;
 }
 
-ul{
-text-align:left;
-}
-
-button{
-padding:10px 20px;
-border:none;
-border-radius:8px;
-background:#2979ff;
-color:white;
-cursor:pointer;
-}
-
-.cp{
+.sponsor-track{
 display:flex;
-align-items:center;
-gap:10px;
-text-decoration:none;
-color:black;
-margin-top:15px;
+gap:50px;
+animation:scroll 20s linear infinite;
 }
 
-.cp img{
-width:30px;
-height:30px;
+.sponsor img{
+height:60px;
+}
+
+@keyframes scroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+/* fade animation */
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
@@ -122,81 +186,94 @@ height:30px;
 
 <body>
 
+<div id="particles-js"></div>
+
 <header>
 
-<h1>11th Physics Summit</h1>
+<div class="logo-nav">
+
+<img src="assets/logo.png">
+
+<span>11th Physics Summit</span>
+
+</div>
 
 <nav>
 
 <a href="#about">About</a>
 <a href="#competition">Kompetisi</a>
-<a href="#guidebook">Guidebook</a>
+<a href="#sponsor">Sponsor</a>
 
 </nav>
 
 </header>
 
 
-<section id="about">
+<section class="hero">
+
+<img src="assets/logo.png">
+
+<h1>11TH PHYSICS SUMMIT</h1>
+
+<p>Kompetisi Fisika Nasional untuk Generasi Inovatif</p>
+
+</section>
+
+
+<section id="about" class="fade">
 
 <h2>About Physics Summit</h2>
 
+<div class="about-box">
+
 <p>
-Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika
-Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa
-Fisika ITS (HIMASIKA ITS). Sejak didirikan pada tahun 1965,
-Departemen Fisika ITS telah banyak menorehkan prestasi dan memberikan
-kontribusi dalam pengembangan ilmu pengetahuan.
+Physics Summit adalah acara yang diselenggarakan oleh Departemen
+Fisika Institut Teknologi Sepuluh Nopember melalui HIMASIKA ITS.
 </p>
 
 <p>
 Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan
 dalam bidang akademik sekaligus memperluas citra baik Departemen
-Fisika ITS. Acara ini menggabungkan kegiatan akademik dan manajerial
-yang bertujuan untuk mengembangkan kemampuan peserta serta memberikan
-dampak positif bagi masyarakat luas.
+Fisika ITS.
 </p>
+
+</div>
 
 <h3>Perjalanan Physics Summit</h3>
 
 <div class="timeline">
 
-<div class="time">2011 – First Physics Summit</div>
+<div class="time">2011 – First</div>
 <div class="time">2014 – Berganti Nama</div>
-<div class="time">2018 – Penetapan Dirut PS</div>
-<div class="time">2020 – Vakum karena Covid</div>
-<div class="time">2024 – Mulai kembali</div>
-<div class="time">2026 – Physics Summit 11th</div>
+<div class="time">2018 – Dirut PS</div>
+<div class="time">2020 – Vakum</div>
+<div class="time">2024 – Kembali</div>
+<div class="time">2026 – 11th PS</div>
 
 </div>
-
-<h3>Tema Physics Summit 11th</h3>
-
-<p>COMING SOON</p>
 
 </section>
 
 
-
-<section id="competition">
+<section id="competition" class="fade">
 
 <h2>Kompetisi</h2>
 
 <div class="cards">
 
-<div class="card" onclick="openPSO()">
+<div class="card">
 
 <h3>Physics Summit Olympiad</h3>
 
-<p>Klik untuk melihat detail kompetisi</p>
+<p>Olimpiade fisika tingkat nasional</p>
 
 </div>
 
-<div class="card" onclick="openPSEC()">
+<div class="card">
 
 <h3>Physics Summit Essay Competition</h3>
 
-<p>Klik untuk melihat detail kompetisi</p>
+<p>Kompetisi esai ilmiah berbasis fisika</p>
 
 </div>
 
@@ -205,152 +282,49 @@ dampak positif bagi masyarakat luas.
 </section>
 
 
+<section id="sponsor" class="fade">
 
-<section id="pso-detail" class="detail">
+<h2>Our Sponsor</h2>
 
-<h2>Physics Summit Olympiad (PSO)</h2>
+<div class="sponsor">
 
-<p>
-Physics Summit Olympiad merupakan kompetisi olimpiade fisika tingkat nasional
-yang diperuntukkan bagi siswa SMA/SMK sederajat di seluruh Indonesia.
-</p>
+<div class="sponsor-track">
 
-<h3>Kategori Peserta</h3>
+<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
+<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
+<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
+<img src="https://dummyimage.com/200x80/ffffff/000000&text=Sponsor">
 
-<ul>
-<li>Siswa SMA/SMK sederajat</li>
-<li>Tim atau individu</li>
-</ul>
+</div>
 
-<h3>Benefit</h3>
-
-<ul>
-<li>Sertifikat nasional</li>
-<li>Hadiah uang pembinaan</li>
-<li>Pengalaman kompetisi akademik tingkat nasional</li>
-<li>Networking akademik</li>
-</ul>
-
-<h3>Biaya</h3>
-
-<p>Rp 75.000 / tim</p>
-
-<h3>Timeline</h3>
-
-<ul>
-<li>1 Mei – 20 Juni 2026 : Pendaftaran</li>
-<li>5 Juli 2026 : Penyisihan</li>
-<li>20 Juli 2026 : Semifinal</li>
-<li>5 Agustus 2026 : Grand Final</li>
-</ul>
-
-<h3>Pendaftaran</h3>
-
-<button>Link menyusul</button>
-
-<h3>Contact Person</h3>
-
-<a href="https://wa.me/6282334827208" class="cp">
-
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-
-Rozan
-
-</a>
+</div>
 
 </section>
-
-
-
-<section id="psec-detail" class="detail">
-
-<h2>Physics Summit Essay Competition (PSEC)</h2>
-
-<p>
-Kompetisi esai ilmiah tingkat nasional yang terbuka bagi siswa SMA/SMK
-dan mahasiswa aktif dari seluruh Indonesia.
-</p>
-
-<h3>Kategori Peserta</h3>
-
-<ul>
-<li>Mahasiswa aktif</li>
-<li>Siswa SMA/SMK sederajat</li>
-</ul>
-
-<h3>Tahapan Kompetisi</h3>
-
-<ul>
-<li>Seleksi Abstrak / Essay</li>
-<li>Semifinal</li>
-<li>Grand Final Presentation</li>
-</ul>
-
-<h3>Benefit</h3>
-
-<ul>
-<li>Sertifikat nasional</li>
-<li>Hadiah uang pembinaan</li>
-<li>Publikasi karya ilmiah</li>
-<li>Networking</li>
-</ul>
-
-<h3>Biaya</h3>
-
-<p>Rp 50.000 / tim</p>
-
-<h3>Timeline</h3>
-
-<ul>
-<li>1 Mei – 25 Juni 2026 : Pendaftaran</li>
-<li>10 Juli 2026 : Pengumuman Semifinal</li>
-<li>25 Juli 2026 : Presentasi Semifinal</li>
-<li>5 Agustus 2026 : Grand Final</li>
-</ul>
-
-<h3>Contact Person</h3>
-
-<a href="https://wa.me/6281977966611" class="cp">
-
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-
-Sandy
-
-</a>
-
-</section>
-
-
-
-<section id="guidebook">
-
-<h2>Guidebook</h2>
-
-<p>Cek ketentuan lengkap pada guidebook di bawah ini</p>
-
-<button>Download Guidebook</button>
-
-</section>
-
 
 
 <script>
 
-function openPSO(){
-
-document.getElementById("pso-detail").style.display="block";
-document.getElementById("psec-detail").style.display="none";
-
+particlesJS("particles-js",{
+particles:{
+number:{value:80},
+size:{value:3},
+move:{speed:2}
 }
+});
 
-function openPSEC(){
+const faders=document.querySelectorAll(".fade");
 
-document.getElementById("psec-detail").style.display="block";
-document.getElementById("pso-detail").style.display="none";
-
+window.addEventListener("scroll",()=>{
+faders.forEach(el=>{
+const top=el.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+el.classList.add("show");
 }
+});
+});
 
 </script>
 
 </body>
 </html>
+  
