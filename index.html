@@ -6,44 +6,46 @@
 <title>11th Physics Summit</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <style>
 
+*{
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
 body{
 margin:0;
 font-family:Poppins;
-background:white;
+background:#f6f8ff;
 color:#1a2b6b;
 overflow-x:hidden;
 }
 
-/* PARTICLE BACKGROUND */
+/* particle */
 
 #particles-js{
 position:fixed;
-width:100%;
-height:100%;
+inset:0;
 z-index:-1;
 }
 
-/* HEADER FLOATING */
+/* floating navbar */
 
 header{
 position:fixed;
-top:20px;
+top:18px;
 left:50%;
 transform:translateX(-50%);
-width:85%;
-background:rgba(255,255,255,0.8);
-backdrop-filter:blur(10px);
-border-radius:20px;
-padding:15px 30px;
+width:min(1100px, calc(100% - 40px));
+background:white;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+padding:14px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
 z-index:999;
 }
 
@@ -54,11 +56,7 @@ gap:10px;
 }
 
 .logo-nav img{
-width:40px;
-}
-
-.logo-nav span{
-font-weight:600;
+width:42px;
 }
 
 nav{
@@ -67,52 +65,57 @@ gap:30px;
 }
 
 nav a{
-color:#1a2b6b;
 text-decoration:none;
+color:#1a2b6b;
 font-weight:500;
 }
 
-/* HERO */
+/* hero */
 
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+padding-top:120px;
 }
 
 .hero img{
-width:170px;
+width:220px;
 margin-bottom:20px;
 }
 
 .hero h1{
-font-size:60px;
+font-size:70px;
 margin:0;
 }
 
-/* SECTIONS */
+/* sections */
 
 section{
-padding:100px 20px;
-text-align:center;
+padding:120px 20px;
+}
+
+.section-anchor{
+scroll-margin-top:140px;
 }
 
 .about-box{
 max-width:900px;
 margin:auto;
 line-height:1.8;
+text-align:center;
 }
 
-/* TIMELINE */
+/* timeline */
 
 .timeline{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:15px;
+gap:14px;
 margin-top:30px;
 }
 
@@ -123,7 +126,7 @@ padding:10px 20px;
 border-radius:20px;
 }
 
-/* COMPETITION */
+/* competition */
 
 .cards{
 display:flex;
@@ -139,25 +142,33 @@ padding:30px;
 width:260px;
 border-radius:15px;
 cursor:pointer;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 transition:0.3s;
+text-align:center;
 }
 
 .card:hover{
 transform:translateY(-10px);
 }
 
+/* detail box */
+
 .detail{
 display:none;
-max-width:700px;
-margin:40px auto;
-background:#f6f8ff;
-padding:30px;
+max-width:720px;
+margin:60px auto;
+background:white;
+padding:35px;
 border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
 }
 
-/* SPONSOR */
+.detail ul{
+text-align:left;
+line-height:1.7;
+}
+
+/* sponsor */
 
 .logo-grid{
 display:grid;
@@ -168,23 +179,42 @@ margin:auto;
 margin-top:40px;
 }
 
-.logo-grid img{
-width:100%;
-max-width:120px;
+.logo-box{
+background:white;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* footer */
+
+footer{
+margin-top:120px;
+background:#1a2b6b;
+color:white;
+padding:70px 30px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:40px;
+max-width:1100px;
 margin:auto;
 }
 
-/* FADE ANIMATION */
-
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
+footer h3{
+margin-top:0;
 }
 
-.fade.show{
-opacity:1;
-transform:translateY(0);
+footer a{
+color:white;
+text-decoration:none;
+display:block;
+margin:6px 0;
 }
 
 </style>
@@ -199,7 +229,7 @@ transform:translateY(0);
 
 <div class="logo-nav">
 <img src="assets/logo.png">
-<span>11th Physics Summit</span>
+<strong>11th Physics Summit</strong>
 </div>
 
 <nav>
@@ -222,18 +252,20 @@ transform:translateY(0);
 </section>
 
 
-<section id="about" class="fade">
+<section id="about" class="section-anchor">
 
 <h2>About Physics Summit</h2>
 
 <div class="about-box">
 
 <p>
-Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember melalui HIMASIKA ITS.
+Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika
+Institut Teknologi Sepuluh Nopember melalui HIMASIKA ITS.
 </p>
 
 <p>
-Physics Summit hadir sebagai wadah untuk mengembangkan kemampuan peserta serta memberikan dampak positif bagi masyarakat luas.
+Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan
+dalam bidang akademik sekaligus memperluas citra baik Departemen Fisika ITS.
 </p>
 
 </div>
@@ -254,7 +286,7 @@ Physics Summit hadir sebagai wadah untuk mengembangkan kemampuan peserta serta m
 </section>
 
 
-<section id="competition" class="fade">
+<section id="competition" class="section-anchor">
 
 <h2>Kompetisi</h2>
 
@@ -282,11 +314,12 @@ Physics Summit hadir sebagai wadah untuk mengembangkan kemampuan peserta serta m
 <p>Kompetisi olimpiade fisika tingkat nasional untuk siswa SMA/SMK.</p>
 
 <ul>
+<li>Kategori: Siswa SMA/SMK, Tim atau individu</li>
 <li>Biaya: Rp 75.000 / tim</li>
 <li>1 Mei – 20 Juni : Pendaftaran</li>
 <li>5 Juli : Penyisihan</li>
 <li>20 Juli : Semifinal</li>
-<li>5 Agustus : Final</li>
+<li>5 Agustus : Grand Final</li>
 </ul>
 
 </section>
@@ -296,35 +329,36 @@ Physics Summit hadir sebagai wadah untuk mengembangkan kemampuan peserta serta m
 
 <h2>Physics Summit Essay Competition (PSEC)</h2>
 
-<p>Kompetisi esai ilmiah berbasis fisika.</p>
+<p>Kompetisi esai ilmiah tingkat nasional.</p>
 
 <ul>
+<li>Kategori: Mahasiswa aktif & siswa SMA/SMK</li>
 <li>Biaya: Rp 50.000 / tim</li>
-<li>1 Mei – 25 Juni : Pendaftaran</li>
-<li>10 Juli : Pengumuman</li>
-<li>25 Juli : Semifinal</li>
-<li>5 Agustus : Final</li>
+<li>1 Mei – 25 Juni : Pengumpulan Essay</li>
+<li>10 Juli : Pengumuman Semifinal</li>
+<li>25 Juli : Presentasi Semifinal</li>
+<li>5 Agustus : Grand Final</li>
 </ul>
 
 </section>
 
 
-<section id="sponsor" class="fade">
+<section id="sponsor" class="section-anchor">
 
 <h2>Sponsor</h2>
 
 <div class="logo-grid">
 
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor1">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor2">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor3">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor4">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor5">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor6">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor7">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor8">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor9">
-<img src="https://dummyimage.com/150x80/000/fff&text=Sponsor10">
+<div class="logo-box">Sponsor 1</div>
+<div class="logo-box">Sponsor 2</div>
+<div class="logo-box">Sponsor 3</div>
+<div class="logo-box">Sponsor 4</div>
+<div class="logo-box">Sponsor 5</div>
+<div class="logo-box">Sponsor 6</div>
+<div class="logo-box">Sponsor 7</div>
+<div class="logo-box">Sponsor 8</div>
+<div class="logo-box">Sponsor 9</div>
+<div class="logo-box">Sponsor 10</div>
 
 </div>
 
@@ -332,49 +366,80 @@ Physics Summit hadir sebagai wadah untuk mengembangkan kemampuan peserta serta m
 
 <div class="logo-grid">
 
-<img src="https://dummyimage.com/150x80/000/fff&text=Media1">
-<img src="https://dummyimage.com/150x80/000/fff&text=Media2">
-<img src="https://dummyimage.com/150x80/000/fff&text=Media3">
-<img src="https://dummyimage.com/150x80/000/fff&text=Media4">
+<div class="logo-box">Media 1</div>
+<div class="logo-box">Media 2</div>
+<div class="logo-box">Media 3</div>
+<div class="logo-box">Media 4</div>
 
 </div>
 
 </section>
 
 
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>Organized by</h3>
+<p>Departemen Fisika ITS</p>
+<p>HIMASIKA ITS</p>
+</div>
+
+<div>
+<h3>Navigasi</h3>
+<a href="#about">About</a>
+<a href="#competition">Kompetisi</a>
+<a href="#sponsor">Sponsor</a>
+</div>
+
+<div>
+<h3>Kompetisi</h3>
+<p>Physics Summit Olympiad</p>
+<p>Physics Summit Essay Competition</p>
+</div>
+
+<div>
+<h3>Contact Person</h3>
+<p>Rozan</p>
+<p>Sandy</p>
+</div>
+
+</div>
+
+</footer>
+
+
 <script>
 
 particlesJS("particles-js",{
 particles:{
-number:{value:60},
+number:{value:70},
 size:{value:4},
-move:{speed:1.5},
+move:{speed:1.2},
 color:{value:"#1a2b6b"}
 }
 });
 
+function scrollToDetail(id){
+const el=document.getElementById(id);
+window.scrollTo({
+top:el.offsetTop-120,
+behavior:"smooth"
+});
+}
+
 function openPSO(){
 document.getElementById("pso-detail").style.display="block";
 document.getElementById("psec-detail").style.display="none";
-window.location="#pso-detail";
+scrollToDetail("pso-detail");
 }
 
 function openPSEC(){
 document.getElementById("psec-detail").style.display="block";
 document.getElementById("pso-detail").style.display="none";
-window.location="#psec-detail";
+scrollToDetail("psec-detail");
 }
-
-const faders=document.querySelectorAll(".fade");
-
-window.addEventListener("scroll",()=>{
-faders.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-el.classList.add("show");
-}
-});
-});
 
 </script>
 
