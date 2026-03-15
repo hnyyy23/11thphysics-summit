@@ -1,17 +1,19 @@
-const acc = document.querySelectorAll(".accordion");
+function openPSO(){
 
-acc.forEach(button => {
+document.getElementById("pso-detail").style.display="block";
 
-button.addEventListener("click", function(){
+document.getElementById("psec-detail").style.display="none";
 
-const panel = this.nextElementSibling;
+window.location="#pso-detail";
 
-if(panel.style.display === "block"){
-panel.style.display = "none";
-}else{
-panel.style.display = "block";
 }
 
-});
+function openPSEC(){
 
-});
+document.getElementById("psec-detail").style.display="block";
+
+document.getElementById("pso-detail").style.display="none";
+
+window.location="#psec-detail";
+
+}
