@@ -379,16 +379,14 @@
       border-radius:var(--radius);
     }
 
-    .theme-grid{
+    .theme-full{
       margin-top:28px;
-      display:grid;
-      grid-template-columns:1.1fr .95fr;
-      gap:24px;
-      align-items:start;
     }
 
     .theme-main{
-      padding:32px;
+      position:relative;
+      overflow:hidden;
+      padding:36px;
       background:linear-gradient(135deg,#f472b6 0%, #c084fc 55%, #8b5cf6 100%);
       color:white;
       border-radius:28px;
@@ -396,18 +394,24 @@
     }
 
     .theme-main h3{
-      margin:0 0 10px;
+      position:relative;
+      z-index:2;
+      margin:0 0 12px;
       font-size:34px;
     }
 
     .theme-main p{
+      position:relative;
+      z-index:2;
       margin:0;
-      line-height:1.9;
+      line-height:1.95;
       color:#fff8fd;
+      max-width:900px;
     }
 
     .theme-cards{
       display:grid;
+      grid-template-columns:1fr 1fr;
       gap:18px;
       margin-top:20px;
     }
@@ -431,82 +435,87 @@
       color:var(--muted);
     }
 
-    .theme-side{
-      padding:28px;
-      position:relative;
-      min-height:100%;
-      overflow:hidden;
-      border-radius:28px;
-      background:
-        radial-gradient(circle at 30% 35%, rgba(244,114,182,.15) 0 16%, transparent 17%),
-        radial-gradient(circle at 70% 25%, rgba(139,92,246,.12) 0 18%, transparent 19%),
-        linear-gradient(180deg,#fff7fc 0%,#f7f1ff 100%);
-    }
-
-    .reaction-core{
+    .theme-decor .theme-ornament{
       position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      pointer-events:none;
     }
 
-    .core{
-      width:110px;
-      height:110px;
+    .theme-decor .orb{
       border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, #ffd6ea 0%, #f472b6 45%, #8b5cf6 100%);
-      box-shadow:0 0 40px rgba(244,114,182,.22);
-      position:relative;
-      animation:coreBeat 4s ease-in-out infinite;
+      background:rgba(255,255,255,.12);
+      filter:blur(2px);
     }
 
-    @keyframes coreBeat{
-      0%,100%{ transform:scale(1); }
-      50%{ transform:scale(1.06); }
+    .theme-decor .orb-1{
+      width:180px;
+      height:180px;
+      top:-40px;
+      right:-30px;
     }
 
-    .core::after{
-      content:"";
-      position:absolute;
-      inset:18px;
-      border-radius:50%;
-      border:2px dashed rgba(255,255,255,.55);
-      animation:spin 8s linear infinite;
+    .theme-decor .orb-2{
+      width:120px;
+      height:120px;
+      bottom:-20px;
+      left:40px;
     }
 
-    .react-dot{
-      position:absolute;
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      box-shadow:0 0 18px rgba(200,120,255,.25);
-      animation:floatDot 4s ease-in-out infinite;
-    }
-
-    .rd1{ top:52px; left:72px; background:#f9a8d4; }
-    .rd2{ top:118px; left:148px; background:#c084fc; animation-delay:.5s; }
-    .rd3{ top:76px; right:78px; background:#f472b6; animation-delay:1s; }
-    .rd4{ bottom:86px; left:92px; background:#8b5cf6; animation-delay:1.5s; }
-    .rd5{ bottom:70px; right:118px; background:#fbcfe8; animation-delay:2s; }
-    .rd6{ top:150px; right:150px; background:#ddd6fe; animation-delay:2.5s; }
-
-    .react-line{
-      position:absolute;
+    .theme-decor .line{
       height:3px;
       border-radius:999px;
-      background:linear-gradient(90deg, rgba(244,114,182,.28), rgba(139,92,246,.28));
+      background:rgba(255,255,255,.22);
       transform-origin:left center;
     }
 
-    .rl1{ width:120px; top:88px; left:86px; transform:rotate(28deg); }
-    .rl2{ width:130px; top:126px; left:178px; transform:rotate(-18deg); }
-    .rl3{ width:110px; top:212px; left:118px; transform:rotate(-38deg); }
-    .rl4{ width:90px; top:204px; right:120px; transform:rotate(28deg); }
+    .theme-decor .line-1{
+      width:150px;
+      top:72px;
+      right:120px;
+      transform:rotate(25deg);
+    }
 
-    @keyframes floatDot{
-      0%,100%{ transform:translateY(0) scale(1); }
-      50%{ transform:translateY(-8px) scale(1.08); }
+    .theme-decor .line-2{
+      width:110px;
+      bottom:70px;
+      right:70px;
+      transform:rotate(-20deg);
+    }
+
+    .theme-decor .dot{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:white;
+      box-shadow:0 0 18px rgba(255,255,255,.35);
+      animation:themeSpark 3s ease-in-out infinite;
+    }
+
+    .theme-decor .dot-1{
+      top:56px;
+      right:90px;
+    }
+
+    .theme-decor .dot-2{
+      top:128px;
+      right:210px;
+      animation-delay:.7s;
+    }
+
+    .theme-decor .dot-3{
+      bottom:56px;
+      right:120px;
+      animation-delay:1.4s;
+    }
+
+    @keyframes themeSpark{
+      0%,100%{
+        transform:scale(1);
+        opacity:1;
+      }
+      50%{
+        transform:scale(1.25);
+        opacity:.6;
+      }
     }
 
     .journey-intro{
@@ -531,6 +540,11 @@
       padding:22px;
       box-shadow:var(--shadow);
       border-left:6px solid var(--secondary);
+      transition:.3s;
+    }
+
+    .timeline-card:hover{
+      transform:translateY(-4px);
     }
 
     .timeline-card h4{
@@ -852,7 +866,7 @@
         justify-content:center;
       }
 
-      .theme-grid,
+      .theme-cards,
       .detail-grid,
       .guide-box,
       .footer-grid,
@@ -989,46 +1003,36 @@
     <section id="theme" class="anchor fade-section">
       <h2 class="section-title">Tema 11th Physics Summit</h2>
 
-      <div class="theme-grid">
-        <div>
-          <div class="theme-main">
-            <h3>Catalyst of Change</h3>
+      <div class="theme-full">
+        <div class="theme-main theme-decor">
+          <div class="theme-ornament orb orb-1"></div>
+          <div class="theme-ornament orb orb-2"></div>
+          <div class="theme-ornament line line-1"></div>
+          <div class="theme-ornament line line-2"></div>
+          <div class="theme-ornament dot dot-1"></div>
+          <div class="theme-ornament dot dot-2"></div>
+          <div class="theme-ornament dot dot-3"></div>
+
+          <h3>Catalyst of Change</h3>
+          <p>
+            Tema <strong>Catalyst of Change</strong> diangkat dari dua kata utama, yaitu <em>catalyst</em> dan <em>change</em>. Dalam ilmu pengetahuan, <em>catalyst</em> atau katalis merupakan zat yang mampu mempercepat terjadinya suatu reaksi tanpa ikut habis dalam proses tersebut, sedangkan <em>change</em> berarti perubahan atau perkembangan menuju kondisi yang lebih baik. Berdasarkan makna tersebut, tema ini menggambarkan harapan agar Physics Summit dapat menjadi pemicu yang mendorong lahirnya perubahan positif, khususnya dalam pengembangan ilmu pengetahuan dan pemikiran ilmiah.
+          </p>
+        </div>
+
+        <div class="theme-cards">
+          <div class="theme-card">
+            <h4>Makna Tema bagi Peserta</h4>
             <p>
-              Tema <strong>Catalyst of Change</strong> diangkat dari dua kata utama, yaitu <em>catalyst</em> dan <em>change</em>. Dalam ilmu pengetahuan, <em>catalyst</em> atau katalis merupakan zat yang mampu mempercepat terjadinya suatu reaksi tanpa ikut habis dalam proses tersebut, sedangkan <em>change</em> berarti perubahan atau perkembangan menuju kondisi yang lebih baik. Berdasarkan makna tersebut, tema ini menggambarkan harapan agar Physics Summit dapat menjadi pemicu yang mendorong lahirnya perubahan positif, khususnya dalam pengembangan ilmu pengetahuan dan pemikiran ilmiah.
+              Melalui kegiatan kompetisi seperti Physics Summit Olympiad (PSO) dan Physics Summit Essay Competition (PSEC), Physics Summit diharapkan mampu menjadi wadah bagi peserta untuk mengasah kemampuan akademik, berpikir kritis, serta meningkatkan minat terhadap ilmu fisika. Peserta tidak hanya datang untuk berkompetisi, tetapi juga untuk berkembang, belajar, dan menunjukkan potensi terbaiknya.
             </p>
           </div>
 
-          <div class="theme-cards">
-            <div class="theme-card">
-              <h4>Makna Tema bagi Peserta</h4>
-              <p>
-                Melalui kegiatan kompetisi seperti Physics Summit Olympiad (PSO) dan Physics Summit Essay Competition (PSEC), Physics Summit diharapkan mampu menjadi wadah bagi peserta untuk mengasah kemampuan akademik, berpikir kritis, serta meningkatkan minat terhadap ilmu fisika. Peserta tidak hanya datang untuk berkompetisi, tetapi juga untuk berkembang, belajar, dan menunjukkan potensi terbaiknya.
-              </p>
-            </div>
-
-            <div class="theme-card">
-              <h4>Makna Tema bagi Panitia</h4>
-              <p>
-                Selain memberikan dampak bagi peserta, tema ini juga mencerminkan harapan bagi panitia yang terlibat dalam penyelenggaraan kegiatan. Proses kepanitiaan diharapkan dapat menjadi sarana pembelajaran untuk mengembangkan kemampuan kepemimpinan, kerja sama tim, serta manajemen organisasi. Panitia juga diharapkan tumbuh sebagai bagian dari perubahan yang mereka ciptakan bersama.
-              </p>
-            </div>
+          <div class="theme-card">
+            <h4>Makna Tema bagi Panitia</h4>
+            <p>
+              Selain memberikan dampak bagi peserta, tema ini juga mencerminkan harapan bagi panitia yang terlibat dalam penyelenggaraan kegiatan. Proses kepanitiaan diharapkan dapat menjadi sarana pembelajaran untuk mengembangkan kemampuan kepemimpinan, kerja sama tim, serta manajemen organisasi. Panitia juga diharapkan tumbuh sebagai bagian dari perubahan yang mereka ciptakan bersama.
+            </p>
           </div>
-        </div>
-
-        <div class="theme-side glass">
-          <div class="reaction-core">
-            <div class="core"></div>
-          </div>
-          <div class="react-line rl1"></div>
-          <div class="react-line rl2"></div>
-          <div class="react-line rl3"></div>
-          <div class="react-line rl4"></div>
-          <div class="react-dot rd1"></div>
-          <div class="react-dot rd2"></div>
-          <div class="react-dot rd3"></div>
-          <div class="react-dot rd4"></div>
-          <div class="react-dot rd5"></div>
-          <div class="react-dot rd6"></div>
         </div>
       </div>
     </section>
