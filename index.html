@@ -15,12 +15,13 @@
       --metallic:#304575;
       --sea:#106A94;
       --cornflower:#247EAB;
+
+      --bg:#eef4f7;
+      --bg-soft:#f7fbfd;
       --white:#ffffff;
-      --soft:#f4f8fc;
-      --soft-2:#ecf5fb;
-      --text:#0f2746;
-      --muted:#4f6783;
-      --shadow:0 20px 45px rgba(3,33,61,.14);
+      --text:#18304d;
+      --muted:#59708a;
+      --shadow:0 18px 45px rgba(3,33,61,.12);
       --radius:28px;
     }
 
@@ -38,51 +39,33 @@
       font-family:'Poppins',sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 12% 18%, rgba(202,82,154,.14) 0, transparent 18%),
-        radial-gradient(circle at 85% 14%, rgba(36,126,171,.18) 0, transparent 22%),
-        radial-gradient(circle at 70% 68%, rgba(16,106,148,.14) 0, transparent 20%),
-        linear-gradient(180deg,#f9fcff 0%, #eef6fb 100%);
+        radial-gradient(circle at 10% 15%, rgba(202,82,154,.12) 0, transparent 18%),
+        radial-gradient(circle at 85% 18%, rgba(36,126,171,.14) 0, transparent 22%),
+        radial-gradient(circle at 74% 70%, rgba(16,106,148,.12) 0, transparent 20%),
+        linear-gradient(180deg, #f7fbfd 0%, #edf4f8 100%);
       position:relative;
     }
 
     body::before{
       content:"";
       position:fixed;
-      inset:-40px;
+      inset:-30px;
       background:
-        radial-gradient(circle at 10% 20%, rgba(202,82,154,.16) 0 2px, transparent 3px),
-        radial-gradient(circle at 28% 66%, rgba(36,126,171,.14) 0 2px, transparent 3px),
-        radial-gradient(circle at 62% 32%, rgba(16,106,148,.16) 0 2px, transparent 3px),
-        radial-gradient(circle at 88% 58%, rgba(48,69,117,.18) 0 2px, transparent 3px);
+        radial-gradient(circle at 10% 20%, rgba(202,82,154,.14) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 72%, rgba(36,126,171,.16) 0 2px, transparent 3px),
+        radial-gradient(circle at 62% 35%, rgba(16,106,148,.14) 0 2px, transparent 3px),
+        radial-gradient(circle at 85% 60%, rgba(48,69,117,.14) 0 2px, transparent 3px);
       background-size:220px 220px, 260px 260px, 300px 300px, 240px 240px;
-      opacity:.75;
+      opacity:.7;
       pointer-events:none;
       z-index:-2;
       animation:bgMove 18s linear infinite alternate;
     }
 
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:
-        radial-gradient(circle at 20% 25%, rgba(202,82,154,.08), transparent 28%),
-        radial-gradient(circle at 78% 22%, rgba(36,126,171,.08), transparent 30%),
-        radial-gradient(circle at 60% 78%, rgba(16,106,148,.08), transparent 26%);
-      z-index:-3;
-      animation:bgGlow 10s ease-in-out infinite alternate;
-      pointer-events:none;
-    }
-
     @keyframes bgMove{
       0%{ transform:translate3d(0,0,0) scale(1); }
-      50%{ transform:translate3d(-18px,-10px,0) scale(1.03); }
-      100%{ transform:translate3d(16px,12px,0) scale(1.05); }
-    }
-
-    @keyframes bgGlow{
-      from{ transform:scale(1) translateY(0); }
-      to{ transform:scale(1.08) translateY(-10px); }
+      50%{ transform:translate3d(-16px,-10px,0) scale(1.02); }
+      100%{ transform:translate3d(14px,12px,0) scale(1.05); }
     }
 
     .container{
@@ -90,17 +73,134 @@
       margin:0 auto;
     }
 
+    /* PRELOADER */
+    #preloader{
+      position:fixed;
+      inset:0;
+      background:linear-gradient(180deg, var(--maastricht) 0%, var(--metallic) 45%, var(--sea) 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:99999;
+      transition:opacity .8s ease, visibility .8s ease;
+    }
+
+    #preloader.hide{
+      opacity:0;
+      visibility:hidden;
+    }
+
+    .loader-wrap{
+      text-align:center;
+      color:white;
+      animation:loaderFade .8s ease;
+    }
+
+    @keyframes loaderFade{
+      from{ opacity:0; transform:translateY(16px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    .atom-loader{
+      position:relative;
+      width:180px;
+      height:180px;
+      margin:0 auto 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .nucleus{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, #ffd7ec 0%, var(--mulberry) 45%, var(--cornflower) 100%);
+      box-shadow:0 0 26px rgba(202,82,154,.45);
+      z-index:3;
+      animation:nucleusPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes nucleusPulse{
+      0%,100%{ transform:scale(1); }
+      50%{ transform:scale(1.12); }
+    }
+
+    .orbit-loader{
+      position:absolute;
+      inset:0;
+      border:2px solid rgba(255,255,255,.28);
+      border-radius:50%;
+      animation:spinLoader 2.8s linear infinite;
+    }
+
+    .orbit-a{
+      width:170px;
+      height:90px;
+      top:45px;
+      left:5px;
+    }
+
+    .orbit-b{
+      width:150px;
+      height:150px;
+      top:15px;
+      left:15px;
+      transform:rotate(60deg);
+      animation-duration:2.2s;
+    }
+
+    .orbit-c{
+      width:95px;
+      height:170px;
+      top:5px;
+      left:42px;
+      transform:rotate(-55deg);
+      animation-duration:1.8s;
+    }
+
+    .electron-loader{
+      position:absolute;
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
+      box-shadow:0 0 14px rgba(255,255,255,.45);
+      top:50%;
+      left:100%;
+      transform:translate(-50%,-50%);
+    }
+
+    @keyframes spinLoader{
+      from{ rotate:0deg; }
+      to{ rotate:360deg; }
+    }
+
+    .loader-title{
+      margin:0 0 8px;
+      font-size:30px;
+      font-weight:800;
+    }
+
+    .loader-sub{
+      margin:0;
+      font-size:15px;
+      color:#dff1ff;
+      letter-spacing:.08em;
+    }
+
+    /* NAV */
     header{
       position:fixed;
       top:14px;
       left:50%;
       transform:translateX(-50%);
       width:min(1180px, calc(100% - 24px));
-      background:rgba(255,255,255,.82);
+      background:rgba(255,255,255,.84);
       backdrop-filter:blur(14px);
-      border:1px solid rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.72);
       border-radius:999px;
-      box-shadow:0 16px 36px rgba(3,33,61,.10);
+      box-shadow:0 14px 34px rgba(3,33,61,.10);
       z-index:1000;
       padding:10px 20px;
     }
@@ -172,6 +272,7 @@
       scroll-margin-top:100px;
     }
 
+    /* HERO */
     .hero{
       min-height:96vh;
       display:grid;
@@ -187,14 +288,8 @@
     }
 
     @keyframes heroTextFloat{
-      from{
-        opacity:0;
-        transform:translateY(35px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      from{ opacity:0; transform:translateY(35px); }
+      to{ opacity:1; transform:translateY(0); }
     }
 
     .eyebrow{
@@ -257,7 +352,7 @@
     }
 
     .btn-primary{
-      background:linear-gradient(135deg,var(--mulberry),var(--cornflower));
+      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
       color:white;
       box-shadow:0 14px 28px rgba(16,106,148,.22);
     }
@@ -294,7 +389,7 @@
       align-items:center;
       justify-content:center;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,.98) 0%, rgba(235,245,251,.95) 55%, rgba(216,232,243,.55) 72%, transparent 74%);
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.98) 0%, rgba(239,246,250,.95) 55%, rgba(219,233,243,.55) 72%, transparent 74%);
       animation:heroFloat 5s ease-in-out infinite;
     }
 
@@ -317,9 +412,9 @@
 
     .orbit{
       position:absolute;
-      border:2px solid rgba(202,82,154,.28);
+      border:2px solid rgba(202,82,154,.30);
       border-radius:50%;
-      animation: spin 12s linear infinite;
+      animation:spin 12s linear infinite;
     }
 
     .orbit.one{
@@ -332,7 +427,7 @@
       height:320px;
       animation-duration:9s;
       transform:rotate(60deg);
-      border-color:rgba(36,126,171,.28);
+      border-color:rgba(36,126,171,.30);
     }
 
     .orbit.three{
@@ -347,7 +442,7 @@
       position:absolute;
       width:14px;
       height:14px;
-      background:linear-gradient(135deg,var(--mulberry),var(--cornflower));
+      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
       border-radius:50%;
       box-shadow:0 0 0 8px rgba(202,82,154,.10), 0 0 22px rgba(36,126,171,.22);
       top:50%;
@@ -360,6 +455,7 @@
       to{ rotate:360deg; }
     }
 
+    /* GENERAL */
     .section-title{
       margin:0 0 18px;
       text-align:center;
@@ -378,13 +474,14 @@
     }
 
     .glass{
-      background:rgba(255,255,255,.78);
+      background:rgba(255,255,255,.80);
       backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,.75);
+      border:1px solid rgba(255,255,255,.8);
       box-shadow:var(--shadow);
       border-radius:var(--radius);
     }
 
+    /* THEME */
     .theme-full{
       margin-top:28px;
     }
@@ -393,7 +490,8 @@
       position:relative;
       overflow:hidden;
       padding:38px;
-      background:linear-gradient(135deg,var(--maastricht) 0%, var(--metallic) 38%, var(--sea) 70%, var(--cornflower) 100%);
+      background:
+        linear-gradient(180deg, rgba(3,33,61,.96) 0%, rgba(48,69,117,.96) 36%, rgba(16,106,148,.96) 72%, rgba(36,126,171,.96) 100%);
       color:white;
       border-radius:28px;
       box-shadow:0 22px 40px rgba(3,33,61,.18);
@@ -413,7 +511,7 @@
       margin:0 0 14px;
       font-size:19px;
       font-weight:700;
-      color:#bfe7ff;
+      color:#c6e9ff;
     }
 
     .theme-main p{
@@ -422,7 +520,57 @@
       margin:0;
       line-height:1.95;
       color:#eef9ff;
-      max-width:920px;
+      max-width:700px;
+    }
+
+    /* 11 decoration */
+    .eleven-wrap{
+      position:absolute;
+      right:26px;
+      top:20px;
+      width:260px;
+      height:220px;
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .one-col{
+      position:absolute;
+      top:12px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .one-left{ left:28px; }
+    .one-right{ left:104px; }
+
+    .eleven-dot{
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      background:#ffffff;
+      box-shadow:0 0 0 6px rgba(202,82,154,.12), 0 0 18px rgba(255,255,255,.35);
+      animation:floatEleven 3s ease-in-out infinite;
+    }
+
+    .one-right .eleven-dot:nth-child(odd){
+      background:#d6efff;
+    }
+
+    .one-left .eleven-dot:nth-child(3n){
+      background:#ffd3ea;
+    }
+
+    .eleven-dot:nth-child(2){ animation-delay:.3s; }
+    .eleven-dot:nth-child(3){ animation-delay:.6s; }
+    .eleven-dot:nth-child(4){ animation-delay:.9s; }
+    .eleven-dot:nth-child(5){ animation-delay:1.2s; }
+    .eleven-dot:nth-child(6){ animation-delay:1.5s; }
+
+    @keyframes floatEleven{
+      0%,100%{ transform:translateY(0) scale(1); opacity:1; }
+      50%{ transform:translateY(-6px) scale(1.08); opacity:.74; }
     }
 
     .theme-cards{
@@ -452,89 +600,7 @@
       color:var(--muted);
     }
 
-    .theme-decor .theme-ornament{
-      position:absolute;
-      pointer-events:none;
-    }
-
-    .theme-decor .orb{
-      border-radius:50%;
-      background:rgba(255,255,255,.10);
-      filter:blur(2px);
-    }
-
-    .theme-decor .orb-1{
-      width:190px;
-      height:190px;
-      top:-55px;
-      right:-40px;
-    }
-
-    .theme-decor .orb-2{
-      width:130px;
-      height:130px;
-      bottom:-30px;
-      left:45px;
-    }
-
-    .theme-decor .line{
-      height:3px;
-      border-radius:999px;
-      background:rgba(255,255,255,.18);
-      transform-origin:left center;
-    }
-
-    .theme-decor .line-1{
-      width:160px;
-      top:80px;
-      right:120px;
-      transform:rotate(22deg);
-    }
-
-    .theme-decor .line-2{
-      width:110px;
-      bottom:76px;
-      right:78px;
-      transform:rotate(-18deg);
-    }
-
-    .theme-decor .dot{
-      width:14px;
-      height:14px;
-      border-radius:50%;
-      background:#ffffff;
-      box-shadow:0 0 18px rgba(255,255,255,.35);
-      animation:themeSpark 3s ease-in-out infinite;
-    }
-
-    .theme-decor .dot-1{
-      top:58px;
-      right:92px;
-    }
-
-    .theme-decor .dot-2{
-      top:132px;
-      right:210px;
-      animation-delay:.7s;
-    }
-
-    .theme-decor .dot-3{
-      bottom:58px;
-      right:126px;
-      animation-delay:1.4s;
-    }
-
-    @keyframes themeSpark{
-      0%,100%{
-        transform:scale(1);
-        opacity:1;
-      }
-      50%{
-        transform:scale(1.25);
-        opacity:.6;
-      }
-    }
-
+    /* JOURNEY ACCORDION */
     .journey-intro{
       max-width:920px;
       margin:0 auto 24px;
@@ -544,55 +610,74 @@
       font-size:18px;
     }
 
-    .timeline-cards{
+    .accordion{
       display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:18px;
+      gap:16px;
       margin-top:24px;
     }
 
-    .timeline-card{
+    .acc-item{
       background:white;
       border-radius:24px;
-      padding:22px;
       box-shadow:var(--shadow);
-      border-left:6px solid var(--cornflower);
-      transition:.3s;
-      position:relative;
       overflow:hidden;
+      border-left:6px solid var(--cornflower);
     }
 
-    .timeline-card::after{
-      content:"";
-      position:absolute;
-      right:-25px;
-      top:-25px;
-      width:90px;
-      height:90px;
-      border-radius:50%;
-      background:rgba(36,126,171,.08);
+    .acc-btn{
+      width:100%;
+      border:none;
+      background:transparent;
+      text-align:left;
+      padding:22px 24px;
+      font-family:inherit;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
     }
 
-    .timeline-card:hover{
-      transform:translateY(-4px);
-    }
-
-    .timeline-card h4{
-      margin:0 0 8px;
+    .acc-btn span{
+      font-size:24px;
+      font-weight:800;
       color:var(--maastricht);
+    }
+
+    .acc-icon{
+      flex-shrink:0;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(36,126,171,.10);
+      color:var(--sea);
       font-size:22px;
-      position:relative;
-      z-index:1;
+      font-weight:700;
+      transition:.3s;
     }
 
-    .timeline-card p{
-      margin:0;
-      line-height:1.85;
+    .acc-item.active .acc-icon{
+      transform:rotate(45deg);
+      background:rgba(202,82,154,.12);
+      color:var(--mulberry);
+    }
+
+    .acc-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .45s ease;
+      padding:0 24px;
+    }
+
+    .acc-content p{
+      margin:0 0 22px;
       color:var(--muted);
-      position:relative;
-      z-index:1;
+      line-height:1.9;
     }
 
+    /* COMP */
     .slider-head{
       display:flex;
       justify-content:space-between;
@@ -671,11 +756,52 @@
       flex-wrap:wrap;
     }
 
+    /* DOCS TABS */
+    .doc-tabs{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:22px;
+    }
+
+    .doc-tab{
+      border:none;
+      padding:12px 18px;
+      border-radius:999px;
+      background:white;
+      color:var(--maastricht);
+      box-shadow:var(--shadow);
+      font-family:inherit;
+      font-weight:700;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    .doc-tab.active{
+      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
+      color:white;
+    }
+
+    .doc-panel{
+      display:none;
+      margin-top:22px;
+    }
+
+    .doc-panel.active{
+      display:block;
+      animation:fadeIn .35s ease;
+    }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform:translateY(8px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
     .docs-grid{
       display:grid;
-      grid-template-columns:1fr 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:18px;
-      margin-top:26px;
     }
 
     .doc-card{
@@ -693,33 +819,15 @@
     .doc-image{
       height:240px;
       background:
-        linear-gradient(135deg, rgba(3,33,61,.45), rgba(16,106,148,.30)),
-        url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
-      position:relative;
-    }
-
-    .doc-image.two{
-      background:
-        linear-gradient(135deg, rgba(48,69,117,.40), rgba(202,82,154,.22)),
-        url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
-    }
-
-    .doc-image.three{
-      background:
-        linear-gradient(135deg, rgba(3,33,61,.42), rgba(36,126,171,.22)),
-        url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
-    }
-
-    .doc-badge{
-      position:absolute;
-      left:16px;
-      top:16px;
-      background:rgba(255,255,255,.88);
-      color:var(--maastricht);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:12px;
+        linear-gradient(135deg, rgba(3,33,61,.28), rgba(16,106,148,.18)),
+        linear-gradient(135deg, #dfeaf2, #edf4f8);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
       font-weight:700;
+      text-align:center;
+      padding:16px;
     }
 
     .doc-body{
@@ -738,6 +846,7 @@
       line-height:1.8;
     }
 
+    /* GUIDE */
     .guide-box{
       margin-top:20px;
       padding:28px;
@@ -759,6 +868,7 @@
       line-height:1.8;
     }
 
+    /* PARTNER */
     .looking-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -810,6 +920,7 @@
       height:22px;
     }
 
+    /* MODAL */
     .modal{
       position:fixed;
       inset:0;
@@ -894,9 +1005,11 @@
       flex-wrap:wrap;
     }
 
+    /* FOOTER */
     footer{
       margin-top:56px;
-      background:linear-gradient(135deg,var(--maastricht), var(--metallic), var(--sea));
+      background:
+        linear-gradient(180deg, rgba(3,33,61,.98) 0%, rgba(48,69,117,.98) 36%, rgba(16,106,148,.98) 72%, rgba(36,126,171,.98) 100%);
       color:white;
       border-top-left-radius:34px;
       border-top-right-radius:34px;
@@ -938,6 +1051,7 @@
       display:block;
     }
 
+    /* SCROLL ANIM */
     .fade-section{
       opacity:0;
       transform:translateY(40px) scale(.98);
@@ -975,13 +1089,25 @@
       .guide-box,
       .footer-grid,
       .looking-grid,
-      .timeline-cards,
       .docs-grid{
         grid-template-columns:1fr;
       }
 
       .comp-card{
         min-width:310px;
+      }
+
+      .eleven-wrap{
+        position:relative;
+        right:auto;
+        top:auto;
+        margin:18px auto 0;
+        width:160px;
+        height:180px;
+      }
+
+      .theme-main p{
+        max-width:none;
       }
     }
 
@@ -1048,10 +1174,27 @@
       .guide-box h3{
         font-size:24px;
       }
+
+      .acc-btn span{
+        font-size:20px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <div id="preloader">
+    <div class="loader-wrap">
+      <div class="atom-loader">
+        <div class="nucleus"></div>
+        <div class="orbit-loader orbit-a"><span class="electron-loader"></span></div>
+        <div class="orbit-loader orbit-b"><span class="electron-loader"></span></div>
+        <div class="orbit-loader orbit-c"><span class="electron-loader"></span></div>
+      </div>
+      <h2 class="loader-title">11th Physics Summit</h2>
+      <p class="loader-sub">Preparing Atomic Horizon...</p>
+    </div>
+  </div>
 
   <header>
     <div class="nav-wrap container">
@@ -1116,14 +1259,25 @@
       <h2 class="section-title">Tema 11th Physics Summit</h2>
 
       <div class="theme-full">
-        <div class="theme-main theme-decor">
-          <div class="theme-ornament orb orb-1"></div>
-          <div class="theme-ornament orb orb-2"></div>
-          <div class="theme-ornament line line-1"></div>
-          <div class="theme-ornament line line-2"></div>
-          <div class="theme-ornament dot dot-1"></div>
-          <div class="theme-ornament dot dot-2"></div>
-          <div class="theme-ornament dot dot-3"></div>
+        <div class="theme-main">
+          <div class="eleven-wrap" aria-hidden="true">
+            <div class="one-col one-left">
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+            </div>
+            <div class="one-col one-right">
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+              <div class="eleven-dot"></div>
+            </div>
+          </div>
 
           <h3>Atomic Horizon</h3>
           <div class="theme-tagline">Expanding the Frontiers of Physics</div>
@@ -1153,50 +1307,80 @@
     <section id="timeline" class="anchor fade-section">
       <h2 class="section-title">Perjalanan Physics Summit</h2>
       <p class="journey-intro">
-        Physics Summit bukan hanya sekadar rangkaian kompetisi, tetapi juga perjalanan panjang yang dibangun oleh semangat, dedikasi, dan keinginan untuk terus menghadirkan ruang berkembang bagi generasi muda. Dari awal kemunculannya hingga kini, Physics Summit terus bertumbuh, beradaptasi, dan hadir kembali dengan semangat yang semakin kuat.
+        Physics Summit bukan hanya sekadar rangkaian kompetisi, tetapi juga perjalanan panjang yang dibangun oleh semangat, dedikasi, dan keinginan untuk terus menghadirkan ruang berkembang bagi generasi muda.
       </p>
 
-      <div class="timeline-cards">
-        <div class="timeline-card">
-          <h4>2011 — Awal Mula Physics Summit</h4>
-          <p>
-            Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS.
-          </p>
+      <div class="accordion">
+        <div class="acc-item">
+          <button class="acc-btn" type="button">
+            <span>2011 — Awal Mula Physics Summit</span>
+            <div class="acc-icon">+</div>
+          </button>
+          <div class="acc-content">
+            <p>
+              Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS.
+            </p>
+          </div>
         </div>
 
-        <div class="timeline-card">
-          <h4>2014 — Berganti Nama, Membawa Identitas Baru</h4>
-          <p>
-            Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif.
-          </p>
+        <div class="acc-item">
+          <button class="acc-btn" type="button">
+            <span>2014 — Berganti Nama, Membawa Identitas Baru</span>
+            <div class="acc-icon">+</div>
+          </button>
+          <div class="acc-content">
+            <p>
+              Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif.
+            </p>
+          </div>
         </div>
 
-        <div class="timeline-card">
-          <h4>2018 — Penetapan Dirut Physics Summit</h4>
-          <p>
-            Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur serta arah penyelenggaraan acara.
-          </p>
+        <div class="acc-item">
+          <button class="acc-btn" type="button">
+            <span>2018 — Penetapan Dirut Physics Summit</span>
+            <div class="acc-icon">+</div>
+          </button>
+          <div class="acc-content">
+            <p>
+              Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur serta arah penyelenggaraan acara.
+            </p>
+          </div>
         </div>
 
-        <div class="timeline-card">
-          <h4>2020 — Vakum karena Pandemi Covid-19</h4>
-          <p>
-            Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga.
-          </p>
+        <div class="acc-item">
+          <button class="acc-btn" type="button">
+            <span>2020 — Vakum karena Pandemi Covid-19</span>
+            <div class="acc-icon">+</div>
+          </button>
+          <div class="acc-content">
+            <p>
+              Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga.
+            </p>
+          </div>
         </div>
 
-        <div class="timeline-card">
-          <h4>2024 — Kembali Hadir dengan Semangat Baru</h4>
-          <p>
-            Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda.
-          </p>
+        <div class="acc-item">
+          <button class="acc-btn" type="button">
+            <span>2024 — Kembali Hadir dengan Semangat Baru</span>
+            <div class="acc-icon">+</div>
+          </button>
+          <div class="acc-content">
+            <p>
+              Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda.
+            </p>
+          </div>
         </div>
 
-        <div class="timeline-card">
-          <h4>2026 — 11th Physics Summit</h4>
-          <p>
-            Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda.
-          </p>
+        <div class="acc-item">
+          <button class="acc-btn" type="button">
+            <span>2026 — 11th Physics Summit</span>
+            <div class="acc-icon">+</div>
+          </button>
+          <div class="acc-content">
+            <p>
+              Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -1253,37 +1437,128 @@
     <section id="documentation" class="anchor fade-section">
       <h2 class="section-title">Dokumentasi Keseruan Tahun Lalu</h2>
       <p class="section-desc">
-        Berikut beberapa potret suasana pelaksanaan Physics Summit sebelumnya yang penuh semangat, antusiasme, dan kebersamaan. Section ini bisa kamu ganti dengan foto dokumentasi asli tahun lalu.
+        Section ini dibuat per kategori supaya tidak terlalu penuh. Nanti kamu tinggal isi file fotonya ke subfolder berikut di repository kamu.
       </p>
 
-      <div class="docs-grid">
-        <div class="doc-card">
-          <div class="doc-image">
-            <div class="doc-badge">Momen Kompetisi</div>
+      <div class="doc-tabs">
+        <button class="doc-tab active" data-tab="opening">Opening Event</button>
+        <button class="doc-tab" data-tab="pso">Final PSO</button>
+        <button class="doc-tab" data-tab="psec">Final PSEC</button>
+        <button class="doc-tab" data-tab="awarding">Awarding</button>
+        <button class="doc-tab" data-tab="closing">Closing Event</button>
+        <button class="doc-tab" data-tab="tenant">Tenant Lab Peminatan Fisika</button>
+      </div>
+
+      <div class="doc-panel active" id="panel-opening">
+        <div class="docs-grid">
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/opening/opening-1.jpg</div>
+            <div class="doc-body">
+              <h4>Opening Event — Foto 1</h4>
+              <p>Letakkan foto pertama opening event pada folder <strong>assets/docs/opening/</strong> dengan nama <strong>opening-1.jpg</strong>.</p>
+            </div>
           </div>
-          <div class="doc-body">
-            <h4>Suasana Kompetitif</h4>
-            <p>Potret peserta yang antusias mengikuti rangkaian kompetisi dan menunjukkan kemampuan terbaiknya.</p>
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/opening/opening-2.jpg</div>
+            <div class="doc-body">
+              <h4>Opening Event — Foto 2</h4>
+              <p>Letakkan foto kedua opening event pada folder <strong>assets/docs/opening/</strong> dengan nama <strong>opening-2.jpg</strong>.</p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="doc-card">
-          <div class="doc-image two">
-            <div class="doc-badge">Kebersamaan</div>
+      <div class="doc-panel" id="panel-pso">
+        <div class="docs-grid">
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/final-pso/final-pso-1.jpg</div>
+            <div class="doc-body">
+              <h4>Final PSO — Foto 1</h4>
+              <p>Masukkan foto pertama Final PSO ke folder <strong>assets/docs/final-pso/</strong> dengan nama <strong>final-pso-1.jpg</strong>.</p>
+            </div>
           </div>
-          <div class="doc-body">
-            <h4>Semangat Kolaborasi</h4>
-            <p>Dokumentasi kebersamaan panitia, peserta, dan seluruh pihak yang terlibat dalam pelaksanaan acara.</p>
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/final-pso/final-pso-2.jpg</div>
+            <div class="doc-body">
+              <h4>Final PSO — Foto 2</h4>
+              <p>Masukkan foto kedua Final PSO ke folder <strong>assets/docs/final-pso/</strong> dengan nama <strong>final-pso-2.jpg</strong>.</p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="doc-card">
-          <div class="doc-image three">
-            <div class="doc-badge">Momen Berkesan</div>
+      <div class="doc-panel" id="panel-psec">
+        <div class="docs-grid">
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/final-psec/final-psec-1.jpg</div>
+            <div class="doc-body">
+              <h4>Final PSEC — Foto 1</h4>
+              <p>Masukkan foto pertama Final PSEC ke folder <strong>assets/docs/final-psec/</strong> dengan nama <strong>final-psec-1.jpg</strong>.</p>
+            </div>
           </div>
-          <div class="doc-body">
-            <h4>Energi Acara</h4>
-            <p>Keseruan suasana yang menggambarkan Physics Summit sebagai ajang yang hidup, inspiratif, dan berkesan.</p>
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/final-psec/final-psec-2.jpg</div>
+            <div class="doc-body">
+              <h4>Final PSEC — Foto 2</h4>
+              <p>Masukkan foto kedua Final PSEC ke folder <strong>assets/docs/final-psec/</strong> dengan nama <strong>final-psec-2.jpg</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-panel" id="panel-awarding">
+        <div class="docs-grid">
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/awarding/awarding-1.jpg</div>
+            <div class="doc-body">
+              <h4>Awarding — Foto 1</h4>
+              <p>Masukkan foto pertama awarding ke folder <strong>assets/docs/awarding/</strong> dengan nama <strong>awarding-1.jpg</strong>.</p>
+            </div>
+          </div>
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/awarding/awarding-2.jpg</div>
+            <div class="doc-body">
+              <h4>Awarding — Foto 2</h4>
+              <p>Masukkan foto kedua awarding ke folder <strong>assets/docs/awarding/</strong> dengan nama <strong>awarding-2.jpg</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-panel" id="panel-closing">
+        <div class="docs-grid">
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/closing/closing-1.jpg</div>
+            <div class="doc-body">
+              <h4>Closing Event — Foto 1</h4>
+              <p>Masukkan foto pertama closing event ke folder <strong>assets/docs/closing/</strong> dengan nama <strong>closing-1.jpg</strong>.</p>
+            </div>
+          </div>
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/closing/closing-2.jpg</div>
+            <div class="doc-body">
+              <h4>Closing Event — Foto 2</h4>
+              <p>Masukkan foto kedua closing event ke folder <strong>assets/docs/closing/</strong> dengan nama <strong>closing-2.jpg</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-panel" id="panel-tenant">
+        <div class="docs-grid">
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/tenant-lab/tenant-1.jpg</div>
+            <div class="doc-body">
+              <h4>Tenant Lab Peminatan Fisika — Foto 1</h4>
+              <p>Masukkan foto pertama tenant lab ke folder <strong>assets/docs/tenant-lab/</strong> dengan nama <strong>tenant-1.jpg</strong>.</p>
+            </div>
+          </div>
+          <div class="doc-card">
+            <div class="doc-image">Isi file di: assets/docs/tenant-lab/tenant-2.jpg</div>
+            <div class="doc-body">
+              <h4>Tenant Lab Peminatan Fisika — Foto 2</h4>
+              <p>Masukkan foto kedua tenant lab ke folder <strong>assets/docs/tenant-lab/</strong> dengan nama <strong>tenant-2.jpg</strong>.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1491,6 +1766,13 @@
   </div>
 
   <script>
+    window.addEventListener("load", function(){
+      const preloader = document.getElementById("preloader");
+      setTimeout(() => {
+        preloader.classList.add("hide");
+      }, 1400);
+    });
+
     function openModal(id){
       document.getElementById(id).style.display = "flex";
     }
@@ -1507,7 +1789,6 @@
     });
 
     const sections = document.querySelectorAll(".fade-section");
-
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
@@ -1520,8 +1801,41 @@
       });
     }, { threshold: 0.18 });
 
-    sections.forEach((el)=>{
-      observer.observe(el);
+    sections.forEach((el)=> observer.observe(el));
+
+    const accItems = document.querySelectorAll(".acc-item");
+    accItems.forEach(item => {
+      const btn = item.querySelector(".acc-btn");
+      const content = item.querySelector(".acc-content");
+
+      btn.addEventListener("click", () => {
+        const isActive = item.classList.contains("active");
+
+        accItems.forEach(i => {
+          i.classList.remove("active");
+          i.querySelector(".acc-content").style.maxHeight = null;
+        });
+
+        if(!isActive){
+          item.classList.add("active");
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+
+    const tabs = document.querySelectorAll(".doc-tab");
+    const panels = document.querySelectorAll(".doc-panel");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const name = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove("active"));
+        panels.forEach(p => p.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById("panel-" + name).classList.add("active");
+      });
     });
   </script>
 </body>
