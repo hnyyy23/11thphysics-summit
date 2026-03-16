@@ -16,12 +16,14 @@
       --sea:#106A94;
       --cornflower:#247EAB;
 
-      --bg:#f3eef3;
-      --bg2:#eef2f6;
-      --card:#ffffff;
-      --text:#0f2742;
-      --muted:#556b84;
-      --shadow:0 18px 42px rgba(3,33,61,.14);
+      --bg-dark:#03182d;
+      --bg-dark-2:#08294a;
+      --bg-dark-3:#103d66;
+      --text:#ffffff;
+      --muted:#d5e7f5;
+      --card:rgba(255,255,255,0.08);
+      --card-border:rgba(255,255,255,0.12);
+      --shadow:0 20px 50px rgba(0,0,0,.28);
       --radius:28px;
     }
 
@@ -30,41 +32,57 @@
       scroll-behavior:smooth;
     }
 
-    html, body{
-      overflow-x:hidden;
-    }
-
-    body{
+    html,body{
       margin:0;
+      padding:0;
+      overflow-x:hidden;
       font-family:'Poppins',sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 12% 16%, rgba(202,82,154,.14) 0, transparent 18%),
-        radial-gradient(circle at 85% 18%, rgba(36,126,171,.12) 0, transparent 20%),
-        linear-gradient(135deg, #f7eef5 0%, #edf1f6 35%, #eef6fa 100%);
+        radial-gradient(circle at 15% 20%, rgba(202,82,154,.18) 0, transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(36,126,171,.18) 0, transparent 24%),
+        radial-gradient(circle at 70% 72%, rgba(16,106,148,.18) 0, transparent 22%),
+        linear-gradient(180deg,var(--bg-dark) 0%, var(--bg-dark-2) 45%, var(--bg-dark-3) 100%);
       position:relative;
     }
 
     body::before{
       content:"";
       position:fixed;
-      inset:-40px;
+      inset:-80px;
       background:
-        radial-gradient(circle at 10% 20%, rgba(202,82,154,.16) 0 2px, transparent 3px),
-        radial-gradient(circle at 30% 72%, rgba(36,126,171,.16) 0 2px, transparent 3px),
-        radial-gradient(circle at 62% 35%, rgba(16,106,148,.14) 0 2px, transparent 3px),
-        radial-gradient(circle at 85% 60%, rgba(48,69,117,.14) 0 2px, transparent 3px);
-      background-size:220px 220px, 260px 260px, 300px 300px, 240px 240px;
+        radial-gradient(circle at 10% 15%, rgba(255,255,255,.16) 0 2px, transparent 3px),
+        radial-gradient(circle at 35% 70%, rgba(202,82,154,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 65% 30%, rgba(36,126,171,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 90% 62%, rgba(255,255,255,.14) 0 2px, transparent 3px);
+      background-size:240px 240px, 280px 280px, 320px 320px, 260px 260px;
       opacity:.7;
       pointer-events:none;
-      z-index:-2;
-      animation:bgMove 18s linear infinite alternate;
+      z-index:-3;
+      animation:bgFloat 20s linear infinite alternate;
     }
 
-    @keyframes bgMove{
-      0%{ transform:translate3d(0,0,0) scale(1); }
-      50%{ transform:translate3d(-16px,-10px,0) scale(1.02); }
-      100%{ transform:translate3d(14px,12px,0) scale(1.05); }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(120deg, rgba(202,82,154,.06), transparent 30%, rgba(36,126,171,.08) 60%, transparent 80%);
+      mix-blend-mode:screen;
+      pointer-events:none;
+      z-index:-2;
+      animation:bgSweep 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgFloat{
+      0%{transform:translate3d(0,0,0) scale(1);}
+      50%{transform:translate3d(-20px,-16px,0) scale(1.03);}
+      100%{transform:translate3d(18px,12px,0) scale(1.06);}
+    }
+
+    @keyframes bgSweep{
+      from{transform:translateX(-3%)}
+      to{transform:translateX(3%)}
     }
 
     .container{
@@ -76,12 +94,11 @@
     #preloader{
       position:fixed;
       inset:0;
-      background:
-        linear-gradient(180deg, var(--maastricht) 0%, var(--metallic) 38%, var(--sea) 72%, var(--cornflower) 100%);
+      z-index:99999;
       display:flex;
       align-items:center;
       justify-content:center;
-      z-index:99999;
+      background:linear-gradient(180deg,var(--bg-dark) 0%, var(--bg-dark-2) 50%, var(--bg-dark-3) 100%);
       transition:opacity .8s ease, visibility .8s ease;
     }
 
@@ -92,117 +109,106 @@
 
     .loader-wrap{
       text-align:center;
-      color:white;
-      animation:loaderFade .8s ease;
     }
 
-    @keyframes loaderFade{
-      from{ opacity:0; transform:translateY(16px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
-
-    .atom-loader{
+    .loader-atom{
       position:relative;
       width:180px;
       height:180px;
-      margin:0 auto 24px;
+      margin:0 auto 22px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
 
-    .nucleus{
+    .loader-core{
       width:34px;
       height:34px;
       border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, #ffd9ec 0%, var(--mulberry) 45%, var(--cornflower) 100%);
-      box-shadow:0 0 26px rgba(202,82,154,.45);
+      background:radial-gradient(circle at 35% 35%, #ffd8eb 0%, var(--mulberry) 48%, var(--cornflower) 100%);
+      box-shadow:0 0 28px rgba(202,82,154,.45);
       z-index:3;
-      animation:nucleusPulse 2s ease-in-out infinite;
+      animation:corePulse 2s ease-in-out infinite;
     }
 
-    @keyframes nucleusPulse{
-      0%,100%{ transform:scale(1); }
-      50%{ transform:scale(1.12); }
-    }
-
-    .orbit-loader{
+    .loader-orbit{
       position:absolute;
-      inset:0;
-      border:2px solid rgba(255,255,255,.28);
+      border:2px solid rgba(255,255,255,.22);
       border-radius:50%;
       animation:spinLoader 2.8s linear infinite;
     }
 
-    .orbit-a{
+    .loader-orbit.o1{
       width:170px;
-      height:90px;
-      top:45px;
-      left:5px;
+      height:95px;
     }
 
-    .orbit-b{
+    .loader-orbit.o2{
       width:150px;
       height:150px;
-      top:15px;
-      left:15px;
       transform:rotate(60deg);
       animation-duration:2.2s;
+      border-color:rgba(202,82,154,.35);
     }
 
-    .orbit-c{
+    .loader-orbit.o3{
       width:95px;
       height:170px;
-      top:5px;
-      left:42px;
       transform:rotate(-55deg);
       animation-duration:1.8s;
+      border-color:rgba(36,126,171,.35);
     }
 
-    .electron-loader{
+    .loader-electron{
       position:absolute;
       width:14px;
       height:14px;
       border-radius:50%;
-      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
-      box-shadow:0 0 14px rgba(255,255,255,.45);
+      background:linear-gradient(135deg,var(--mulberry),var(--cornflower));
+      box-shadow:0 0 14px rgba(255,255,255,.35);
       top:50%;
       left:100%;
       transform:translate(-50%,-50%);
     }
 
-    @keyframes spinLoader{
-      from{ rotate:0deg; }
-      to{ rotate:360deg; }
-    }
-
     .loader-title{
-      margin:0 0 8px;
+      margin:0 0 6px;
       font-size:30px;
       font-weight:800;
+      color:#fff;
     }
 
     .loader-sub{
       margin:0;
-      font-size:15px;
-      color:#dff1ff;
+      color:#d9ebf7;
       letter-spacing:.08em;
+      font-size:14px;
     }
 
-    /* NAV */
+    @keyframes corePulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.12)}
+    }
+
+    @keyframes spinLoader{
+      from{rotate:0deg}
+      to{rotate:360deg}
+    }
+
+    /* NAVBAR */
     header{
       position:fixed;
       top:14px;
       left:50%;
       transform:translateX(-50%);
       width:min(1180px, calc(100% - 24px));
-      background:rgba(255,255,255,.88);
-      backdrop-filter:blur(14px);
-      border:1px solid rgba(255,255,255,.78);
-      border-radius:999px;
-      box-shadow:0 14px 34px rgba(3,33,61,.10);
       z-index:1000;
-      padding:10px 20px;
+      background:rgba(5,22,41,.62);
+      backdrop-filter:blur(16px);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      box-shadow:var(--shadow);
+      padding:10px 22px;
     }
 
     .nav-wrap{
@@ -233,12 +239,12 @@
 
     .brand-text strong{
       font-size:17px;
-      color:var(--maastricht);
+      color:#fff;
     }
 
     .brand-text span{
       font-size:11px;
-      color:var(--muted);
+      color:#b9d1e4;
       font-weight:600;
       letter-spacing:.04em;
     }
@@ -246,77 +252,102 @@
     nav{
       display:flex;
       align-items:center;
-      gap:24px;
-      flex-wrap:wrap;
+      gap:34px;
       justify-content:flex-end;
     }
 
     nav a{
       text-decoration:none;
-      color:var(--maastricht);
+      color:#fff;
       font-weight:600;
-      font-size:14px;
+      font-size:15px;
       transition:.25s;
     }
 
     nav a:hover{
-      color:var(--mulberry);
+      color:#ffd8eb;
     }
 
     section{
-      padding:78px 0;
+      padding:84px 0;
       position:relative;
     }
 
     .anchor{
-      scroll-margin-top:100px;
+      scroll-margin-top:110px;
+    }
+
+    .section-title{
+      margin:0 0 16px;
+      text-align:center;
+      font-size:44px;
+      line-height:1.08;
+      color:#fff;
+    }
+
+    .section-desc{
+      max-width:920px;
+      margin:0 auto 12px;
+      text-align:center;
+      font-size:18px;
+      line-height:1.95;
+      color:var(--muted);
+    }
+
+    .glass{
+      background:var(--card);
+      backdrop-filter:blur(14px);
+      border:1px solid var(--card-border);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
     }
 
     /* HERO */
     .hero{
-      min-height:96vh;
+      min-height:100vh;
       display:grid;
-      grid-template-columns:1.05fr .95fr;
+      grid-template-columns:1.02fr .98fr;
       align-items:center;
       gap:30px;
-      padding-top:86px;
-      padding-bottom:54px;
+      padding-top:92px;
+      padding-bottom:48px;
     }
 
     .hero-left{
-      animation:heroTextFloat 1.2s ease forwards;
+      animation:heroTextIn 1.1s ease forwards;
     }
 
-    @keyframes heroTextFloat{
-      from{ opacity:0; transform:translateY(35px); }
-      to{ opacity:1; transform:translateY(0); }
+    @keyframes heroTextIn{
+      from{opacity:0; transform:translateY(35px)}
+      to{opacity:1; transform:translateY(0)}
     }
 
     .eyebrow{
       display:inline-block;
       padding:10px 18px;
       border-radius:999px;
-      background:rgba(202,82,154,.16);
-      color:var(--mulberry);
+      background:rgba(202,82,154,.18);
+      color:#ffd8eb;
       font-weight:700;
-      margin-bottom:18px;
       font-size:14px;
       letter-spacing:.04em;
+      margin-bottom:18px;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .hero h1{
-      margin:0 0 12px;
-      font-size:74px;
-      line-height:0.95;
-      color:var(--maastricht);
+      margin:0 0 14px;
+      font-size:76px;
+      line-height:.94;
+      color:#fff;
     }
 
     .hero-theme{
+      margin:0;
       font-size:32px;
-      line-height:1.15;
-      margin:0 0 18px;
+      line-height:1.18;
       font-weight:800;
-      color:var(--metallic);
+      color:#dcecff;
     }
 
     .hero-actions{
@@ -337,8 +368,8 @@
     }
 
     .btn-primary{
-      background:linear-gradient(90deg, var(--mulberry) 0%, var(--metallic) 50%, var(--cornflower) 100%);
-      color:white;
+      color:#fff;
+      background:linear-gradient(90deg,var(--mulberry) 0%, var(--metallic) 50%, var(--cornflower) 100%);
       box-shadow:0 14px 28px rgba(16,106,148,.22);
     }
 
@@ -347,16 +378,10 @@
     }
 
     .btn-secondary{
-      background:white;
-      color:var(--maastricht);
+      color:#fff;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
       box-shadow:var(--shadow);
-    }
-
-    .link-btn{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
     }
 
     .hero-right{
@@ -374,165 +399,118 @@
       align-items:center;
       justify-content:center;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,.98) 0%, rgba(235,243,248,.95) 58%, rgba(214,228,239,.55) 74%, transparent 76%);
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.08) 0%, rgba(255,255,255,.05) 55%, rgba(255,255,255,.02) 75%, transparent 78%);
       animation:heroFloat 5s ease-in-out infinite;
       overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     @keyframes heroFloat{
-      0%,100%{ transform:translateY(0px); }
-      50%{ transform:translateY(-12px); }
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-12px)}
     }
 
     .hero-logo{
       width:210px;
       z-index:5;
-      filter:drop-shadow(0 12px 25px rgba(3,33,61,.18));
+      filter:drop-shadow(0 12px 24px rgba(0,0,0,.24));
       animation:logoPulse 3.5s ease-in-out infinite;
     }
 
     @keyframes logoPulse{
-      0%,100%{ transform:scale(1); }
-      50%{ transform:scale(1.04); }
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.04)}
     }
 
-    /* angka 11 dari bulet / garis */
-    .eleven-group{
+    .single-atom{
       position:absolute;
       inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       z-index:2;
     }
 
-    .one-set{
+    .atom-ring{
       position:absolute;
-      width:120px;
+      border-radius:50%;
+      border:2px solid rgba(202,82,154,.26);
+      animation:spinAtom 10s linear infinite;
+    }
+
+    .atom-ring.ring-1{
+      width:320px;
       height:320px;
-      top:72px;
+      border-color:rgba(36,126,171,.30);
     }
 
-    .one-left{ left:86px; }
-    .one-right{ right:86px; }
-
-    .one-ring{
-      position:absolute;
-      inset:0;
-      border-radius:50%;
-      border:2px solid rgba(202,82,154,.28);
+    .atom-ring.ring-2{
+      width:330px;
+      height:170px;
+      border-color:rgba(202,82,154,.34);
+      animation-name:spinAtomTilt1;
+      animation-duration:8s;
+      transform:rotate(62deg);
     }
 
-    .one-ring.blue{
-      border-color:rgba(36,126,171,.28);
-      transform:rotate(90deg);
+    .atom-ring.ring-3{
+      width:170px;
+      height:330px;
+      border-color:rgba(255,255,255,.18);
+      animation-name:spinAtomTilt2;
+      animation-duration:7s;
+      transform:rotate(-58deg);
     }
 
-    .one-ring.gray{
-      border-color:rgba(48,69,117,.22);
-      transform:rotate(-14deg);
-    }
-
-    .one-dot{
+    .atom-electron{
       position:absolute;
       width:16px;
       height:16px;
       border-radius:50%;
-      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
+      background:linear-gradient(135deg,var(--mulberry),var(--cornflower));
       box-shadow:0 0 0 8px rgba(202,82,154,.10);
-      animation:floatDot 3s ease-in-out infinite;
+      top:50%;
+      left:100%;
+      transform:translate(-50%,-50%);
     }
 
-    .one-left .d1{ left:50px; top:18px; }
-    .one-left .d2{ left:18px; top:160px; animation-delay:.6s; }
-    .one-left .d3{ left:92px; bottom:18px; animation-delay:1.2s; }
-
-    .one-right .d1{ left:50px; top:18px; }
-    .one-right .d2{ left:18px; top:160px; animation-delay:.6s; }
-    .one-right .d3{ left:92px; bottom:18px; animation-delay:1.2s; }
-
-    .mid-orbit{
-      position:absolute;
-      left:74px;
-      right:74px;
-      top:188px;
-      height:112px;
-      border:2px solid rgba(36,126,171,.28);
-      border-radius:50%;
-      animation:spinMid 14s linear infinite;
+    @keyframes spinAtom{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
     }
 
-    .mid-dot{
-      position:absolute;
-      width:16px;
-      height:16px;
-      border-radius:50%;
-      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
-      box-shadow:0 0 0 8px rgba(202,82,154,.10);
-      top:48px;
-      left:46%;
-      animation:floatDot 3.2s ease-in-out infinite;
+    @keyframes spinAtomTilt1{
+      from{transform:rotate(62deg)}
+      to{transform:rotate(422deg)}
     }
 
-    @keyframes spinMid{
-      from{ transform:rotate(0deg); }
-      to{ transform:rotate(360deg); }
+    @keyframes spinAtomTilt2{
+      from{transform:rotate(-58deg)}
+      to{transform:rotate(302deg)}
     }
 
-    @keyframes floatDot{
-      0%,100%{ transform:translateY(0) scale(1); }
-      50%{ transform:translateY(-6px) scale(1.08); }
-    }
-
-    /* COMMON */
-    .section-title{
-      margin:0 0 18px;
-      text-align:center;
-      font-size:42px;
-      line-height:1.1;
-      color:var(--maastricht);
-    }
-
-    .section-desc{
-      max-width:860px;
-      margin:0 auto 12px;
-      text-align:center;
-      font-size:18px;
-      line-height:1.95;
-      color:var(--muted);
-    }
-
-    .glass{
-      background:rgba(255,255,255,.84);
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,.8);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius);
+    /* ABOUT */
+    .about-box{
+      padding:34px;
     }
 
     /* THEME */
-    .theme-full{
-      margin-top:28px;
-    }
-
     .theme-main{
-      position:relative;
-      overflow:hidden;
-      padding:38px;
-      background:linear-gradient(90deg, var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
-      color:white;
-      border-radius:28px;
-      box-shadow:0 22px 40px rgba(3,33,61,.18);
+      padding:36px;
+      background:linear-gradient(90deg, var(--maastricht) 0%, var(--metallic) 34%, var(--sea) 68%, var(--cornflower) 100%);
     }
 
     .theme-main h3{
       margin:0 0 10px;
       font-size:34px;
-      color:#ffffff;
+      color:#fff;
     }
 
     .theme-main .theme-tagline{
       margin:0 0 18px;
       font-size:19px;
       font-weight:700;
-      color:#d8f1ff;
+      color:#d9efff;
     }
 
     .theme-grid{
@@ -543,16 +521,17 @@
     }
 
     .theme-card{
-      background:white;
-      border-radius:24px;
       padding:22px;
-      box-shadow:var(--shadow);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
       border-top:5px solid var(--mulberry);
+      border-radius:24px;
+      box-shadow:var(--shadow);
     }
 
     .theme-card h4{
       margin:0 0 10px;
-      color:var(--sea);
+      color:#fff;
       font-size:22px;
     }
 
@@ -579,11 +558,12 @@
     }
 
     .acc-item{
-      background:white;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      border-left:6px solid var(--cornflower);
       border-radius:24px;
       box-shadow:var(--shadow);
       overflow:hidden;
-      border-left:6px solid var(--cornflower);
     }
 
     .acc-btn{
@@ -603,27 +583,27 @@
     .acc-btn span{
       font-size:24px;
       font-weight:800;
-      color:var(--maastricht);
+      color:#fff;
     }
 
     .acc-icon{
-      flex-shrink:0;
       width:38px;
       height:38px;
       border-radius:50%;
       display:grid;
       place-items:center;
-      background:rgba(36,126,171,.10);
-      color:var(--sea);
+      background:rgba(255,255,255,.08);
+      color:#fff;
       font-size:22px;
       font-weight:700;
       transition:.3s;
+      flex-shrink:0;
     }
 
     .acc-item.active .acc-icon{
       transform:rotate(45deg);
-      background:rgba(202,82,154,.12);
-      color:var(--mulberry);
+      background:rgba(202,82,154,.18);
+      color:#ffd8eb;
     }
 
     .acc-content{
@@ -635,11 +615,96 @@
 
     .acc-content p{
       margin:0 0 22px;
-      color:var(--muted);
       line-height:1.9;
+      color:var(--muted);
+    }
+
+    /* COMPETITION */
+    .slider-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .slider-head p{
+      margin:0;
+      color:var(--muted);
+      max-width:740px;
+      line-height:1.8;
+    }
+
+    .slider{
+      display:flex;
+      gap:22px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding:8px 4px 14px;
+      scrollbar-width:none;
+    }
+
+    .slider::-webkit-scrollbar{
+      display:none;
+    }
+
+    .comp-card{
+      min-width:360px;
+      scroll-snap-align:center;
+      padding:28px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      border-top:5px solid var(--mulberry);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      transition:.3s;
+    }
+
+    .comp-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .comp-card h3{
+      margin:0 0 12px;
+      font-size:28px;
+      color:#fff;
+    }
+
+    .comp-card p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .tag-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .tag{
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .card-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     /* DOCS */
+    .doc-section{
+      padding-top:40px;
+    }
+
     .doc-tabs{
       display:flex;
       gap:12px;
@@ -652,18 +717,19 @@
       border:none;
       padding:12px 18px;
       border-radius:999px;
-      background:white;
-      color:var(--maastricht);
+      background:rgba(255,255,255,.08);
+      color:#fff;
       box-shadow:var(--shadow);
       font-family:inherit;
       font-weight:700;
       cursor:pointer;
       transition:.25s;
+      border:1px solid rgba(255,255,255,.10);
     }
 
     .doc-tab.active{
-      background:linear-gradient(90deg, var(--mulberry) 0%, var(--metallic) 50%, var(--cornflower) 100%);
-      color:white;
+      background:linear-gradient(90deg,var(--mulberry) 0%, var(--metallic) 50%, var(--cornflower) 100%);
+      color:#fff;
     }
 
     .doc-panel{
@@ -677,8 +743,8 @@
     }
 
     @keyframes fadeIn{
-      from{ opacity:0; transform:translateY(8px); }
-      to{ opacity:1; transform:translateY(0); }
+      from{opacity:0; transform:translateY(8px)}
+      to{opacity:1; transform:translateY(0)}
     }
 
     .docs-grid{
@@ -688,7 +754,8 @@
     }
 
     .doc-card{
-      background:white;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
       border-radius:24px;
       overflow:hidden;
       box-shadow:var(--shadow);
@@ -702,8 +769,8 @@
     .doc-image{
       height:240px;
       background:
-        linear-gradient(135deg, rgba(3,33,61,.55), rgba(16,106,148,.35)),
-        linear-gradient(135deg, #d7dce5, #eef2f6);
+        linear-gradient(135deg, rgba(3,33,61,.65), rgba(16,106,148,.38)),
+        linear-gradient(135deg, #102338, #294f72);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -719,7 +786,7 @@
 
     .doc-body h4{
       margin:0 0 8px;
-      color:var(--maastricht);
+      color:#fff;
       font-size:22px;
     }
 
@@ -729,7 +796,7 @@
       line-height:1.8;
     }
 
-    /* GUIDE */
+    /* GUIDEBOOK */
     .guide-box{
       margin-top:20px;
       padding:28px;
@@ -742,7 +809,7 @@
     .guide-box h3{
       margin:0 0 10px;
       font-size:30px;
-      color:var(--maastricht);
+      color:#fff;
     }
 
     .guide-box p{
@@ -760,13 +827,14 @@
     }
 
     .looking-card{
-      background:white;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      border-top:5px solid var(--mulberry);
       border-radius:26px;
       box-shadow:var(--shadow);
       padding:30px;
       text-align:center;
       transition:.3s;
-      border-top:5px solid var(--mulberry);
     }
 
     .looking-card:hover{
@@ -775,7 +843,7 @@
 
     .looking-card h3{
       margin:0 0 12px;
-      color:var(--maastricht);
+      color:#fff;
       font-size:30px;
     }
 
@@ -791,11 +859,12 @@
       align-items:center;
       gap:10px;
       text-decoration:none;
-      color:#8b1d60;
-      background:#fdf1f7;
+      color:#fff;
+      background:rgba(202,82,154,.18);
       padding:12px 16px;
       border-radius:16px;
       font-weight:700;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .wa-link img{
@@ -807,7 +876,7 @@
     .modal{
       position:fixed;
       inset:0;
-      background:rgba(3,33,61,.45);
+      background:rgba(0,0,0,.55);
       display:none;
       align-items:center;
       justify-content:center;
@@ -819,10 +888,11 @@
       width:min(780px,100%);
       max-height:88vh;
       overflow:auto;
-      background:white;
+      background:linear-gradient(180deg, rgba(7,27,48,.98), rgba(11,40,67,.98));
       border-radius:28px;
-      box-shadow:0 28px 60px rgba(3,33,61,.22);
+      box-shadow:0 28px 60px rgba(0,0,0,.35);
       padding:30px;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .modal-top{
@@ -835,7 +905,7 @@
     .modal-top h3{
       margin:0;
       font-size:32px;
-      color:var(--maastricht);
+      color:#fff;
     }
 
     .close-btn{
@@ -843,8 +913,8 @@
       height:42px;
       border:none;
       border-radius:50%;
-      background:#eef5fb;
-      color:var(--maastricht);
+      background:rgba(255,255,255,.08);
+      color:#fff;
       font-size:20px;
       cursor:pointer;
       flex-shrink:0;
@@ -863,22 +933,23 @@
     }
 
     .detail-card{
-      background:#f8fbff;
+      background:rgba(255,255,255,.06);
       border-radius:20px;
       padding:18px;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .detail-card h4{
       margin:0 0 10px;
-      color:var(--sea);
+      color:#fff;
       font-size:18px;
     }
 
     .detail-card ul{
       margin:0;
       padding-left:20px;
-      color:var(--text);
       line-height:1.8;
+      color:var(--muted);
     }
 
     .modal-actions{
@@ -891,8 +962,8 @@
     /* FOOTER */
     footer{
       margin-top:56px;
-      background:linear-gradient(90deg, var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
-      color:white;
+      background:linear-gradient(90deg,var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
+      color:#fff;
       border-top-left-radius:34px;
       border-top-right-radius:34px;
       padding:56px 0;
@@ -914,14 +985,16 @@
       width:52px;
       height:52px;
       object-fit:contain;
-      background:white;
+      background:rgba(255,255,255,.08);
       padding:6px;
       border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     footer h4{
       margin:0 0 14px;
       font-size:24px;
+      color:#fff;
     }
 
     footer p,
@@ -946,7 +1019,7 @@
     }
 
     .fade-section.hide{
-      opacity:.18;
+      opacity:.15;
       transform:translateY(20px) scale(.985);
     }
 
@@ -954,7 +1027,7 @@
       .hero{
         grid-template-columns:1fr;
         text-align:center;
-        padding-top:110px;
+        padding-top:120px;
       }
 
       .hero-actions{
@@ -970,29 +1043,32 @@
         grid-template-columns:1fr;
       }
 
+      .comp-card{
+        min-width:310px;
+      }
+
       .hero-visual{
         width:340px;
         height:340px;
       }
 
-      .one-set{
-        width:88px;
-        height:230px;
-        top:54px;
-      }
-
-      .one-left{ left:54px; }
-      .one-right{ right:54px; }
-
-      .mid-orbit{
-        left:50px;
-        right:50px;
-        top:145px;
-        height:74px;
-      }
-
       .hero-logo{
         width:145px;
+      }
+
+      .atom-ring.ring-1{
+        width:240px;
+        height:240px;
+      }
+
+      .atom-ring.ring-2{
+        width:250px;
+        height:130px;
+      }
+
+      .atom-ring.ring-3{
+        width:130px;
+        height:250px;
       }
     }
 
@@ -1008,15 +1084,15 @@
       }
 
       nav{
-        gap:14px;
+        gap:18px;
       }
 
       .hero{
-        padding-top:150px;
+        padding-top:156px;
       }
 
       .hero h1{
-        font-size:50px;
+        font-size:54px;
       }
 
       .hero-theme{
@@ -1024,7 +1100,7 @@
       }
 
       .section-title{
-        font-size:32px;
+        font-size:34px;
       }
 
       .section-desc,
@@ -1047,11 +1123,11 @@
 
   <div id="preloader">
     <div class="loader-wrap">
-      <div class="atom-loader">
-        <div class="nucleus"></div>
-        <div class="orbit-loader orbit-a"><span class="electron-loader"></span></div>
-        <div class="orbit-loader orbit-b"><span class="electron-loader"></span></div>
-        <div class="orbit-loader orbit-c"><span class="electron-loader"></span></div>
+      <div class="loader-atom">
+        <div class="loader-core"></div>
+        <div class="loader-orbit o1"><span class="loader-electron"></span></div>
+        <div class="loader-orbit o2"><span class="loader-electron"></span></div>
+        <div class="loader-orbit o3"><span class="loader-electron"></span></div>
       </div>
       <h2 class="loader-title">11th Physics Summit</h2>
       <p class="loader-sub">Preparing Atomic Horizon...</p>
@@ -1069,10 +1145,9 @@
       </div>
 
       <nav>
-  <a href="#about">About</a>
-  <a href="#competition">Kompetisi</a>
-  <a href="#guidebook">Guidebook</a>
-</nav>
+        <a href="#about">About</a>
+        <a href="#competition">Competition</a>
+        <a href="#guidebook">Guidebook</a>
       </nav>
     </div>
   </header>
@@ -1090,83 +1165,64 @@
           <button class="btn btn-secondary" onclick="document.getElementById('guidebook').scrollIntoView()">Guidebook</button>
         </div>
       </div>
-      
-<div class="hero-visual">
-  <div class="eleven-group">
-    <div class="one-set one-left">
-      <div class="one-ring"></div>
-      <div class="one-ring blue"></div>
-      <div class="one-ring gray"></div>
-      <div class="one-dot d1"></div>
-      <div class="one-dot d2"></div>
-      <div class="one-dot d3"></div>
-    </div>
 
-    <div class="one-set one-right">
-      <div class="one-ring"></div>
-      <div class="one-ring blue"></div>
-      <div class="one-ring gray"></div>
-      <div class="one-dot d1"></div>
-      <div class="one-dot d2"></div>
-      <div class="one-dot d3"></div>
-    </div>
-
-    <div class="mid-orbit">
-      <div class="mid-dot"></div>
-    </div>
-  </div>
-
-  <img src="assets/logo.png" alt="Logo Physics Summit" class="hero-logo">
-</div>
+      <div class="hero-right">
+        <div class="hero-visual">
+          <div class="single-atom">
+            <div class="atom-ring ring-1"><span class="atom-electron"></span></div>
+            <div class="atom-ring ring-2"><span class="atom-electron"></span></div>
+            <div class="atom-ring ring-3"><span class="atom-electron"></span></div>
+          </div>
+          <img src="assets/logo.png" alt="Logo Physics Summit" class="hero-logo">
         </div>
       </div>
     </section>
 
     <section id="about" class="anchor fade-section">
       <h2 class="section-title">About Physics Summit</h2>
-      <p class="section-desc">
-        Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa Fisika ITS (HIMASIKA ITS). Sejak didirikan pada tahun 1965, Departemen Fisika ITS telah banyak menorehkan prestasi dan memberikan kontribusi dalam pengembangan ilmu pengetahuan.
-      </p>
-      <p class="section-desc">
-        Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan dalam bidang akademik sekaligus memperluas citra baik Departemen Fisika ITS. Acara ini menggabungkan kegiatan akademik dan manajerial yang bertujuan untuk mengembangkan kemampuan peserta serta memberikan dampak positif bagi masyarakat luas.
-      </p>
+      <div class="glass about-box">
+        <p class="section-desc">
+          Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa Fisika ITS (HIMASIKA ITS). Sejak didirikan pada tahun 1965, Departemen Fisika ITS telah banyak menorehkan prestasi dan memberikan kontribusi dalam pengembangan ilmu pengetahuan.
+        </p>
+        <p class="section-desc">
+          Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan dalam bidang akademik sekaligus memperluas citra baik Departemen Fisika ITS. Acara ini menggabungkan kegiatan akademik dan manajerial yang bertujuan untuk mengembangkan kemampuan peserta serta memberikan dampak positif bagi masyarakat luas.
+        </p>
+      </div>
     </section>
 
-    <section id="theme" class="anchor fade-section">
+    <section id="theme" class="fade-section">
       <h2 class="section-title">Tema 11th Physics Summit</h2>
 
-      <div class="theme-full">
-        <div class="theme-main">
-          <h3>Atomic Horizon</h3>
-          <div class="theme-tagline">Expanding the Frontiers of Physics</div>
+      <div class="theme-main glass">
+        <h3>Atomic Horizon</h3>
+        <div class="theme-tagline">Expanding the Frontiers of Physics</div>
+      </div>
+
+      <div class="theme-grid">
+        <div class="theme-card">
+          <h4>Atomic</h4>
+          <p>
+            Dalam ilmu fisika, atom merupakan dasar penyusun materi dan menjadi awal dari berbagai pemahaman tentang struktur alam semesta. Atomic melambangkan fondasi ilmu pengetahuan, ketelitian, serta semangat untuk memahami hal-hal mendasar yang membentuk dunia.
+          </p>
         </div>
 
-        <div class="theme-grid">
-          <div class="theme-card">
-            <h4>Atomic</h4>
-            <p>
-              Dalam ilmu fisika, atom merupakan dasar penyusun materi dan menjadi awal dari berbagai pemahaman tentang struktur alam semesta. Atomic melambangkan fondasi ilmu pengetahuan, ketelitian, serta semangat untuk memahami hal-hal mendasar yang membentuk dunia.
-            </p>
-          </div>
+        <div class="theme-card">
+          <h4>Horizon</h4>
+          <p>
+            Horizon berarti cakrawala atau batas pandang yang terus terbuka semakin jauh. Kata ini menggambarkan kesempatan untuk melihat kemungkinan baru, memperluas wawasan, dan melangkah menuju pemahaman yang lebih luas dalam ilmu pengetahuan.
+          </p>
+        </div>
 
-          <div class="theme-card">
-            <h4>Horizon</h4>
-            <p>
-              Horizon berarti cakrawala atau batas pandang yang terus terbuka semakin jauh. Kata ini menggambarkan kesempatan untuk melihat kemungkinan baru, memperluas wawasan, dan melangkah menuju pemahaman yang lebih luas dalam ilmu pengetahuan.
-            </p>
-          </div>
-
-          <div class="theme-card">
-            <h4>Expanding the Frontiers of Physics</h4>
-            <p>
-              Frasa ini bermakna dorongan untuk terus memperluas batas-batas pemahaman dalam fisika. Melalui tema ini, Physics Summit diharapkan menjadi wadah yang menginspirasi lahirnya eksplorasi ilmiah, pemikiran baru, dan perkembangan pengetahuan yang membawa dampak lebih luas.
-            </p>
-          </div>
+        <div class="theme-card">
+          <h4>Expanding the Frontiers of Physics</h4>
+          <p>
+            Frasa ini bermakna dorongan untuk terus memperluas batas-batas pemahaman dalam fisika. Melalui tema ini, Physics Summit diharapkan menjadi wadah yang menginspirasi lahirnya eksplorasi ilmiah, pemikiran baru, dan perkembangan pengetahuan yang membawa dampak lebih luas.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="timeline" class="anchor fade-section">
+    <section id="timeline" class="fade-section">
       <h2 class="section-title">Perjalanan Physics Summit</h2>
       <p class="journey-intro">
         Physics Summit bukan hanya sekadar rangkaian kompetisi, tetapi juga perjalanan panjang yang dibangun oleh semangat, dedikasi, dan keinginan untuk terus menghadirkan ruang berkembang bagi generasi muda.
@@ -1235,7 +1291,56 @@
       </div>
     </section>
 
-    <section id="documentation" class="anchor fade-section">
+    <section id="competition" class="anchor fade-section">
+      <div class="slider-head">
+        <div>
+          <h2 class="section-title" style="text-align:left; margin-bottom:10px;">Competition</h2>
+          <p>
+            11th Physics Summit menghadirkan dua kompetisi utama yang dirancang untuk mengasah kemampuan akademik, kreativitas, dan daya saing peserta.
+          </p>
+        </div>
+      </div>
+
+      <div class="slider">
+        <div class="comp-card">
+          <h3>Physics Summit Olympiad</h3>
+          <p>
+            Kompetisi olimpiade fisika tingkat nasional untuk siswa SMA/SMK sederajat di seluruh Indonesia.
+          </p>
+
+          <div class="tag-row">
+            <div class="tag">Rp 75.000 / tim</div>
+            <div class="tag">SMA / SMK</div>
+            <div class="tag">Tim / Individu</div>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-primary" onclick="openModal('modalPSO')">Lihat Detail PSO</button>
+            <a class="btn btn-secondary link-btn" href="https://bit.ly/pendaftaran-pso" target="_blank">Daftar PSO</a>
+          </div>
+        </div>
+
+        <div class="comp-card">
+          <h3>Physics Summit Essay Competition</h3>
+          <p>
+            Kompetisi esai ilmiah tingkat nasional untuk siswa SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
+          </p>
+
+          <div class="tag-row">
+            <div class="tag">Rp 50.000 / tim</div>
+            <div class="tag">Essay Competition</div>
+            <div class="tag">SMA / Mahasiswa</div>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-primary" onclick="openModal('modalPSEC')">Lihat Detail PSEC</button>
+            <a class="btn btn-secondary link-btn" href="https://bit.ly/pendaftaran-psec" target="_blank">Daftar PSEC</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="documentation" class="fade-section doc-section">
       <h2 class="section-title">Dokumentasi Keseruan Tahun Lalu</h2>
       <p class="section-desc">
         Rangkaian dokumentasi ini menampilkan berbagai momen berkesan dari pelaksanaan Physics Summit, mulai dari pembukaan acara hingga penutupan.
@@ -1380,7 +1485,7 @@
       </div>
     </section>
 
-    <section id="partner" class="anchor fade-section">
+    <section id="partner" class="fade-section">
       <div class="looking-grid">
         <div class="looking-card">
           <h3>LOOKING FOR SPONSOR</h3>
@@ -1422,9 +1527,7 @@
       <div>
         <h4>Navigasi</h4>
         <a href="#about">About</a>
-        <a href="#theme">Tema</a>
-        <a href="#timeline">Perjalanan</a>
-        <a href="#documentation">Dokumentasi</a>
+        <a href="#competition">Competition</a>
         <a href="#guidebook">Guidebook</a>
       </div>
 
@@ -1443,12 +1546,149 @@
     </div>
   </footer>
 
+  <div class="modal" id="modalPSO">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3>Physics Summit Olympiad (PSO)</h3>
+        <button class="close-btn" onclick="closeModal('modalPSO')">✕</button>
+      </div>
+
+      <p>
+        Physics Summit Olympiad (PSO) merupakan kompetisi olimpiade fisika tingkat nasional yang diperuntukkan bagi siswa SMA/SMK sederajat di seluruh Indonesia.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>Kategori Peserta</h4>
+          <ul>
+            <li>Siswa SMA/SMK sederajat</li>
+            <li>Tim atau individu</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Benefit</h4>
+          <ul>
+            <li>Sertifikat nasional</li>
+            <li>Hadiah uang pembinaan</li>
+            <li>Pengalaman kompetisi akademik tingkat nasional</li>
+            <li>Kesempatan memperluas jaringan akademik</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Biaya Pendaftaran</h4>
+          <ul>
+            <li>Rp 75.000 / tim</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Timeline Kompetisi</h4>
+          <ul>
+            <li>1 Mei – 20 Juni 2026 : Pendaftaran Peserta</li>
+            <li>5 Juli 2026 : Babak Penyisihan</li>
+            <li>20 Juli 2026 : Babak Semifinal</li>
+            <li>5 Agustus 2026 : Grand Final</li>
+          </ul>
+        </div>
+      </div>
+
+      <a class="wa-link" href="https://wa.me/6282334827208" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        Contact Person PSO
+      </a>
+
+      <div class="modal-actions">
+        <a class="btn btn-primary link-btn" href="https://bit.ly/pendaftaran-pso" target="_blank">Pendaftaran PSO</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalPSEC">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3>Physics Summit Essay Competition (PSEC)</h3>
+        <button class="close-btn" onclick="closeModal('modalPSEC')">✕</button>
+      </div>
+
+      <p>
+        Physics Summit Essay Competition (PSEC) merupakan kompetisi esai ilmiah tingkat nasional yang terbuka bagi siswa SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
+      </p>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>Kategori Peserta</h4>
+          <ul>
+            <li>Mahasiswa aktif</li>
+            <li>Siswa SMA/SMK sederajat</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Tahapan Kompetisi</h4>
+          <ul>
+            <li>Seleksi Abstrak / Essay</li>
+            <li>Babak Semifinal</li>
+            <li>Grand Final Presentation</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Benefit</h4>
+          <ul>
+            <li>Sertifikat nasional</li>
+            <li>Hadiah uang pembinaan</li>
+            <li>Publikasi karya ilmiah</li>
+            <li>Networking dengan peserta dari berbagai daerah</li>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h4>Timeline</h4>
+          <ul>
+            <li>1 Mei – 25 Juni 2026 : Pendaftaran dan Pengumpulan Essay</li>
+            <li>10 Juli 2026 : Pengumuman Semifinalis</li>
+            <li>25 Juli 2026 : Presentasi Semifinal</li>
+            <li>5 Agustus 2026 : Grand Final</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top:16px; font-weight:700; color:#fff;">Biaya Pendaftaran: Rp 50.000 / tim</p>
+
+      <a class="wa-link" href="https://wa.me/6281977966611" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        Contact Person PSEC
+      </a>
+
+      <div class="modal-actions">
+        <a class="btn btn-primary link-btn" href="https://bit.ly/pendaftaran-psec" target="_blank">Pendaftaran PSEC</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     window.addEventListener("load", function(){
       const preloader = document.getElementById("preloader");
       setTimeout(() => {
         preloader.classList.add("hide");
       }, 1200);
+    });
+
+    function openModal(id){
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id){
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.addEventListener("click", function(e){
+      const pso = document.getElementById("modalPSO");
+      const psec = document.getElementById("modalPSEC");
+      if(e.target === pso){ pso.style.display = "none"; }
+      if(e.target === psec){ psec.style.display = "none"; }
     });
 
     const sections = document.querySelectorAll(".fade-section");
@@ -1463,6 +1703,7 @@
         }
       });
     }, { threshold: 0.18 });
+
     sections.forEach((el)=> observer.observe(el));
 
     const accItems = document.querySelectorAll(".acc-item");
@@ -1472,10 +1713,12 @@
 
       btn.addEventListener("click", () => {
         const isActive = item.classList.contains("active");
+
         accItems.forEach(i => {
           i.classList.remove("active");
           i.querySelector(".acc-content").style.maxHeight = null;
         });
+
         if(!isActive){
           item.classList.add("active");
           content.style.maxHeight = content.scrollHeight + "px";
