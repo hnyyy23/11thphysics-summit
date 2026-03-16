@@ -379,12 +379,12 @@
       border-radius:var(--radius);
     }
 
-    .theme-box{
+    .theme-grid{
       margin-top:28px;
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:1.1fr .95fr;
       gap:24px;
-      align-items:stretch;
+      align-items:start;
     }
 
     .theme-main{
@@ -406,26 +406,35 @@
       color:#fff8fd;
     }
 
-    .theme-tags{
-      margin-top:18px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
+    .theme-cards{
+      display:grid;
+      gap:18px;
+      margin-top:20px;
     }
 
-    .theme-tag{
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.30);
-      font-size:13px;
-      font-weight:700;
+    .theme-card{
+      background:white;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .theme-card h4{
+      margin:0 0 10px;
+      color:var(--secondary);
+      font-size:22px;
+    }
+
+    .theme-card p{
+      margin:0;
+      line-height:1.9;
+      color:var(--muted);
     }
 
     .theme-side{
       padding:28px;
       position:relative;
-      min-height:290px;
+      min-height:100%;
       overflow:hidden;
       border-radius:28px;
       background:
@@ -500,68 +509,41 @@
       50%{ transform:translateY(-8px) scale(1.08); }
     }
 
-    .timeline-box{
-      margin-top:20px;
-      padding:28px;
-      min-height:340px;
-      position:relative;
-      overflow:hidden;
+    .journey-intro{
+      max-width:900px;
+      margin:0 auto 24px;
+      text-align:center;
+      line-height:1.9;
+      color:var(--muted);
+      font-size:18px;
     }
 
-    .timeline-box svg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
+    .timeline-cards{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
     }
 
-    .timeline-path{
-      stroke:#c084fc;
-      stroke-width:3;
-      fill:none;
-      stroke-dasharray:8 8;
-      opacity:.65;
-      animation:dash 16s linear infinite;
-    }
-
-    @keyframes dash{
-      to{ stroke-dashoffset:-200; }
-    }
-
-    .node{
-      position:absolute;
-      transform:translate(-50%,-50%);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-    }
-
-    .node-point{
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--secondary),var(--primary));
-      box-shadow:0 0 0 10px rgba(244,114,182,.12), 0 0 22px rgba(139,92,246,.18);
-    }
-
-    .node-label{
-      padding:12px 18px;
-      border-radius:999px;
+    .timeline-card{
       background:white;
-      box-shadow:0 12px 22px rgba(180,120,220,.10);
-      font-weight:700;
-      font-size:14px;
-      white-space:nowrap;
-      color:var(--primary-dark);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      border-left:6px solid var(--secondary);
     }
 
-    .n1{ left:7%; top:120px; }
-    .n2{ left:23%; top:225px; }
-    .n3{ left:42%; top:115px; }
-    .n4{ left:60%; top:240px; }
-    .n5{ left:79%; top:125px; }
-    .n6{ left:93%; top:245px; }
+    .timeline-card h4{
+      margin:0 0 8px;
+      color:var(--primary-dark);
+      font-size:22px;
+    }
+
+    .timeline-card p{
+      margin:0;
+      line-height:1.85;
+      color:var(--muted);
+    }
 
     .slider-head{
       display:flex;
@@ -855,23 +837,6 @@
       transform:translateY(20px) scale(.98);
     }
 
-    .reveal-up{
-      opacity:0;
-      transform:translateY(40px);
-      animation:revealUp 1s ease forwards;
-    }
-
-    .reveal-up.delay-1{ animation-delay:.2s; }
-    .reveal-up.delay-2{ animation-delay:.4s; }
-    .reveal-up.delay-3{ animation-delay:.6s; }
-
-    @keyframes revealUp{
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
     @media (max-width: 980px){
       .hero{
         grid-template-columns:1fr;
@@ -887,44 +852,13 @@
         justify-content:center;
       }
 
-      .theme-box,
+      .theme-grid,
       .detail-grid,
       .guide-box,
       .footer-grid,
-      .looking-grid{
+      .looking-grid,
+      .timeline-cards{
         grid-template-columns:1fr;
-      }
-
-      .timeline-box{
-        min-height:auto;
-        padding:22px 18px;
-      }
-
-      .timeline-box svg{
-        display:none;
-      }
-
-      .node{
-        position:relative;
-        inset:auto !important;
-        left:auto !important;
-        top:auto !important;
-        transform:none;
-        flex-direction:row;
-        justify-content:flex-start;
-        align-items:center;
-        margin-bottom:16px;
-      }
-
-      .timeline-mobile{
-        display:flex;
-        flex-direction:column;
-        gap:6px;
-      }
-
-      .node-label{
-        white-space:normal;
-        border-radius:18px;
       }
 
       .comp-card{
@@ -981,7 +915,8 @@
         font-size:32px;
       }
 
-      .section-desc{
+      .section-desc,
+      .journey-intro{
         font-size:16px;
       }
 
@@ -1018,14 +953,14 @@
   <main class="container">
     <section class="hero">
       <div class="hero-left">
-        <div class="theme reveal-up">CATALYST OF CHANGE</div>
-        <h1 class="reveal-up delay-1">11TH PHYSICS<br>SUMMIT</h1>
-        <p class="reveal-up delay-2">
+        <div class="theme">CATALYST OF CHANGE</div>
+        <h1>11TH PHYSICS<br>SUMMIT</h1>
+        <p>
           Ajang kompetisi nasional yang mempertemukan semangat sains, inovasi, dan potensi generasi muda dalam satu ruang yang kompetitif dan inspiratif.
         </p>
-        <div class="tagline reveal-up delay-3">Mengasah Potensi, Mencetak Prestasi</div>
+        <div class="tagline">Mengasah Potensi, Mencetak Prestasi</div>
 
-        <div class="hero-actions reveal-up delay-3">
+        <div class="hero-actions">
           <button class="btn btn-primary" onclick="document.getElementById('competition').scrollIntoView()">Lihat Kompetisi</button>
           <button class="btn btn-secondary" onclick="document.getElementById('guidebook').scrollIntoView()">Guidebook</button>
         </div>
@@ -1054,17 +989,29 @@
     <section id="theme" class="anchor fade-section">
       <h2 class="section-title">Tema 11th Physics Summit</h2>
 
-      <div class="theme-box">
-        <div class="theme-main">
-          <h3>Catalyst of Change</h3>
-          <p>
-            Dalam sains, catalyst adalah unsur yang mempercepat terjadinya perubahan. Pada 11th Physics Summit, tema ini melambangkan peran peserta sebagai generasi muda yang mampu menjadi pemantik inovasi, memperkuat gagasan, dan mendorong lahirnya aksi nyata melalui kompetisi dan kolaborasi.
-          </p>
+      <div class="theme-grid">
+        <div>
+          <div class="theme-main">
+            <h3>Catalyst of Change</h3>
+            <p>
+              Tema <strong>Catalyst of Change</strong> diangkat dari dua kata utama, yaitu <em>catalyst</em> dan <em>change</em>. Dalam ilmu pengetahuan, <em>catalyst</em> atau katalis merupakan zat yang mampu mempercepat terjadinya suatu reaksi tanpa ikut habis dalam proses tersebut, sedangkan <em>change</em> berarti perubahan atau perkembangan menuju kondisi yang lebih baik. Berdasarkan makna tersebut, tema ini menggambarkan harapan agar Physics Summit dapat menjadi pemicu yang mendorong lahirnya perubahan positif, khususnya dalam pengembangan ilmu pengetahuan dan pemikiran ilmiah.
+            </p>
+          </div>
 
-          <div class="theme-tags">
-            <div class="theme-tag">Innovation</div>
-            <div class="theme-tag">Competition</div>
-            <div class="theme-tag">Impact</div>
+          <div class="theme-cards">
+            <div class="theme-card">
+              <h4>Makna Tema bagi Peserta</h4>
+              <p>
+                Melalui kegiatan kompetisi seperti Physics Summit Olympiad (PSO) dan Physics Summit Essay Competition (PSEC), Physics Summit diharapkan mampu menjadi wadah bagi peserta untuk mengasah kemampuan akademik, berpikir kritis, serta meningkatkan minat terhadap ilmu fisika. Peserta tidak hanya datang untuk berkompetisi, tetapi juga untuk berkembang, belajar, dan menunjukkan potensi terbaiknya.
+              </p>
+            </div>
+
+            <div class="theme-card">
+              <h4>Makna Tema bagi Panitia</h4>
+              <p>
+                Selain memberikan dampak bagi peserta, tema ini juga mencerminkan harapan bagi panitia yang terlibat dalam penyelenggaraan kegiatan. Proses kepanitiaan diharapkan dapat menjadi sarana pembelajaran untuk mengembangkan kemampuan kepemimpinan, kerja sama tim, serta manajemen organisasi. Panitia juga diharapkan tumbuh sebagai bagian dari perubahan yang mereka ciptakan bersama.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -1088,42 +1035,51 @@
 
     <section id="timeline" class="anchor fade-section">
       <h2 class="section-title">Perjalanan Physics Summit</h2>
+      <p class="journey-intro">
+        Physics Summit bukan hanya sebuah rangkaian kompetisi, tetapi juga perjalanan panjang yang dibangun oleh semangat, dedikasi, dan visi untuk menghadirkan ruang berkembang bagi generasi muda. Dari awal kemunculannya hingga kini, Physics Summit terus tumbuh, beradaptasi, dan kembali hadir dengan semangat yang lebih kuat.
+      </p>
 
-      <div class="timeline-box glass">
-        <svg viewBox="0 0 1000 360" preserveAspectRatio="none">
-          <path class="timeline-path" d="M70,110 L240,220 L430,110 L610,240 L790,125 L930,245"></path>
-        </svg>
+      <div class="timeline-cards">
+        <div class="timeline-card">
+          <h4>2011 — Awal Mula Physics Summit</h4>
+          <p>
+            Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang menghadirkan semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS.
+          </p>
+        </div>
 
-        <div class="timeline-mobile">
-          <div class="node n1">
-            <div class="node-point"></div>
-            <div class="node-label">2011 — First</div>
-          </div>
+        <div class="timeline-card">
+          <h4>2014 — Berganti Nama, Membawa Identitas Baru</h4>
+          <p>
+            Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan representatif.
+          </p>
+        </div>
 
-          <div class="node n2">
-            <div class="node-point"></div>
-            <div class="node-label">2014 — Berganti Nama</div>
-          </div>
+        <div class="timeline-card">
+          <h4>2018 — Penetapan Dirut Physics Summit</h4>
+          <p>
+            Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit dengan adanya penetapan direktur utama sebagai bagian dari penguatan struktur dan arah penyelenggaraan acara.
+          </p>
+        </div>
 
-          <div class="node n3">
-            <div class="node-point"></div>
-            <div class="node-label">2018 — Penetapan Dirut PS</div>
-          </div>
+        <div class="timeline-card">
+          <h4>2020 — Vakum karena Pandemi Covid-19</h4>
+          <p>
+            Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Meski demikian, semangat dan cita-cita besar acara ini tetap hidup.
+          </p>
+        </div>
 
-          <div class="node n4">
-            <div class="node-point"></div>
-            <div class="node-label">2020 — Vakum karena Covid-19</div>
-          </div>
+        <div class="timeline-card">
+          <h4>2024 — Kembali Hadir dengan Semangat Baru</h4>
+          <p>
+            Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda.
+          </p>
+        </div>
 
-          <div class="node n5">
-            <div class="node-point"></div>
-            <div class="node-label">2024 — Mulai Lagi</div>
-          </div>
-
-          <div class="node n6">
-            <div class="node-point"></div>
-            <div class="node-label">2026 — 11th Physics Summit</div>
-          </div>
+        <div class="timeline-card">
+          <h4>2026 — 11th Physics Summit</h4>
+          <p>
+            Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus menjadi wadah pengembangan potensi serta prestasi generasi muda.
+          </p>
         </div>
       </div>
     </section>
@@ -1248,9 +1204,11 @@
 
       <div>
         <h4>Contact & Info</h4>
+        <p>PSO — Rozan</p>
+        <p>PSEC — Sandy</p>
         <p>Sponsor — 628402010929</p>
         <p>Media Partner — 6239393920</p>
-        <a href="https://instagram.com/physicssummit" target="_blank">@physicssummit</a>
+        <a href="https://instagram.com/physicssummit" target="_blank">Instagram — @physicssummit</a>
       </div>
     </div>
   </footer>
