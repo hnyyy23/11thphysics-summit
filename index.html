@@ -386,7 +386,7 @@
 
     .hero-logo{
       width:210px;
-      z-index:3;
+      z-index:5;
       filter:drop-shadow(0 12px 25px rgba(3,33,61,.18));
       animation:logoPulse 3.5s ease-in-out infinite;
     }
@@ -396,81 +396,89 @@
       50%{ transform:scale(1.04); }
     }
 
-    /* 11 atom */
-    .orbit{
+    /* angka 11 dari bulet / garis */
+    .eleven-group{
       position:absolute;
+      inset:0;
+      z-index:2;
+    }
+
+    .one-set{
+      position:absolute;
+      width:120px;
+      height:320px;
+      top:72px;
+    }
+
+    .one-left{ left:86px; }
+    .one-right{ right:86px; }
+
+    .one-ring{
+      position:absolute;
+      inset:0;
       border-radius:50%;
-      border:2px solid rgba(202,82,154,.30);
-      animation:spin 12s linear infinite;
+      border:2px solid rgba(202,82,154,.28);
     }
 
-    .orbit.one-a,
-    .orbit.one-b,
-    .orbit.one-c{
-      left:98px;
-      top:62px;
-      width:92px;
-      height:330px;
-    }
-
-    .orbit.one-a{
-      border-color:rgba(202,82,154,.34);
-      transform:rotate(0deg);
-    }
-
-    .orbit.one-b{
-      border-color:rgba(36,126,171,.32);
+    .one-ring.blue{
+      border-color:rgba(36,126,171,.28);
       transform:rotate(90deg);
-      animation-duration:9s;
     }
 
-    .orbit.one-c{
+    .one-ring.gray{
       border-color:rgba(48,69,117,.22);
-      transform:rotate(-55deg);
-      animation-duration:7s;
+      transform:rotate(-14deg);
     }
 
-    .orbit.two-a,
-    .orbit.two-b,
-    .orbit.two-c{
-      left:250px;
-      top:62px;
-      width:92px;
-      height:330px;
-    }
-
-    .orbit.two-a{
-      border-color:rgba(202,82,154,.34);
-      transform:rotate(0deg);
-    }
-
-    .orbit.two-b{
-      border-color:rgba(36,126,171,.32);
-      transform:rotate(90deg);
-      animation-duration:9s;
-    }
-
-    .orbit.two-c{
-      border-color:rgba(48,69,117,.22);
-      transform:rotate(-55deg);
-      animation-duration:7s;
-    }
-
-    .electron{
+    .one-dot{
       position:absolute;
-      width:14px;
-      height:14px;
+      width:16px;
+      height:16px;
+      border-radius:50%;
       background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
-      border-radius:50%;
-      box-shadow:0 0 0 8px rgba(202,82,154,.10), 0 0 22px rgba(36,126,171,.22);
-      top:50%;
-      left:100%;
-      transform:translate(-50%,-50%);
+      box-shadow:0 0 0 8px rgba(202,82,154,.10);
+      animation:floatDot 3s ease-in-out infinite;
     }
 
-    @keyframes spin{
-      from{ rotate:0deg; }
-      to{ rotate:360deg; }
+    .one-left .d1{ left:50px; top:18px; }
+    .one-left .d2{ left:18px; top:160px; animation-delay:.6s; }
+    .one-left .d3{ left:92px; bottom:18px; animation-delay:1.2s; }
+
+    .one-right .d1{ left:50px; top:18px; }
+    .one-right .d2{ left:18px; top:160px; animation-delay:.6s; }
+    .one-right .d3{ left:92px; bottom:18px; animation-delay:1.2s; }
+
+    .mid-orbit{
+      position:absolute;
+      left:74px;
+      right:74px;
+      top:188px;
+      height:112px;
+      border:2px solid rgba(36,126,171,.28);
+      border-radius:50%;
+      animation:spinMid 14s linear infinite;
+    }
+
+    .mid-dot{
+      position:absolute;
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--mulberry), var(--cornflower));
+      box-shadow:0 0 0 8px rgba(202,82,154,.10);
+      top:48px;
+      left:46%;
+      animation:floatDot 3.2s ease-in-out infinite;
+    }
+
+    @keyframes spinMid{
+      from{ transform:rotate(0deg); }
+      to{ transform:rotate(360deg); }
+    }
+
+    @keyframes floatDot{
+      0%,100%{ transform:translateY(0) scale(1); }
+      50%{ transform:translateY(-6px) scale(1.08); }
     }
 
     /* COMMON */
@@ -508,8 +516,7 @@
       position:relative;
       overflow:hidden;
       padding:38px;
-      background:
-        linear-gradient(90deg, var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
+      background:linear-gradient(90deg, var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
       color:white;
       border-radius:28px;
       box-shadow:0 22px 40px rgba(3,33,61,.18);
@@ -630,85 +637,6 @@
       margin:0 0 22px;
       color:var(--muted);
       line-height:1.9;
-    }
-
-    /* COMP */
-    .slider-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:18px;
-      margin-bottom:18px;
-      flex-wrap:wrap;
-    }
-
-    .slider-head p{
-      margin:0;
-      color:var(--muted);
-      max-width:720px;
-      line-height:1.8;
-    }
-
-    .slider{
-      display:flex;
-      gap:22px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      padding:8px 4px 14px;
-      scrollbar-width:none;
-    }
-
-    .slider::-webkit-scrollbar{
-      display:none;
-    }
-
-    .comp-card{
-      min-width:360px;
-      scroll-snap-align:center;
-      padding:28px;
-      background:white;
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      transition:.3s;
-      border-top:5px solid var(--mulberry);
-    }
-
-    .comp-card:hover{
-      transform:translateY(-6px);
-    }
-
-    .comp-card h3{
-      margin:0 0 12px;
-      font-size:28px;
-      color:var(--maastricht);
-    }
-
-    .comp-card p{
-      margin:0 0 18px;
-      color:var(--muted);
-      line-height:1.8;
-    }
-
-    .tag-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-
-    .tag{
-      padding:8px 12px;
-      background:rgba(36,126,171,.10);
-      border-radius:999px;
-      color:var(--sea);
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .card-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
     }
 
     /* DOCS */
@@ -963,8 +891,7 @@
     /* FOOTER */
     footer{
       margin-top:56px;
-      background:
-        linear-gradient(90deg, var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
+      background:linear-gradient(90deg, var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
       color:white;
       border-top-left-radius:34px;
       border-top-right-radius:34px;
@@ -1043,27 +970,25 @@
         grid-template-columns:1fr;
       }
 
-      .comp-card{
-        min-width:310px;
-      }
-
       .hero-visual{
         width:340px;
         height:340px;
       }
 
-      .orbit.one-a, .orbit.one-b, .orbit.one-c{
-        left:64px;
-        top:36px;
-        width:68px;
-        height:245px;
+      .one-set{
+        width:88px;
+        height:230px;
+        top:54px;
       }
 
-      .orbit.two-a, .orbit.two-b, .orbit.two-c{
-        left:180px;
-        top:36px;
-        width:68px;
-        height:245px;
+      .one-left{ left:54px; }
+      .one-right{ right:54px; }
+
+      .mid-orbit{
+        left:50px;
+        right:50px;
+        top:145px;
+        height:74px;
       }
 
       .hero-logo{
@@ -1170,13 +1095,29 @@
 
       <div class="hero-right">
         <div class="hero-visual">
-          <div class="orbit one-a"><div class="electron"></div></div>
-          <div class="orbit one-b"><div class="electron"></div></div>
-          <div class="orbit one-c"><div class="electron"></div></div>
+          <div class="eleven-group">
+            <div class="one-set one-left">
+              <div class="one-ring"></div>
+              <div class="one-ring blue"></div>
+              <div class="one-ring gray"></div>
+              <div class="one-dot d1"></div>
+              <div class="one-dot d2"></div>
+              <div class="one-dot d3"></div>
+            </div>
 
-          <div class="orbit two-a"><div class="electron"></div></div>
-          <div class="orbit two-b"><div class="electron"></div></div>
-          <div class="orbit two-c"><div class="electron"></div></div>
+            <div class="one-set one-right">
+              <div class="one-ring"></div>
+              <div class="one-ring blue"></div>
+              <div class="one-ring gray"></div>
+              <div class="one-dot d1"></div>
+              <div class="one-dot d2"></div>
+              <div class="one-dot d3"></div>
+            </div>
+
+            <div class="mid-orbit">
+              <div class="mid-dot"></div>
+            </div>
+          </div>
 
           <img src="assets/logo.png" alt="Logo Physics Summit" class="hero-logo">
         </div>
@@ -1240,9 +1181,7 @@
             <div class="acc-icon">+</div>
           </button>
           <div class="acc-content">
-            <p>
-              Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS.
-            </p>
+            <p>Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS.</p>
           </div>
         </div>
 
@@ -1252,9 +1191,7 @@
             <div class="acc-icon">+</div>
           </button>
           <div class="acc-content">
-            <p>
-              Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif.
-            </p>
+            <p>Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif.</p>
           </div>
         </div>
 
@@ -1264,9 +1201,7 @@
             <div class="acc-icon">+</div>
           </button>
           <div class="acc-content">
-            <p>
-              Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur serta arah penyelenggaraan acara.
-            </p>
+            <p>Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur serta arah penyelenggaraan acara.</p>
           </div>
         </div>
 
@@ -1276,9 +1211,7 @@
             <div class="acc-icon">+</div>
           </button>
           <div class="acc-content">
-            <p>
-              Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga.
-            </p>
+            <p>Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga.</p>
           </div>
         </div>
 
@@ -1288,9 +1221,7 @@
             <div class="acc-icon">+</div>
           </button>
           <div class="acc-content">
-            <p>
-              Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda.
-            </p>
+            <p>Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda.</p>
           </div>
         </div>
 
@@ -1300,9 +1231,7 @@
             <div class="acc-icon">+</div>
           </button>
           <div class="acc-content">
-            <p>
-              Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda.
-            </p>
+            <p>Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda.</p>
           </div>
         </div>
       </div>
@@ -1311,7 +1240,7 @@
     <section id="documentation" class="anchor fade-section">
       <h2 class="section-title">Dokumentasi Keseruan Tahun Lalu</h2>
       <p class="section-desc">
-        Section ini dibuat per kategori supaya tidak terlalu penuh. Nanti kamu tinggal isi file fotonya ke subfolder yang sudah disiapkan.
+        Rangkaian dokumentasi ini menampilkan berbagai momen berkesan dari pelaksanaan Physics Summit, mulai dari pembukaan acara hingga penutupan.
       </p>
 
       <div class="doc-tabs">
@@ -1326,17 +1255,17 @@
       <div class="doc-panel active" id="panel-opening">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">assets/docs/opening/opening-1.jpg</div>
+            <div class="doc-image">Opening Event</div>
             <div class="doc-body">
               <h4>Opening Event — Foto 1</h4>
-              <p>Isi file di folder <strong>assets/docs/opening/</strong> dengan nama <strong>opening-1.jpg</strong>.</p>
+              <p>Potret suasana pembukaan acara yang menandai dimulainya rangkaian 11th Physics Summit.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">assets/docs/opening/opening-2.jpg</div>
+            <div class="doc-image">Opening Event</div>
             <div class="doc-body">
               <h4>Opening Event — Foto 2</h4>
-              <p>Isi file di folder <strong>assets/docs/opening/</strong> dengan nama <strong>opening-2.jpg</strong>.</p>
+              <p>Momen kebersamaan dan antusiasme peserta saat opening event berlangsung.</p>
             </div>
           </div>
         </div>
@@ -1345,17 +1274,17 @@
       <div class="doc-panel" id="panel-pso">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">assets/docs/final-pso/final-pso-1.jpg</div>
+            <div class="doc-image">Final PSO</div>
             <div class="doc-body">
               <h4>Final PSO — Foto 1</h4>
-              <p>Isi file di folder <strong>assets/docs/final-pso/</strong> dengan nama <strong>final-pso-1.jpg</strong>.</p>
+              <p>Dokumentasi suasana babak final Physics Summit Olympiad yang penuh semangat kompetitif.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">assets/docs/final-pso/final-pso-2.jpg</div>
+            <div class="doc-image">Final PSO</div>
             <div class="doc-body">
               <h4>Final PSO — Foto 2</h4>
-              <p>Isi file di folder <strong>assets/docs/final-pso/</strong> dengan nama <strong>final-pso-2.jpg</strong>.</p>
+              <p>Momen peserta menunjukkan kemampuan terbaiknya pada tahap final PSO.</p>
             </div>
           </div>
         </div>
@@ -1364,17 +1293,17 @@
       <div class="doc-panel" id="panel-psec">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">assets/docs/final-psec/final-psec-1.jpg</div>
+            <div class="doc-image">Final PSEC</div>
             <div class="doc-body">
               <h4>Final PSEC — Foto 1</h4>
-              <p>Isi file di folder <strong>assets/docs/final-psec/</strong> dengan nama <strong>final-psec-1.jpg</strong>.</p>
+              <p>Potret presentasi dan penyampaian gagasan terbaik dari finalis Physics Summit Essay Competition.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">assets/docs/final-psec/final-psec-2.jpg</div>
+            <div class="doc-image">Final PSEC</div>
             <div class="doc-body">
               <h4>Final PSEC — Foto 2</h4>
-              <p>Isi file di folder <strong>assets/docs/final-psec/</strong> dengan nama <strong>final-psec-2.jpg</strong>.</p>
+              <p>Suasana final PSEC yang memperlihatkan kreativitas, inovasi, dan kualitas pemikiran peserta.</p>
             </div>
           </div>
         </div>
@@ -1383,17 +1312,17 @@
       <div class="doc-panel" id="panel-awarding">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">assets/docs/awarding/awarding-1.jpg</div>
+            <div class="doc-image">Awarding</div>
             <div class="doc-body">
               <h4>Awarding — Foto 1</h4>
-              <p>Isi file di folder <strong>assets/docs/awarding/</strong> dengan nama <strong>awarding-1.jpg</strong>.</p>
+              <p>Momen apresiasi bagi para pemenang sebagai bentuk penghargaan atas prestasi yang diraih.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">assets/docs/awarding/awarding-2.jpg</div>
+            <div class="doc-image">Awarding</div>
             <div class="doc-body">
               <h4>Awarding — Foto 2</h4>
-              <p>Isi file di folder <strong>assets/docs/awarding/</strong> dengan nama <strong>awarding-2.jpg</strong>.</p>
+              <p>Dokumentasi suasana awarding yang menjadi salah satu puncak acara Physics Summit.</p>
             </div>
           </div>
         </div>
@@ -1402,17 +1331,17 @@
       <div class="doc-panel" id="panel-closing">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">assets/docs/closing/closing-1.jpg</div>
+            <div class="doc-image">Closing Event</div>
             <div class="doc-body">
               <h4>Closing Event — Foto 1</h4>
-              <p>Isi file di folder <strong>assets/docs/closing/</strong> dengan nama <strong>closing-1.jpg</strong>.</p>
+              <p>Potret penutupan acara yang menandai berakhirnya rangkaian kegiatan 11th Physics Summit.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">assets/docs/closing/closing-2.jpg</div>
+            <div class="doc-image">Closing Event</div>
             <div class="doc-body">
               <h4>Closing Event — Foto 2</h4>
-              <p>Isi file di folder <strong>assets/docs/closing/</strong> dengan nama <strong>closing-2.jpg</strong>.</p>
+              <p>Suasana hangat dan berkesan saat seluruh rangkaian acara ditutup secara resmi.</p>
             </div>
           </div>
         </div>
@@ -1421,17 +1350,17 @@
       <div class="doc-panel" id="panel-tenant">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">assets/docs/tenant-lab/tenant-1.jpg</div>
+            <div class="doc-image">Tenant Lab Peminatan Fisika</div>
             <div class="doc-body">
               <h4>Tenant Lab Peminatan Fisika — Foto 1</h4>
-              <p>Isi file di folder <strong>assets/docs/tenant-lab/</strong> dengan nama <strong>tenant-1.jpg</strong>.</p>
+              <p>Dokumentasi tenant yang memperkenalkan berbagai bidang peminatan dan aktivitas laboratorium fisika.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">assets/docs/tenant-lab/tenant-2.jpg</div>
+            <div class="doc-image">Tenant Lab Peminatan Fisika</div>
             <div class="doc-body">
               <h4>Tenant Lab Peminatan Fisika — Foto 2</h4>
-              <p>Isi file di folder <strong>assets/docs/tenant-lab/</strong> dengan nama <strong>tenant-2.jpg</strong>.</p>
+              <p>Potret interaksi peserta dengan tenant lab yang menambah pengalaman eksploratif selama acara.</p>
             </div>
           </div>
         </div>
@@ -1443,13 +1372,13 @@
 
       <div class="guide-box glass">
         <div>
-          <h3>Cek ketentuan lengkap pada guidebook</h3>
+          <h3>Panduan Resmi 11th Physics Summit</h3>
           <p>
-            Seluruh informasi teknis, aturan lomba, alur pendaftaran, dan ketentuan peserta akan tersedia pada guidebook resmi 11th Physics Summit.
+            Guidebook memuat informasi lengkap mengenai mekanisme pendaftaran, ketentuan peserta, alur kompetisi, jadwal kegiatan, serta berbagai informasi penting lain yang berkaitan dengan pelaksanaan 11th Physics Summit.
           </p>
         </div>
 
-        <button class="btn btn-primary">Link Guidebook Menyusul</button>
+        <button class="btn btn-primary">Akses Guidebook</button>
       </div>
     </section>
 
@@ -1516,149 +1445,12 @@
     </div>
   </footer>
 
-  <div class="modal" id="modalPSO">
-    <div class="modal-box">
-      <div class="modal-top">
-        <h3>Physics Summit Olympiad (PSO)</h3>
-        <button class="close-btn" onclick="closeModal('modalPSO')">✕</button>
-      </div>
-
-      <p>
-        Physics Summit Olympiad (PSO) merupakan kompetisi olimpiade fisika tingkat nasional yang diperuntukkan bagi siswa SMA/SMK sederajat di seluruh Indonesia.
-      </p>
-
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>Kategori Peserta</h4>
-          <ul>
-            <li>Siswa SMA/SMK sederajat</li>
-            <li>Tim atau individu</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Benefit</h4>
-          <ul>
-            <li>Sertifikat nasional</li>
-            <li>Hadiah uang pembinaan</li>
-            <li>Pengalaman kompetisi akademik tingkat nasional</li>
-            <li>Kesempatan memperluas jaringan akademik</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Biaya Pendaftaran</h4>
-          <ul>
-            <li>Rp 75.000 / tim</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Timeline Kompetisi</h4>
-          <ul>
-            <li>1 Mei – 20 Juni 2026 : Pendaftaran Peserta</li>
-            <li>5 Juli 2026 : Babak Penyisihan</li>
-            <li>20 Juli 2026 : Babak Semifinal</li>
-            <li>5 Agustus 2026 : Grand Final</li>
-          </ul>
-        </div>
-      </div>
-
-      <a class="wa-link" href="https://wa.me/6282334827208" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-        Contact Person PSO
-      </a>
-
-      <div class="modal-actions">
-        <a class="btn btn-primary link-btn" href="https://bit.ly/pendaftaran-pso" target="_blank">Pendaftaran PSO</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="modalPSEC">
-    <div class="modal-box">
-      <div class="modal-top">
-        <h3>Physics Summit Essay Competition (PSEC)</h3>
-        <button class="close-btn" onclick="closeModal('modalPSEC')">✕</button>
-      </div>
-
-      <p>
-        Physics Summit Essay Competition (PSEC) merupakan kompetisi esai ilmiah tingkat nasional yang terbuka bagi siswa SMA/SMK dan mahasiswa aktif dari seluruh Indonesia.
-      </p>
-
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>Kategori Peserta</h4>
-          <ul>
-            <li>Mahasiswa aktif</li>
-            <li>Siswa SMA/SMK sederajat</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Tahapan Kompetisi</h4>
-          <ul>
-            <li>Seleksi Abstrak / Essay</li>
-            <li>Babak Semifinal</li>
-            <li>Grand Final Presentation</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Benefit</h4>
-          <ul>
-            <li>Sertifikat nasional</li>
-            <li>Hadiah uang pembinaan</li>
-            <li>Publikasi karya ilmiah</li>
-            <li>Networking dengan peserta dari berbagai daerah</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Timeline</h4>
-          <ul>
-            <li>1 Mei – 25 Juni 2026 : Pendaftaran dan Pengumpulan Essay</li>
-            <li>10 Juli 2026 : Pengumuman Semifinalis</li>
-            <li>25 Juli 2026 : Presentasi Semifinal</li>
-            <li>5 Agustus 2026 : Grand Final</li>
-          </ul>
-        </div>
-      </div>
-
-      <p style="margin-top:16px; font-weight:700; color:var(--maastricht);">Biaya Pendaftaran: Rp 50.000 / tim</p>
-
-      <a class="wa-link" href="https://wa.me/6281977966611" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-        Contact Person PSEC
-      </a>
-
-      <div class="modal-actions">
-        <a class="btn btn-primary link-btn" href="https://bit.ly/pendaftaran-psec" target="_blank">Pendaftaran PSEC</a>
-      </div>
-    </div>
-  </div>
-
   <script>
     window.addEventListener("load", function(){
       const preloader = document.getElementById("preloader");
       setTimeout(() => {
         preloader.classList.add("hide");
       }, 1200);
-    });
-
-    function openModal(id){
-      document.getElementById(id).style.display = "flex";
-    }
-
-    function closeModal(id){
-      document.getElementById(id).style.display = "none";
-    }
-
-    window.addEventListener("click", function(e){
-      const pso = document.getElementById("modalPSO");
-      const psec = document.getElementById("modalPSEC");
-      if(e.target === pso){ pso.style.display = "none"; }
-      if(e.target === psec){ psec.style.display = "none"; }
     });
 
     const sections = document.querySelectorAll(".fade-section");
@@ -1682,12 +1474,10 @@
 
       btn.addEventListener("click", () => {
         const isActive = item.classList.contains("active");
-
         accItems.forEach(i => {
           i.classList.remove("active");
           i.querySelector(".acc-content").style.maxHeight = null;
         });
-
         if(!isActive){
           item.classList.add("active");
           content.style.maxHeight = content.scrollHeight + "px";
