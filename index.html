@@ -266,6 +266,13 @@
       box-shadow:var(--shadow);
     }
 
+    .link-btn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
     .hero-right{
       display:flex;
       justify-content:center;
@@ -627,6 +634,12 @@
       font-weight:700;
     }
 
+    .card-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
     .modal{
       position:fixed;
       inset:0;
@@ -720,6 +733,13 @@
     .wa-link img{
       width:22px;
       height:22px;
+    }
+
+    .modal-actions{
+      margin-top:14px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     .guide-box{
@@ -821,13 +841,18 @@
 
     .fade-section{
       opacity:0;
-      transform:translateY(40px);
-      transition:all .9s ease;
+      transform:translateY(40px) scale(.98);
+      transition:all .8s ease;
     }
 
     .fade-section.show{
       opacity:1;
-      transform:translateY(0);
+      transform:translateY(0) scale(1);
+    }
+
+    .fade-section.hide{
+      opacity:.15;
+      transform:translateY(20px) scale(.98);
     }
 
     .reveal-up{
@@ -1126,7 +1151,10 @@
             <div class="tag">Tim / Individu</div>
           </div>
 
-          <button class="btn btn-primary" onclick="openModal('modalPSO')">Lihat Detail PSO</button>
+          <div class="card-actions">
+            <button class="btn btn-primary" onclick="openModal('modalPSO')">Lihat Detail PSO</button>
+            <a class="btn btn-secondary link-btn" href="https://bit.ly/pendaftaran-pso" target="_blank">Daftar PSO</a>
+          </div>
         </div>
 
         <div class="comp-card">
@@ -1141,7 +1169,10 @@
             <div class="tag">SMA / Mahasiswa</div>
           </div>
 
-          <button class="btn btn-primary" onclick="openModal('modalPSEC')">Lihat Detail PSEC</button>
+          <div class="card-actions">
+            <button class="btn btn-primary" onclick="openModal('modalPSEC')">Lihat Detail PSEC</button>
+            <a class="btn btn-secondary link-btn" href="https://bit.ly/pendaftaran-psec" target="_blank">Daftar PSEC</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1216,11 +1247,12 @@
       </div>
 
       <div>
-        <h4>Contact Person</h4>
+        <h4>Contact & Info</h4>
         <p>PSO — Rozan</p>
         <p>PSEC — Sandy</p>
         <p>Sponsor — 628402010929</p>
         <p>Media Partner — 6239393920</p>
+        <a href="https://instagram.com/physicssummit" target="_blank">Instagram — @physicssummit</a>
       </div>
     </div>
   </footer>
@@ -1277,6 +1309,10 @@
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
         Contact Person PSO — Rozan
       </a>
+
+      <div class="modal-actions">
+        <a class="btn btn-primary link-btn" href="https://bit.ly/pendaftaran-pso" target="_blank">Pendaftaran PSO</a>
+      </div>
     </div>
   </div>
 
@@ -1336,6 +1372,10 @@
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
         Contact Person PSEC — Sandy
       </a>
+
+      <div class="modal-actions">
+        <a class="btn btn-primary link-btn" href="https://bit.ly/pendaftaran-psec" target="_blank">Pendaftaran PSEC</a>
+      </div>
     </div>
   </div>
 
@@ -1355,15 +1395,21 @@
       if(e.target === psec){ psec.style.display = "none"; }
     });
 
+    const sections = document.querySelectorAll(".fade-section");
+
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           entry.target.classList.add("show");
+          entry.target.classList.remove("hide");
+        } else {
+          entry.target.classList.remove("show");
+          entry.target.classList.add("hide");
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.18 });
 
-    document.querySelectorAll(".fade-section").forEach((el)=>{
+    sections.forEach((el)=>{
       observer.observe(el);
     });
   </script>
