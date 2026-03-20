@@ -22,8 +22,8 @@
       --text:#102845;
       --muted:#55708c;
       --white:#ffffff;
-      --card-bg:rgba(255,255,255,.78);
-      --card-border:rgba(255,255,255,.72);
+      --card-bg:rgba(255,255,255,.80);
+      --card-border:rgba(255,255,255,.76);
       --shadow:0 20px 45px rgba(3,33,61,.12);
       --radius:28px;
     }
@@ -207,6 +207,7 @@
       margin:0 auto;
     }
 
+    /* PRELOADER */
     #preloader{
       position:fixed;
       inset:0;
@@ -311,6 +312,7 @@
       to{rotate:360deg}
     }
 
+    /* NAVBAR */
     header{
       position:fixed;
       top:14px;
@@ -417,6 +419,7 @@
       border-radius:var(--radius);
     }
 
+    /* HERO */
     .hero{
       min-height:100vh;
       display:grid;
@@ -603,6 +606,7 @@
       to{transform:rotate(302deg)}
     }
 
+    /* CONTENT */
     .about-box{
       padding:34px;
     }
@@ -811,6 +815,7 @@
       flex-wrap:wrap;
     }
 
+    /* DOCS */
     .doc-section{
       padding-top:40px;
     }
@@ -877,17 +882,21 @@
     }
 
     .doc-image{
-      height:240px;
+      height:280px;
       background:
-        linear-gradient(135deg, rgba(3,33,61,.45), rgba(16,106,148,.25)),
+        linear-gradient(135deg, rgba(3,33,61,.22), rgba(16,106,148,.16)),
         linear-gradient(135deg, #dbe6f0, #eef5fb);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:#f8fcff;
-      font-weight:700;
-      text-align:center;
-      padding:16px;
+      overflow:hidden;
+    }
+
+    .doc-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
     .doc-body{
@@ -906,6 +915,7 @@
       line-height:1.8;
     }
 
+    /* GUIDEBOOK */
     .guide-box{
       margin-top:20px;
       padding:28px;
@@ -927,14 +937,67 @@
       line-height:1.8;
     }
 
-    .looking-grid{
+    /* MEDPART LOGOS */
+    .partner-logo-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .partner-logo-card{
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      min-height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      transition:.25s;
+    }
+
+    .partner-logo-card:hover{
+      transform:translateY(-4px);
+    }
+
+    .partner-logo-card img{
+      max-width:100%;
+      max-height:72px;
+      object-fit:contain;
+      display:block;
+      filter:drop-shadow(0 6px 10px rgba(3,33,61,.08));
+    }
+
+    /* SPONSOR PLACEHOLDER */
+    .sponsor-empty{
+      margin-top:22px;
+      padding:34px;
+      text-align:center;
+    }
+
+    .sponsor-empty h3{
+      margin:0 0 10px;
+      font-size:28px;
+      color:var(--maastricht);
+    }
+
+    .sponsor-empty p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    /* COOPERATION */
+    .coop-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
-      margin-top:20px;
+      margin-top:22px;
     }
 
-    .looking-card{
+    .coop-card{
       background:var(--card-bg);
       border:1px solid var(--card-border);
       border-top:5px solid var(--mulberry);
@@ -945,17 +1008,17 @@
       transition:.3s;
     }
 
-    .looking-card:hover{
+    .coop-card:hover{
       transform:translateY(-5px);
     }
 
-    .looking-card h3{
+    .coop-card h3{
       margin:0 0 12px;
       color:var(--maastricht);
       font-size:30px;
     }
 
-    .looking-card p{
+    .coop-card p{
       margin:0 0 18px;
       color:var(--muted);
       line-height:1.8;
@@ -980,6 +1043,7 @@
       height:22px;
     }
 
+    /* MODAL */
     .modal{
       position:fixed;
       inset:0;
@@ -1066,6 +1130,7 @@
       flex-wrap:wrap;
     }
 
+    /* FOOTER */
     footer{
       margin-top:56px;
       background:linear-gradient(90deg,var(--maastricht) 0%, var(--metallic) 32%, var(--sea) 67%, var(--cornflower) 100%);
@@ -1112,6 +1177,7 @@
       display:block;
     }
 
+    /* SCROLL */
     .fade-section{
       opacity:0;
       transform:translateY(40px) scale(.98);
@@ -1143,9 +1209,13 @@
       .detail-grid,
       .guide-box,
       .footer-grid,
-      .looking-grid,
+      .coop-grid,
       .docs-grid{
         grid-template-columns:1fr;
+      }
+
+      .partner-logo-grid{
+        grid-template-columns:repeat(2,1fr);
       }
 
       .comp-card{
@@ -1221,6 +1291,10 @@
       .acc-btn span{
         font-size:20px;
       }
+
+      .partner-logo-grid{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
@@ -1259,7 +1333,7 @@
   <header>
     <div class="nav-wrap container">
       <div class="brand">
-        <img src="assets/logo.png" alt="Logo Physics Summit">
+        <img src="assets/logo physics summit.png" alt="Logo Physics Summit">
         <div class="brand-text">
           <strong>11th Physics Summit</strong>
           <span>Department of Physics ITS</span>
@@ -1295,7 +1369,7 @@
             <div class="atom-ring ring-2"><span class="atom-electron"></span></div>
             <div class="atom-ring ring-3"><span class="atom-electron"></span></div>
           </div>
-          <img src="assets/logo.png" alt="Logo Physics Summit" class="hero-logo">
+          <img src="assets/logo physics summit.png" alt="Logo Physics Summit" class="hero-logo">
         </div>
       </div>
     </section>
@@ -1304,10 +1378,10 @@
       <h2 class="section-title">About Physics Summit</h2>
       <div class="glass about-box">
         <p class="section-desc">
-          Physics Summit adalah acara yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa Fisika ITS (HIMASIKA ITS). Sejak didirikan pada tahun 1965, Departemen Fisika ITS telah banyak menorehkan prestasi dan memberikan kontribusi dalam pengembangan ilmu pengetahuan.
+          Physics Summit merupakan rangkaian kegiatan akademik yang diselenggarakan oleh Departemen Fisika Institut Teknologi Sepuluh Nopember (ITS) melalui Himpunan Mahasiswa Fisika ITS (HIMASIKA ITS). Acara ini hadir sebagai wadah untuk mengembangkan potensi, memperluas wawasan, serta menumbuhkan semangat kompetitif dan inovatif bagi generasi muda dalam bidang fisika.
         </p>
         <p class="section-desc">
-          Physics Summit hadir sebagai wadah untuk mengekspansi kebermanfaatan dalam bidang akademik sekaligus memperluas citra baik Departemen Fisika ITS. Acara ini menggabungkan kegiatan akademik dan manajerial yang bertujuan untuk mengembangkan kemampuan peserta serta memberikan dampak positif bagi masyarakat luas.
+          Melalui berbagai rangkaian kegiatan yang inspiratif dan kompetitif, Physics Summit diharapkan dapat menjadi ruang bertumbuh bagi peserta untuk mengasah kemampuan, membangun pengalaman, serta mendorong lahirnya semangat eksplorasi ilmiah yang lebih luas.
         </p>
       </div>
     </section>
@@ -1324,21 +1398,21 @@
         <div class="theme-card">
           <h4>Atomic</h4>
           <p>
-            Dalam ilmu fisika, atom merupakan dasar penyusun materi dan menjadi awal dari berbagai pemahaman tentang struktur alam semesta. Atomic melambangkan fondasi ilmu pengetahuan, ketelitian, serta semangat untuk memahami hal-hal mendasar yang membentuk dunia.
+            Dalam ilmu fisika, atom merupakan dasar penyusun materi dan menjadi fondasi dari berbagai pemahaman tentang alam semesta. Atomic melambangkan hal-hal mendasar, ketelitian, serta semangat untuk memahami inti dari ilmu pengetahuan.
           </p>
         </div>
 
         <div class="theme-card">
           <h4>Horizon</h4>
           <p>
-            Horizon berarti cakrawala atau batas pandang yang terus terbuka semakin jauh. Kata ini menggambarkan kesempatan untuk melihat kemungkinan baru, memperluas wawasan, dan melangkah menuju pemahaman yang lebih luas dalam ilmu pengetahuan.
+            Horizon melambangkan cakrawala baru yang terus terbuka. Kata ini menggambarkan kesempatan untuk memperluas wawasan, melihat kemungkinan baru, dan melangkah menuju pemahaman yang lebih jauh.
           </p>
         </div>
 
         <div class="theme-card">
           <h4>Expanding the Frontiers of Physics</h4>
           <p>
-            Frasa ini bermakna dorongan untuk terus memperluas batas-batas pemahaman dalam fisika. Melalui tema ini, Physics Summit diharapkan menjadi wadah yang menginspirasi lahirnya eksplorasi ilmiah, pemikiran baru, dan perkembangan pengetahuan yang membawa dampak lebih luas.
+            Frasa ini bermakna dorongan untuk terus memperluas batas-batas pemahaman dalam fisika. Melalui tema ini, Physics Summit diharapkan menjadi wadah yang menginspirasi lahirnya eksplorasi ilmiah, ide baru, dan perkembangan pengetahuan yang berdampak luas.
           </p>
         </div>
       </div>
@@ -1347,7 +1421,7 @@
     <section id="timeline" class="fade-section">
       <h2 class="section-title">Perjalanan Physics Summit</h2>
       <p class="journey-intro">
-        Physics Summit bukan hanya sekadar rangkaian kompetisi, tetapi juga perjalanan panjang yang dibangun oleh semangat, dedikasi, dan keinginan untuk terus menghadirkan ruang berkembang bagi generasi muda.
+        Physics Summit bukan hanya sebuah kompetisi, tetapi juga perjalanan panjang yang dibangun oleh semangat, dedikasi, dan komitmen untuk terus menghadirkan ruang berkembang bagi generasi muda.
       </p>
 
       <div class="accordion">
@@ -1418,7 +1492,7 @@
         <div>
           <h2 class="section-title" style="text-align:left; margin-bottom:10px;">Competition</h2>
           <p>
-            11th Physics Summit menghadirkan dua kompetisi utama yang dirancang untuk mengasah kemampuan akademik, kreativitas, dan daya saing peserta.
+            11th Physics Summit menghadirkan dua kompetisi utama yang dirancang untuk mengasah kemampuan akademik, kreativitas, dan daya saing peserta dari berbagai jenjang.
           </p>
         </div>
       </div>
@@ -1465,51 +1539,33 @@
     <section id="documentation" class="fade-section doc-section">
       <h2 class="section-title">Dokumentasi Keseruan Tahun Lalu</h2>
       <p class="section-desc">
-        Rangkaian dokumentasi ini menampilkan berbagai momen berkesan dari pelaksanaan Physics Summit, mulai dari pembukaan acara hingga penutupan.
+        Dokumentasi ini menampilkan beberapa momen berkesan dari pelaksanaan Physics Summit, mulai dari suasana final kompetisi hingga awarding session.
       </p>
 
       <div class="doc-tabs">
-        <button class="doc-tab active" data-tab="opening">Opening Event</button>
-        <button class="doc-tab" data-tab="pso">Final PSO</button>
+        <button class="doc-tab active" data-tab="pso">Final PSO</button>
         <button class="doc-tab" data-tab="psec">Final PSEC</button>
         <button class="doc-tab" data-tab="awarding">Awarding</button>
-        <button class="doc-tab" data-tab="closing">Closing Event</button>
-        <button class="doc-tab" data-tab="tenant">Tenant Lab Peminatan Fisika</button>
       </div>
 
-      <div class="doc-panel active" id="panel-opening">
+      <div class="doc-panel active" id="panel-pso">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">Opening Event</div>
-            <div class="doc-body">
-              <h4>Opening Event — Foto 1</h4>
-              <p>Potret suasana pembukaan acara yang menandai dimulainya rangkaian 11th Physics Summit.</p>
+            <div class="doc-image">
+              <img src="Final PSO.JPG" alt="Final PSO 1">
             </div>
-          </div>
-          <div class="doc-card">
-            <div class="doc-image">Opening Event</div>
-            <div class="doc-body">
-              <h4>Opening Event — Foto 2</h4>
-              <p>Momen kebersamaan dan antusiasme peserta saat opening event berlangsung.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="doc-panel" id="panel-pso">
-        <div class="docs-grid">
-          <div class="doc-card">
-            <div class="doc-image">Final PSO</div>
             <div class="doc-body">
               <h4>Final PSO — Foto 1</h4>
-              <p>Dokumentasi suasana babak final Physics Summit Olympiad yang penuh semangat kompetitif.</p>
+              <p>Suasana babak final Physics Summit Olympiad yang memperlihatkan semangat kompetitif dan fokus peserta.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">Final PSO</div>
+            <div class="doc-image">
+              <img src="Final PSO 1.JPG" alt="Final PSO 2">
+            </div>
             <div class="doc-body">
               <h4>Final PSO — Foto 2</h4>
-              <p>Momen peserta menunjukkan kemampuan terbaiknya pada tahap final PSO.</p>
+              <p>Momen peserta menunjukkan kemampuan terbaiknya dalam menyelesaikan tantangan pada tahap final.</p>
             </div>
           </div>
         </div>
@@ -1518,17 +1574,21 @@
       <div class="doc-panel" id="panel-psec">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">Final PSEC</div>
+            <div class="doc-image">
+              <img src="Final PSEC 1.jpg" alt="Final PSEC 1">
+            </div>
             <div class="doc-body">
               <h4>Final PSEC — Foto 1</h4>
               <p>Potret presentasi dan penyampaian gagasan terbaik dari finalis Physics Summit Essay Competition.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">Final PSEC</div>
+            <div class="doc-image">
+              <img src="Final PSEC Juri.jpg" alt="Final PSEC 2">
+            </div>
             <div class="doc-body">
               <h4>Final PSEC — Foto 2</h4>
-              <p>Suasana final PSEC yang memperlihatkan kreativitas, inovasi, dan kualitas pemikiran peserta.</p>
+              <p>Suasana penilaian dan interaksi ilmiah yang memperlihatkan kualitas gagasan peserta pada tahap final.</p>
             </div>
           </div>
         </div>
@@ -1537,55 +1597,21 @@
       <div class="doc-panel" id="panel-awarding">
         <div class="docs-grid">
           <div class="doc-card">
-            <div class="doc-image">Awarding</div>
+            <div class="doc-image">
+              <img src="EWARDING.jpg" alt="Awarding 1">
+            </div>
             <div class="doc-body">
               <h4>Awarding — Foto 1</h4>
-              <p>Momen apresiasi bagi para pemenang sebagai bentuk penghargaan atas prestasi yang diraih.</p>
+              <p>Momen apresiasi bagi para pemenang sebagai bentuk penghargaan atas usaha dan prestasi yang diraih.</p>
             </div>
           </div>
           <div class="doc-card">
-            <div class="doc-image">Awarding</div>
+            <div class="doc-image">
+              <img src="EWARDING 2.jpg" alt="Awarding 2">
+            </div>
             <div class="doc-body">
               <h4>Awarding — Foto 2</h4>
-              <p>Dokumentasi suasana awarding yang menjadi salah satu puncak acara Physics Summit.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="doc-panel" id="panel-closing">
-        <div class="docs-grid">
-          <div class="doc-card">
-            <div class="doc-image">Closing Event</div>
-            <div class="doc-body">
-              <h4>Closing Event — Foto 1</h4>
-              <p>Potret penutupan acara yang menandai berakhirnya rangkaian kegiatan 11th Physics Summit.</p>
-            </div>
-          </div>
-          <div class="doc-card">
-            <div class="doc-image">Closing Event</div>
-            <div class="doc-body">
-              <h4>Closing Event — Foto 2</h4>
-              <p>Suasana hangat dan berkesan saat seluruh rangkaian acara ditutup secara resmi.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="doc-panel" id="panel-tenant">
-        <div class="docs-grid">
-          <div class="doc-card">
-            <div class="doc-image">Tenant Lab Peminatan Fisika</div>
-            <div class="doc-body">
-              <h4>Tenant Lab Peminatan Fisika — Foto 1</h4>
-              <p>Dokumentasi tenant yang memperkenalkan berbagai bidang peminatan dan aktivitas laboratorium fisika.</p>
-            </div>
-          </div>
-          <div class="doc-card">
-            <div class="doc-image">Tenant Lab Peminatan Fisika</div>
-            <div class="doc-body">
-              <h4>Tenant Lab Peminatan Fisika — Foto 2</h4>
-              <p>Potret interaksi peserta dengan tenant lab yang menambah pengalaman eksploratif selama acara.</p>
+              <p>Dokumentasi suasana awarding yang menjadi salah satu puncak paling berkesan dalam rangkaian acara.</p>
             </div>
           </div>
         </div>
@@ -1607,27 +1633,68 @@
       </div>
     </section>
 
-    <section id="partner" class="fade-section">
-      <div class="looking-grid">
-        <div class="looking-card">
-          <h3>LOOKING FOR SPONSOR</h3>
-          <p>
-            Tertarik menjadi sponsor 11th Physics Summit? Mari berkolaborasi dan dukung lahirnya generasi muda berprestasi dalam bidang sains dan inovasi.
-          </p>
-          <a class="wa-link" href="https://wa.me/628402010929" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-            Hubungi Sponsor
-          </a>
-        </div>
+    <section id="media-partner" class="fade-section">
+      <h2 class="section-title">Media Partner</h2>
+      <p class="section-desc">
+        11th Physics Summit didukung oleh berbagai media partner yang turut membantu menyebarluaskan semangat kompetisi, prestasi, dan pengembangan ilmu pengetahuan kepada audiens yang lebih luas.
+      </p>
 
-        <div class="looking-card">
-          <h3>LOOKING FOR MEDIA PARTNER</h3>
+      <div class="partner-logo-grid">
+        <div class="partner-logo-card"><img src="assets/Ikut Event Transparent.png" alt="Ikut Event"></div>
+        <div class="partner-logo-card"><img src="assets/LOGO UMM ESPORTS.png" alt="UMM Esports"></div>
+        <div class="partner-logo-card"><img src="assets/Logo Brawijaya Esports.png" alt="Brawijaya Esports"></div>
+        <div class="partner-logo-card"><img src="assets/Logo EventSurabaya.png" alt="Event Surabaya"></div>
+
+        <div class="partner-logo-card"><img src="assets/Logo Eventjatimraya.png" alt="Event Jatim Raya"></div>
+        <div class="partner-logo-card"><img src="assets/Logo UKM UNAIR Esports.png" alt="UKM UNAIR Esports"></div>
+        <div class="partner-logo-card"><img src="assets/Logo UM Esport.png" alt="UM Esport"></div>
+        <div class="partner-logo-card"><img src="assets/Official Logo EJT.png" alt="Official Logo EJT"></div>
+
+        <div class="partner-logo-card"><img src="assets/Ubhara.JPG" alt="Ubhara"></div>
+        <div class="partner-logo-card"><img src="assets/event game sby.jpg" alt="Event Game SBY"></div>
+        <div class="partner-logo-card"><img src="assets/logo eventmahasiswa8.png" alt="Event Mahasiswa"></div>
+        <div class="partner-logo-card"><img src="assets/logo media event.png" alt="Media Event"></div>
+
+        <div class="partner-logo-card"><img src="assets/ubayaesport_logo.png" alt="Ubaya Esport"></div>
+      </div>
+    </section>
+
+    <section id="sponsor" class="fade-section">
+      <h2 class="section-title">Sponsor</h2>
+      <div class="glass sponsor-empty">
+        <h3>Ruang Sponsor</h3>
+        <p>
+          Logo sponsor akan ditampilkan pada section ini setelah kerja sama sponsor dikonfirmasi.
+        </p>
+      </div>
+    </section>
+
+    <section id="cooperation" class="fade-section">
+      <h2 class="section-title">Kerja Sama</h2>
+      <p class="section-desc">
+        Physics Summit membuka peluang kolaborasi melalui sponsorship dan media partnership untuk mendukung penyelenggaraan acara yang lebih luas dan berdampak.
+      </p>
+
+      <div class="coop-grid">
+        <div class="coop-card">
+          <h3>Media Partner</h3>
           <p>
-            Tertarik menjadi media partner 11th Physics Summit? Mari bantu sebarkan semangat kompetisi, prestasi, dan inovasi kepada audiens yang lebih luas.
+            Tertarik menjadi media partner 11th Physics Summit? Mari bantu sebarkan semangat kompetisi, prestasi, dan pengembangan ilmu pengetahuan kepada audiens yang lebih luas.
           </p>
           <a class="wa-link" href="https://wa.me/6239393920" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
             Hubungi Media Partner
+          </a>
+        </div>
+
+        <div class="coop-card">
+          <h3>Sponsor</h3>
+          <p>
+            Tertarik menjadi sponsor 11th Physics Summit? Mari berkolaborasi untuk mendukung lahirnya generasi muda berprestasi dalam bidang sains, inovasi, dan kompetisi akademik.
+          </p>
+          <a class="wa-link" href="https://wa.me/628402010929" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            Hubungi Sponsor
           </a>
         </div>
       </div>
@@ -1638,7 +1705,7 @@
     <div class="container footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="assets/logo.png" alt="Logo Physics Summit">
+          <img src="assets/logo2 physics summit.png" alt="Logo Physics Summit">
           <div>
             <h4 style="margin:0;">11th Physics Summit</h4>
             <p style="margin:4px 0 0;">Atomic Horizon</p>
