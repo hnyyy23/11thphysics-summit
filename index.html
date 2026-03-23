@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1Physics Summit</title>
+  <title>Physics Summit</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2540,76 +2540,11 @@ p,
     </div>
   </div>
 
-  <script>
-    const GUIDEBOOK_LINK = "#";
-    const PSEC_REGISTER_LINK = "#";
-    const PSO_REGISTER_LINK = "#";
-    const OPENHOUSE_RSVP_LINK = "#";
-
-    const contacts = {
-      psec: {
-        pic: "Ika",
-        phone: "6281362192288",
-        type: "competition",
-        label: "Ika (CP PSEC)",
-        intro: "Saya ingin bertanya terkait PSEC."
-      },
-      pso: {
-        pic: "Icha",
-        phone: "6281362192288",
-        type: "competition",
-        label: "Icha (CP PSO)",
-        intro: "Saya ingin bertanya terkait PSO."
-      },
-      openhouse: {
-        pic: "CP Open House",
-        phone: "6281362192288",
-        type: "public",
-        label: "CP Open House",
-        intro: "Saya ingin bertanya terkait Open House Physics Summit dan RSVP."
-      },
-      sponsor: {
-        pic: "Ilyas",
-        phone: "6281362192288",
-        type: "partnership",
-        label: "Ilyas (Sponsor)",
-        intro: "Saya ingin menghubungi terkait kerja sama sponsor Physics Summit."
-      },
-      medpart: {
-        pic: "Rendy",
-        phone: "6281362192288",
-        type: "partnership",
-        label: "Rendy (Media Partner)",
-        intro: "Saya ingin menghubungi terkait kerja sama media partner Physics Summit."
-      }
-    };
-
-    const journeyContent = {
-      "2011": {
-        title: "2011 · Awal Mula Physics Summit",
-        text: "Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS."
-      },
-      "2014": {
-        title: "2014 · Berganti Nama, Membawa Identitas Baru",
-        text: "Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif."
-      },
-      "2018": {
-        title: "2018 · Penetapan Dirut Physics Summit",
-        text: "Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur dan arah penyelenggaraan acara."
-      },
-      "2020": {
-        title: "2020 · Vakum karena Pandemi Covid-19",
-        text: "Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga."
-      },
-      "2024": {
-        title: "2024 · Kembali Hadir dengan Semangat Baru",
-        text: "Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda."
-      },
-      "2026": {
-        title: "2026 · 11th Physics Summit",
-        text: "Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda."
-      }
-    };
+<script>
+  const GUIDEBOOK_LINK = "#";
+  const PSEC_REGISTER_LINK = "#";
+  const PSO_REGISTER_LINK = "#";
+  const OPENHOUSE_RSVP_LINK = "#";
 
   const PRELOADER_MIN_TIME = 2000;
   const preloaderStart = Date.now();
@@ -2632,170 +2567,235 @@ p,
 
   window.addEventListener("load", hidePreloaderWithMinimumTime);
 
-    const guidebookIds = [
-      "navGuidebook",
-      "mobileGuidebook",
-      "footerGuidebook",
-      "footerGuidebookTop",
-      "modalPsecGuidebook",
-      "modalPsoGuidebook"
-    ];
+  const contacts = {
+    psec: {
+      pic: "Ika",
+      phone: "6281362192288",
+      type: "competition",
+      label: "Ika (CP PSEC)",
+      intro: "Saya ingin bertanya terkait PSEC."
+    },
+    pso: {
+      pic: "Icha",
+      phone: "6281362192288",
+      type: "competition",
+      label: "Icha (CP PSO)",
+      intro: "Saya ingin bertanya terkait PSO."
+    },
+    openhouse: {
+      pic: "CP Open House",
+      phone: "6281362192288",
+      type: "public",
+      label: "CP Open House",
+      intro: "Saya ingin bertanya terkait Open House Physics Summit dan RSVP."
+    },
+    sponsor: {
+      pic: "Ilyas",
+      phone: "6281362192288",
+      type: "partnership",
+      label: "Ilyas (Sponsor)",
+      intro: "Saya ingin menghubungi terkait kerja sama sponsor Physics Summit."
+    },
+    medpart: {
+      pic: "Rendy",
+      phone: "6281362192288",
+      type: "partnership",
+      label: "Rendy (Media Partner)",
+      intro: "Saya ingin menghubungi terkait kerja sama media partner Physics Summit."
+    }
+  };
 
-    guidebookIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = GUIDEBOOK_LINK;
+  const journeyContent = {
+    "2011": {
+      title: "2011 · Awal Mula Physics Summit",
+      text: "Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS."
+    },
+    "2014": {
+      title: "2014 · Berganti Nama, Membawa Identitas Baru",
+      text: "Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif."
+    },
+    "2018": {
+      title: "2018 · Penetapan Dirut Physics Summit",
+      text: "Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur dan arah penyelenggaraan acara."
+    },
+    "2020": {
+      title: "2020 · Vakum karena Pandemi Covid-19",
+      text: "Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga."
+    },
+    "2024": {
+      title: "2024 · Kembali Hadir dengan Semangat Baru",
+      text: "Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda."
+    },
+    "2026": {
+      title: "2026 · 11th Physics Summit",
+      text: "Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda."
+    }
+  };
+
+  const guidebookIds = [
+    "navGuidebook",
+    "mobileGuidebook",
+    "footerGuidebook",
+    "footerGuidebookTop",
+    "modalPsecGuidebook",
+    "modalPsoGuidebook"
+  ];
+
+  guidebookIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = GUIDEBOOK_LINK;
+  });
+
+  ["psecRegisterBtn", "modalPsecRegister"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = PSEC_REGISTER_LINK;
+  });
+
+  ["psoRegisterBtn", "modalPsoRegister"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = PSO_REGISTER_LINK;
+  });
+
+  const openhouseRsvpBtn = document.getElementById("openhouseRsvpBtn");
+  if (openhouseRsvpBtn) openhouseRsvpBtn.href = OPENHOUSE_RSVP_LINK;
+
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+
+  function applyTheme(theme){
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem("physics-theme", theme);
+  }
+
+  const savedTheme = localStorage.getItem("physics-theme");
+  if (savedTheme) applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
     });
+  }
 
-    ["psecRegisterBtn", "modalPsecRegister"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = PSEC_REGISTER_LINK;
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
     });
+  }
 
-    ["psoRegisterBtn", "modalPsoRegister"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = PSO_REGISTER_LINK;
-    });
+  const body = document.body;
+  const navBubble = document.getElementById("navBubble");
+  const mobileDrawer = document.getElementById("mobileDrawer");
 
-    const openhouseRsvpBtn = document.getElementById("openhouseRsvpBtn");
-    if (openhouseRsvpBtn) openhouseRsvpBtn.href = OPENHOUSE_RSVP_LINK;
+  function isMobile(){
+    return window.innerWidth <= 920;
+  }
 
-    const root = document.documentElement;
-    const themeToggle = document.getElementById("themeToggle");
-    const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+  function closeDrawer(){
+    if (mobileDrawer) mobileDrawer.classList.remove("open");
+    body.style.overflow = "";
+  }
 
-    function applyTheme(theme){
-      root.setAttribute("data-theme", theme);
-      localStorage.setItem("physics-theme", theme);
-    }
+  function openDrawer(){
+    if (mobileDrawer) mobileDrawer.classList.add("open");
+    body.style.overflow = "hidden";
+  }
 
-    const savedTheme = localStorage.getItem("physics-theme");
-    if (savedTheme) applyTheme(savedTheme);
-
-    if (themeToggle) {
-      themeToggle.addEventListener("click", () => {
-        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        applyTheme(next);
-      });
-    }
-
-    if (mobileThemeToggle) {
-      mobileThemeToggle.addEventListener("click", () => {
-        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        applyTheme(next);
-      });
-    }
-
-    const body = document.body;
-    const navBubble = document.getElementById("navBubble");
-    const mobileDrawer = document.getElementById("mobileDrawer");
-
-    function isMobile(){
-      return window.innerWidth <= 920;
-    }
-
-    function closeDrawer(){
-      if (mobileDrawer) mobileDrawer.classList.remove("open");
-      body.style.overflow = "";
-    }
-
-    function openDrawer(){
-      if (mobileDrawer) mobileDrawer.classList.add("open");
-      body.style.overflow = "hidden";
-    }
-
-    if (navBubble) {
-      navBubble.addEventListener("click", () => {
-        if (isMobile()) {
-          if (mobileDrawer.classList.contains("open")) {
-            closeDrawer();
-          } else {
-            openDrawer();
-          }
+  if (navBubble) {
+    navBubble.addEventListener("click", () => {
+      if (isMobile()) {
+        if (mobileDrawer.classList.contains("open")) {
+          closeDrawer();
         } else {
-          body.classList.toggle("nav-hidden");
+          openDrawer();
         }
-      });
-    }
-
-    document.querySelectorAll(".mobile-drawer a").forEach(link => {
-      link.addEventListener("click", closeDrawer);
-    });
-
-    window.addEventListener("resize", () => {
-      if (!isMobile()) closeDrawer();
-    });
-
-    const yearNodes = document.querySelectorAll(".year-node");
-    const journeyDetail = document.getElementById("journeyDetail");
-
-    yearNodes.forEach(node => {
-      node.addEventListener("click", () => {
-        const year = node.dataset.year;
-        const item = journeyContent[year];
-
-        yearNodes.forEach(n => n.classList.remove("active"));
-        node.classList.add("active");
-
-        journeyDetail.innerHTML = `
-          <h3>${item.title}</h3>
-          <p>${item.text}</p>
-        `;
-      });
-    });
-
-    function openDetailModal(id){
-      document.getElementById(id).style.display = "flex";
-      body.style.overflow = "hidden";
-      closeDrawer();
-    }
-
-    function closeDetailModal(id){
-      document.getElementById(id).style.display = "none";
-      body.style.overflow = "";
-    }
-
-    const waModal = document.getElementById("waModal");
-    const waForm = document.getElementById("waForm");
-    const waName = document.getElementById("waName");
-    const waOrigin = document.getElementById("waOrigin");
-    const waTarget = document.getElementById("waTarget");
-    const waMessage = document.getElementById("waMessage");
-    const originLabel = document.getElementById("originLabel");
-
-    let activeContact = null;
-
-    function openWaModal(key){
-      activeContact = contacts[key];
-      waForm.reset();
-      waTarget.value = activeContact.label;
-
-      if (activeContact.type === "competition" || activeContact.type === "public") {
-        originLabel.textContent = "Asal Sekolah/Kampus/Lembaga";
-        waOrigin.placeholder = "Contoh: ITS / SMA Negeri 1 Surabaya / Komunitas";
       } else {
-        originLabel.textContent = "Asal Lembaga";
-        waOrigin.placeholder = "Contoh: Nama perusahaan / media / instansi";
+        body.classList.toggle("nav-hidden");
       }
+    });
+  }
 
-      waModal.style.display = "flex";
-      body.style.overflow = "hidden";
-      closeDrawer();
+  document.querySelectorAll(".mobile-drawer a").forEach(link => {
+    link.addEventListener("click", closeDrawer);
+  });
+
+  window.addEventListener("resize", () => {
+    if (!isMobile()) closeDrawer();
+  });
+
+  const yearNodes = document.querySelectorAll(".year-node");
+  const journeyDetail = document.getElementById("journeyDetail");
+
+  yearNodes.forEach(node => {
+    node.addEventListener("click", () => {
+      const year = node.dataset.year;
+      const item = journeyContent[year];
+
+      yearNodes.forEach(n => n.classList.remove("active"));
+      node.classList.add("active");
+
+      journeyDetail.innerHTML = `
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      `;
+    });
+  });
+
+  function openDetailModal(id){
+    document.getElementById(id).style.display = "flex";
+    body.style.overflow = "hidden";
+    closeDrawer();
+  }
+
+  function closeDetailModal(id){
+    document.getElementById(id).style.display = "none";
+    body.style.overflow = "";
+  }
+
+  const waModal = document.getElementById("waModal");
+  const waForm = document.getElementById("waForm");
+  const waName = document.getElementById("waName");
+  const waOrigin = document.getElementById("waOrigin");
+  const waTarget = document.getElementById("waTarget");
+  const waMessage = document.getElementById("waMessage");
+  const originLabel = document.getElementById("originLabel");
+
+  let activeContact = null;
+
+  function openWaModal(key){
+    activeContact = contacts[key];
+    waForm.reset();
+    waTarget.value = activeContact.label;
+
+    if (activeContact.type === "competition" || activeContact.type === "public") {
+      originLabel.textContent = "Asal Sekolah/Kampus/Lembaga";
+      waOrigin.placeholder = "Contoh: ITS / SMA Negeri 1 Surabaya / Komunitas";
+    } else {
+      originLabel.textContent = "Asal Lembaga";
+      waOrigin.placeholder = "Contoh: Nama perusahaan / media / instansi";
     }
 
-    function closeWaModal(){
-      waModal.style.display = "none";
-      body.style.overflow = "";
-    }
+    waModal.style.display = "flex";
+    body.style.overflow = "hidden";
+    closeDrawer();
+  }
 
-    waForm.addEventListener("submit", function(e){
-      e.preventDefault();
-      if (!activeContact) return;
+  function closeWaModal(){
+    waModal.style.display = "none";
+    body.style.overflow = "";
+  }
 
-      const name = waName.value.trim();
-      const origin = waOrigin.value.trim();
-      const message = waMessage.value.trim();
+  waForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (!activeContact) return;
 
-      const text =
+    const name = waName.value.trim();
+    const origin = waOrigin.value.trim();
+    const message = waMessage.value.trim();
+
+    const text =
 `Halo Kak ${activeContact.pic}, saya ${name} dari ${origin}.
 ${activeContact.intro}
 
@@ -2804,52 +2804,52 @@ ${message}
 
 Terima kasih.`;
 
-      const url = `https://wa.me/${activeContact.phone}?text=${encodeURIComponent(text)}`;
-      window.open(url, "_blank");
-      closeWaModal();
-    });
+    const url = `https://wa.me/${activeContact.phone}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+    closeWaModal();
+  });
 
-    window.addEventListener("click", function(e){
-      document.querySelectorAll(".modal").forEach(modal => {
-        if (e.target === modal) {
-          modal.style.display = "none";
-          body.style.overflow = "";
-        }
-      });
-
-      if (
-        isMobile() &&
-        mobileDrawer.classList.contains("open") &&
-        !mobileDrawer.contains(e.target) &&
-        !navBubble.contains(e.target)
-      ) {
-        closeDrawer();
+  window.addEventListener("click", function(e){
+    document.querySelectorAll(".modal").forEach(modal => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        body.style.overflow = "";
       }
     });
 
-    const sections = document.querySelectorAll(".fade-section");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.14 });
+    if (
+      isMobile() &&
+      mobileDrawer.classList.contains("open") &&
+      !mobileDrawer.contains(e.target) &&
+      !navBubble.contains(e.target)
+    ) {
+      closeDrawer();
+    }
+  });
 
-    sections.forEach(section => observer.observe(section));
-
-    const tabs = document.querySelectorAll(".doc-tab");
-    const panels = document.querySelectorAll(".doc-panel");
-
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        const target = tab.dataset.tab;
-        tabs.forEach(t => t.classList.remove("active"));
-        panels.forEach(p => p.classList.remove("active"));
-        tab.classList.add("active");
-        document.getElementById(`panel-${target}`).classList.add("active");
-      });
+  const sections = document.querySelectorAll(".fade-section");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
     });
-  </script>
+  }, { threshold: 0.14 });
+
+  sections.forEach(section => observer.observe(section));
+
+  const tabs = document.querySelectorAll(".doc-tab");
+  const panels = document.querySelectorAll(".doc-panel");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById(`panel-${target}`).classList.add("active");
+    });
+  });
+</script>
 </body>
 </html>
