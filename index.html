@@ -331,20 +331,19 @@
     }
 
     /* NAVBAR */
-    .header-shell{
-      position:fixed;
-      top:16px;
-      left:50%;
-      transform:translateX(-50%);
-      width:min(960px, calc(100% - 140px));
-      z-index:1000;
-      border-radius:26px;
-      background:rgba(8,17,37,.84);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 12px 45px rgba(0,0,0,.18);
-      backdrop-filter:blur(16px);
-      transition:.3s ease;
-    }
+  .header-shell{
+  position:fixed;
+  top:14px;
+  left:24px;
+  width:min(calc(var(--max-width) - 92px), calc(100% - 118px));
+  z-index:1000;
+  border-radius:26px;
+  background:rgba(8,17,37,.84);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 14px 40px rgba(0,0,0,.18);
+  backdrop-filter:blur(16px);
+  transition:.3s ease;
+}
 
     html[data-theme="light"] .header-shell{
       background:rgba(255,255,255,.90);
