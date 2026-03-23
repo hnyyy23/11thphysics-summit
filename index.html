@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1Physics Summit</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
+      --font-heading: 'Cormorant Garamond', serif;
+--font-body: 'Plus Jakarta Sans', sans-serif;
       --bg:#071125;
       --bg-soft:#0d1730;
       --surface:#0f1c36;
@@ -48,17 +53,17 @@
       overflow-x:hidden;
     }
 
-    body{
-      font-family: Georgia, "Times New Roman", serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 10% 10%, rgba(30,199,243,.14), transparent 18%),
-        radial-gradient(circle at 90% 5%, rgba(123,97,255,.14), transparent 20%),
-        radial-gradient(circle at 85% 75%, rgba(241,91,181,.10), transparent 18%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
-      min-height:100vh;
-      position:relative;
-    }
+ body{
+  font-family: var(--font-body);
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(30,199,243,.14), transparent 18%),
+    radial-gradient(circle at 90% 5%, rgba(123,97,255,.14), transparent 20%),
+    radial-gradient(circle at 85% 75%, rgba(241,91,181,.10), transparent 18%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  min-height:100vh;
+  position:relative;
+}
 
     body::before{
       content:"";
