@@ -2611,20 +2611,27 @@ p,
       }
     };
 
-    function hidePreloader() {
-      const preloader = document.getElementById("preloader");
-      if (preloader) preloader.classList.add("hide");
+<script>
+  const PRELOADER_MIN_TIME = 2000;
+  const preloaderStart = Date.now();
+
+  function hidePreloader() {
+    const preloader = document.getElementById("preloader");
+    if (preloader) preloader.classList.add("hide");
+  }
+
+  function hidePreloaderWithMinimumTime() {
+    const elapsed = Date.now() - preloaderStart;
+    const remaining = PRELOADER_MIN_TIME - elapsed;
+
+    if (remaining > 0) {
+      setTimeout(hidePreloader, remaining);
+    } else {
+      hidePreloader();
     }
+  }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(hidePreloader, 350);
-    });
-
-    window.addEventListener("load", () => {
-      setTimeout(hidePreloader, 120);
-    });
-
-    setTimeout(hidePreloader, 1600);
+  window.addEventListener("load", hidePreloaderWithMinimumTime);;
 
     const guidebookIds = [
       "navGuidebook",
