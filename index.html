@@ -388,20 +388,65 @@
       flex-shrink:0;
     }
 
-    .theme-toggle{
-      width:46px;
-      height:46px;
-      border-radius:50%;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      cursor:pointer;
-      font-size:.95rem;
-    }
+   .theme-toggle,
+.mobile-theme-btn{
+  position:relative;
+  overflow:hidden;
+}
 
-    html[data-theme="light"] .theme-toggle{
-      background:#fff;
-    }
+.theme-toggle{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  cursor:pointer;
+}
+
+html[data-theme="light"] .theme-toggle{
+  background:#fff;
+}
+
+.theme-icon{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:1rem;
+  transition:.25s ease;
+}
+
+.theme-icon.sun{
+  opacity:0;
+  transform:translateY(10px) scale(.9);
+}
+
+.theme-icon.moon{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+html[data-theme="light"] .theme-icon.sun{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+html[data-theme="light"] .theme-icon.moon{
+  opacity:0;
+  transform:translateY(-10px) scale(.9);
+}
+
+.mobile-theme-btn{
+  min-height:48px;
+  justify-content:center;
+  position:relative;
+}
+
+.mobile-theme-btn .theme-icon{
+  position:absolute;
+  inset:0;
+}
 
     .guidebook-btn{
       padding:11px 18px;
