@@ -189,86 +189,89 @@
     }
 
     /* PRELOADER */
-    #preloader{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:
-        radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
-        linear-gradient(180deg, #031B66 0%, #071125 100%);
-      transition:opacity .4s ease, visibility .4s ease;
-    }
+<style>
+  #preloader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
+      linear-gradient(180deg, #031B66 0%, #071125 100%);
+    transition:opacity .35s ease, visibility .35s ease;
+  }
 
-    html[data-theme="light"] #preloader{
-      background:
-        radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
-        linear-gradient(180deg, #dfe9ff 0%, #eef4ff 100%);
-    }
+  html[data-theme="light"] #preloader{
+    background:
+      radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
+      linear-gradient(180deg, #dfe9ff 0%, #eef4ff 100%);
+  }
 
-    #preloader.hide{
-      opacity:0;
-      visibility:hidden;
-    }
+  #preloader.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
 
-    .loader{
-      text-align:center;
-    }
+  .loader{
+    text-align:center;
+  }
 
-    .loader-atom{
-      width:90px;
-      height:90px;
-      margin:0 auto 14px;
-      position:relative;
-    }
+  .loader-atom{
+    width:90px;
+    height:90px;
+    margin:0 auto 14px;
+    position:relative;
+  }
 
-    .loader-core{
-      position:absolute;
-      inset:50%;
-      width:20px;
-      height:20px;
-      margin:-10px;
-      border-radius:50%;
-      background:linear-gradient(135deg, var(--pink), var(--cyan));
-      box-shadow:0 0 18px rgba(241,91,181,.35);
-    }
+  .loader-core{
+    position:absolute;
+    inset:50%;
+    width:20px;
+    height:20px;
+    margin:-10px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #F15BB5, #1EC7F3);
+    box-shadow:0 0 18px rgba(241,91,181,.35);
+  }
 
-    .loader-ring{
-      position:absolute;
-      inset:0;
-      border:2px solid rgba(255,255,255,.16);
-      border-radius:50%;
-    }
+  .loader-ring{
+    position:absolute;
+    inset:0;
+    border:2px solid rgba(255,255,255,.16);
+    border-radius:50%;
+  }
 
-    html[data-theme="light"] .loader-ring{
-      border-color:rgba(16,37,86,.14);
-    }
+  html[data-theme="light"] .loader-ring{
+    border-color:rgba(16,37,86,.14);
+  }
 
-    .loader-ring.r1{ animation:spin 2.1s linear infinite; }
-    .loader-ring.r2{
-      inset:12px 0;
-      transform:rotate(60deg);
-      border-color:rgba(30,199,243,.35);
-      animation:spinTiltA 1.8s linear infinite;
-    }
-    .loader-ring.r3{
-      inset:0 12px;
-      transform:rotate(-60deg);
-      border-color:rgba(241,91,181,.34);
-      animation:spinTiltB 1.55s linear infinite;
-    }
+  .loader-ring.r1{ animation:spin 2.1s linear infinite; }
+  .loader-ring.r2{
+    inset:12px 0;
+    transform:rotate(60deg);
+    border-color:rgba(30,199,243,.35);
+    animation:spinTiltA 1.8s linear infinite;
+  }
+  .loader-ring.r3{
+    inset:0 12px;
+    transform:rotate(-60deg);
+    border-color:rgba(241,91,181,.34);
+    animation:spinTiltB 1.55s linear infinite;
+  }
 
-    .loader p{
-      color:var(--muted);
-      font-size:.95rem;
-      letter-spacing:.04em;
-    }
+  .loader p{
+    color:#dbe9ff;
+    font-size:.95rem;
+    letter-spacing:.04em;
+  }
 
-    @keyframes spin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
-    @keyframes spinTiltA{from{transform:rotate(60deg)} to{transform:rotate(420deg)}}
-    @keyframes spinTiltB{from{transform:rotate(-60deg)} to{transform:rotate(300deg)}}
+  @keyframes spin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+  @keyframes spinTiltA{from{transform:rotate(60deg)} to{transform:rotate(420deg)}}
+  @keyframes spinTiltB{from{transform:rotate(-60deg)} to{transform:rotate(300deg)}}
+</style>
 
     /* FLOATING NAVBAR */
     .header-shell{
@@ -1622,17 +1625,17 @@
 </head>
 <body>
   <!-- PRELOADER -->
-  <div id="preloader">
-    <div class="loader">
-      <div class="loader-atom">
-        <div class="loader-core"></div>
-        <div class="loader-ring r1"></div>
-        <div class="loader-ring r2"></div>
-        <div class="loader-ring r3"></div>
-      </div>
-      <p>Preparing the summit...</p>
+<div id="preloader">
+  <div class="loader">
+    <div class="loader-atom">
+      <div class="loader-core"></div>
+      <div class="loader-ring r1"></div>
+      <div class="loader-ring r2"></div>
+      <div class="loader-ring r3"></div>
     </div>
+    <p>Preparing the summit...</p>
   </div>
+</div>
 
   <!-- MOBILE TOGGLE -->
   <button class="floating-menu-btn" id="floatingMenuBtn" aria-label="Toggle menu">
@@ -2504,12 +2507,24 @@
     if (openhouseRsvpBtn) openhouseRsvpBtn.href = OPENHOUSE_RSVP_LINK;
 
     /* PRELOADER */
-    window.addEventListener("load", () => {
-      const preloader = document.getElementById("preloader");
-      setTimeout(() => {
-        preloader.classList.add("hide");
-      }, 350);
-    });
+<script>
+  function hidePreloader() {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      preloader.classList.add("hide");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(hidePreloader, 300);
+  });
+
+  window.addEventListener("load", () => {
+    setTimeout(hidePreloader, 100);
+  });
+
+  setTimeout(hidePreloader, 1500);
+</script>
 
     /* HEADER SHADOW */
     const headerShell = document.getElementById("headerShell");
