@@ -1436,7 +1436,10 @@
     </div>
 
     <div class="mobile-actions">
-      <button class="btn btn-secondary" id="mobileThemeToggle" type="button">☀️ / 🌙</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+  <span class="theme-icon sun">☀️</span>
+  <span class="theme-icon moon">🌙</span>
+</button>
       <a class="btn btn-secondary" id="mobileGuidebook" href="#" target="_blank">Guidebook</a>
     </div>
   </aside>
@@ -1460,7 +1463,10 @@
       </nav>
 
       <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">☀️ / 🌙</button>
+     <button class="btn btn-secondary mobile-theme-btn" id="mobileThemeToggle" type="button">
+  <span class="theme-icon sun">☀️</span>
+  <span class="theme-icon moon">🌙</span>
+</button>
         <a class="btn btn-secondary guidebook-btn" id="navGuidebook" href="#" target="_blank">Guidebook</a>
       </div>
     </header>
@@ -1599,7 +1605,7 @@
             <div class="series-list">
               <div>25 Oktober 2026</div>
               <div>Terbuka untuk Umum</div>
-              <div>Gratis Hadir</div>
+              <div>Gratis</div>
               <div>RSVP Wajib Diisi</div>
             </div>
           </div>
@@ -1663,7 +1669,6 @@
 
         <div class="openhouse-box card">
           <div class="openhouse-copy">
-            <h3>25 Oktober 2026 · Terbuka untuk Umum</h3>
 
             <p>
               Open House Departemen Fisika ITS menjadi ruang bagi pengunjung untuk mengenal Departemen Fisika ITS secara lebih dekat melalui tenant laboratorium peminatan, Physics Project Showcase, tenant finalis, dan berbagai aktivitas interaktif lainnya.
@@ -1679,8 +1684,8 @@
 
             <div class="openhouse-meta">
               <div class="pill">Dibuka untuk Umum</div>
-              <div class="pill">Gratis Hadir</div>
-              <div class="pill">RSVP Wajib</div>
+              <div class="pill">Gratis</div>
+              <div class="pill">RSVP</div>
             </div>
 
             <div class="openhouse-actions">
@@ -1720,8 +1725,7 @@
                 <img src="assets/Final PSO.JPG" alt="Final PSO 1">
               </div>
               <div class="doc-body">
-                <h4>Final PSO · Foto 1</h4>
-                <p>Suasana babak final Physics Summit Olympiad yang memperlihatkan semangat kompetitif dan fokus peserta.</p>
+                <h4>Final PSO · Pengerjaan Soal</h4>
               </div>
             </div>
 
@@ -1730,8 +1734,7 @@
                 <img src="assets/Final PSO 1.JPG" alt="Final PSO 2">
               </div>
               <div class="doc-body">
-                <h4>Final PSO · Foto 2</h4>
-                <p>Momen peserta menunjukkan kemampuan terbaiknya dalam menyelesaikan tantangan pada tahap final.</p>
+                <h4>Final PSO · Briefing Parktikum</h4>
               </div>
             </div>
           </div>
@@ -1744,8 +1747,7 @@
                 <img src="assets/Final PSEC 1.jpg" alt="Final PSEC 1">
               </div>
               <div class="doc-body">
-                <h4>Final PSEC · Foto 1</h4>
-                <p>Potret presentasi dan penyampaian gagasan terbaik dari finalis Physics Summit Essay Competition.</p>
+                <h4>Final PSEC · SMA Sederajat</h4>
               </div>
             </div>
 
@@ -1754,8 +1756,7 @@
                 <img src="assets/Final PSEC Juri.jpg" alt="Final PSEC 2">
               </div>
               <div class="doc-body">
-                <h4>Final PSEC · Foto 2</h4>
-                <p>Suasana penilaian dan interaksi ilmiah yang memperlihatkan kualitas gagasan peserta pada tahap final.</p>
+                <h4>Final PSEC · Mahasiswa</h4>
               </div>
             </div>
           </div>
@@ -1768,7 +1769,7 @@
                 <img src="assets/EWARDING.jpg" alt="Awarding 1">
               </div>
               <div class="doc-body">
-                <h4>Awarding · Foto 1</h4>
+                <h4>Rewarding</h4>
                 <p>Momen apresiasi bagi para pemenang sebagai bentuk penghargaan atas usaha dan prestasi yang diraih.</p>
               </div>
             </div>
@@ -1778,7 +1779,7 @@
                 <img src="assets/EWARDING 2.jpg" alt="Awarding 2">
               </div>
               <div class="doc-body">
-                <h4>Awarding · Foto 2</h4>
+                <h4>Rewarding</h4>
                 <p>Dokumentasi suasana awarding yang menjadi salah satu puncak paling berkesan dalam rangkaian acara.</p>
               </div>
             </div>
@@ -1819,7 +1820,7 @@
           <div class="contact-card card">
             <div class="contact-role">Partnership</div>
             <h3>Sponsor</h3>
-            <p>Hubungi Ilyas untuk kebutuhan kerja sama sponsor Physics Summit.</p>
+            <p>Hubungi Ilyas untuk k ebutuhan kerja sama sponsor Physics Summit.</p>
             <button class="btn btn-primary" onclick="openWaModal('sponsor')">Hubungi CP</button>
           </div>
 
