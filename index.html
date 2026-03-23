@@ -13,8 +13,8 @@
     :root{
       --bg:#071125;
       --bg-soft:#0d1730;
-      --surface:#101c37;
-      --surface-2:#132244;
+      --surface:#0f1c36;
+      --surface-2:#132447;
       --text:#eef7ff;
       --muted:#b8cae8;
       --line:rgba(255,255,255,.10);
@@ -28,7 +28,6 @@
 
       --shadow:0 18px 54px rgba(0,0,0,.35);
       --radius:28px;
-      --radius-sm:20px;
       --max-width:1180px;
     }
 
@@ -36,7 +35,7 @@
       --bg:#eef4ff;
       --bg-soft:#f8fbff;
       --surface:#ffffff;
-      --surface-2:#f5f8ff;
+      --surface-2:#f4f8ff;
       --text:#102556;
       --muted:#5f7398;
       --line:rgba(16,37,86,.10);
@@ -67,7 +66,7 @@
       inset:0;
       pointer-events:none;
       z-index:-1;
-      opacity:.42;
+      opacity:.40;
       background:
         radial-gradient(circle at 12% 24%, rgba(255,255,255,.45) 0 1px, transparent 2px),
         radial-gradient(circle at 34% 72%, rgba(255,255,255,.40) 0 1px, transparent 2px),
@@ -75,7 +74,7 @@
         radial-gradient(circle at 76% 82%, rgba(255,255,255,.38) 0 1px, transparent 2px),
         radial-gradient(circle at 56% 16%, rgba(255,255,255,.42) 0 1px, transparent 2px);
       background-size:220px 220px, 280px 280px, 260px 260px, 320px 320px, 300px 300px;
-      animation:floatStars 18s linear infinite alternate;
+      animation:floatStars 16s linear infinite alternate;
     }
 
     @keyframes floatStars{
@@ -157,9 +156,13 @@
       border:1px solid var(--line);
     }
 
+    html[data-theme="light"] .btn-secondary{
+      background:#fff;
+    }
+
     .btn-secondary:hover{
       transform:translateY(-2px);
-      border-color:rgba(30,199,243,.4);
+      border-color:rgba(30,199,243,.35);
     }
 
     .pill{
@@ -176,7 +179,7 @@
     }
 
     html[data-theme="light"] .pill{
-      background:rgba(255,255,255,.82);
+      background:#fff;
     }
 
     .pill::before{
@@ -189,89 +192,141 @@
     }
 
     /* PRELOADER */
-<style>
-  #preloader{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:
-      radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
-      linear-gradient(180deg, #031B66 0%, #071125 100%);
-    transition:opacity .35s ease, visibility .35s ease;
-  }
+    #preloader{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at center, rgba(30,199,243,.18), transparent 25%),
+        linear-gradient(180deg, #031B66 0%, #071125 100%);
+      transition:opacity .35s ease, visibility .35s ease;
+    }
 
-  html[data-theme="light"] #preloader{
-    background:
-      radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
-      linear-gradient(180deg, #dfe9ff 0%, #eef4ff 100%);
-  }
+    html[data-theme="light"] #preloader{
+      background:
+        radial-gradient(circle at center, rgba(30,199,243,.15), transparent 25%),
+        linear-gradient(180deg, #e5efff 0%, #f5f9ff 100%);
+    }
 
-  #preloader.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-  }
+    #preloader.hide{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
 
-  .loader{
-    text-align:center;
-  }
+    .loader-shell{
+      width:min(420px, calc(100% - 32px));
+      padding:28px 24px;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      backdrop-filter:blur(16px);
+      text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,.22);
+    }
 
-  .loader-atom{
-    width:90px;
-    height:90px;
-    margin:0 auto 14px;
-    position:relative;
-  }
+    html[data-theme="light"] .loader-shell{
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(16,37,86,.08);
+      box-shadow:0 18px 42px rgba(10,35,90,.10);
+    }
 
-  .loader-core{
-    position:absolute;
-    inset:50%;
-    width:20px;
-    height:20px;
-    margin:-10px;
-    border-radius:50%;
-    background:linear-gradient(135deg, #F15BB5, #1EC7F3);
-    box-shadow:0 0 18px rgba(241,91,181,.35);
-  }
+    .loader-logo{
+      width:70px;
+      margin:0 auto 14px;
+      opacity:.95;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.18));
+    }
 
-  .loader-ring{
-    position:absolute;
-    inset:0;
-    border:2px solid rgba(255,255,255,.16);
-    border-radius:50%;
-  }
+    .loader-atom{
+      width:88px;
+      height:88px;
+      margin:0 auto 16px;
+      position:relative;
+    }
 
-  html[data-theme="light"] .loader-ring{
-    border-color:rgba(16,37,86,.14);
-  }
+    .loader-core{
+      position:absolute;
+      inset:50%;
+      width:18px;
+      height:18px;
+      margin:-9px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--pink), var(--cyan));
+      box-shadow:0 0 22px rgba(30,199,243,.35);
+    }
 
-  .loader-ring.r1{ animation:spin 2.1s linear infinite; }
-  .loader-ring.r2{
-    inset:12px 0;
-    transform:rotate(60deg);
-    border-color:rgba(30,199,243,.35);
-    animation:spinTiltA 1.8s linear infinite;
-  }
-  .loader-ring.r3{
-    inset:0 12px;
-    transform:rotate(-60deg);
-    border-color:rgba(241,91,181,.34);
-    animation:spinTiltB 1.55s linear infinite;
-  }
+    .loader-ring{
+      position:absolute;
+      inset:0;
+      border:2px solid rgba(255,255,255,.16);
+      border-radius:50%;
+    }
 
-  .loader p{
-    color:#dbe9ff;
-    font-size:.95rem;
-    letter-spacing:.04em;
-  }
+    html[data-theme="light"] .loader-ring{
+      border-color:rgba(16,37,86,.12);
+    }
 
-  @keyframes spin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
-  @keyframes spinTiltA{from{transform:rotate(60deg)} to{transform:rotate(420deg)}}
-  @keyframes spinTiltB{from{transform:rotate(-60deg)} to{transform:rotate(300deg)}}
-</style>
+    .loader-ring.r1{ animation:spin 2.2s linear infinite; }
+    .loader-ring.r2{
+      inset:12px 0;
+      transform:rotate(58deg);
+      border-color:rgba(30,199,243,.40);
+      animation:spinTiltA 1.8s linear infinite;
+    }
+    .loader-ring.r3{
+      inset:0 12px;
+      transform:rotate(-58deg);
+      border-color:rgba(241,91,181,.35);
+      animation:spinTiltB 1.6s linear infinite;
+    }
+
+    .loader-title{
+      font-size:1.3rem;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+
+    .loader-sub{
+      color:var(--muted);
+      font-size:.96rem;
+      margin-bottom:16px;
+    }
+
+    .loader-bar{
+      width:100%;
+      height:8px;
+      border-radius:999px;
+      overflow:hidden;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    html[data-theme="light"] .loader-bar{
+      background:rgba(16,37,86,.06);
+      border:1px solid rgba(16,37,86,.08);
+    }
+
+    .loader-bar span{
+      display:block;
+      height:100%;
+      width:40%;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--cyan), var(--blue), var(--pink));
+      animation:loadingMove 1.4s ease-in-out infinite;
+    }
+
+    @keyframes loadingMove{
+      0%{transform:translateX(-120%)}
+      100%{transform:translateX(320%)}
+    }
+
+    @keyframes spin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+    @keyframes spinTiltA{from{transform:rotate(58deg)} to{transform:rotate(418deg)}}
+    @keyframes spinTiltB{from{transform:rotate(-58deg)} to{transform:rotate(302deg)}}
 
     /* FLOATING NAVBAR */
     .header-shell{
@@ -290,13 +345,12 @@
     }
 
     html[data-theme="light"] .header-shell{
-      background:rgba(255,255,255,.84);
+      background:rgba(255,255,255,.86);
       border:1px solid rgba(16,37,86,.08);
       box-shadow:0 14px 34px rgba(10,35,90,.10);
     }
 
     .header-shell.scrolled{
-      transform:translateX(-50%) translateY(0);
       box-shadow:0 18px 44px rgba(0,0,0,.26);
     }
 
@@ -340,7 +394,7 @@
     .nav-center{
       display:flex;
       align-items:center;
-      gap:28px;
+      gap:26px;
       color:var(--muted);
       font-weight:600;
     }
@@ -368,7 +422,7 @@
     }
 
     html[data-theme="light"] .theme-toggle{
-      background:var(--surface);
+      background:#fff;
     }
 
     .theme-toggle span{
@@ -385,7 +439,7 @@
     html[data-theme="light"] .theme-toggle .sun{opacity:1; transform:translateY(0);}
     html[data-theme="light"] .theme-toggle .moon{opacity:0; transform:translateY(-12px);}
 
-    /* MOBILE MENU BUTTON RIGHT */
+    /* MOBILE MENU RIGHT */
     .floating-menu-btn{
       position:fixed;
       top:16px;
@@ -485,7 +539,6 @@
       gap:12px;
     }
 
-    /* MAIN */
     .page{
       padding-top:98px;
     }
@@ -619,7 +672,7 @@
       height:42%;
       transform:rotate(58deg);
       border-color:rgba(30,199,243,.24);
-      animation:spinOrbitA 12s linear infinite;
+      animation:spinTiltA 12s linear infinite;
     }
 
     .orbit.three{
@@ -627,7 +680,7 @@
       height:82%;
       transform:rotate(-58deg);
       border-color:rgba(241,91,181,.22);
-      animation:spinOrbitB 10s linear infinite;
+      animation:spinTiltB 10s linear infinite;
     }
 
     .orbit::after{
@@ -642,9 +695,6 @@
       background:linear-gradient(135deg, var(--cyan), var(--pink));
       box-shadow:0 0 0 10px rgba(30,199,243,.08);
     }
-
-    @keyframes spinOrbitA{from{transform:rotate(58deg)} to{transform:rotate(418deg)}}
-    @keyframes spinOrbitB{from{transform:rotate(-58deg)} to{transform:rotate(302deg)}}
 
     .hero-logo{
       width:38%;
@@ -685,11 +735,25 @@
     .star1{top:18%; right:2%;}
     .star2{bottom:18%; left:2%; transform:rotate(-18deg);}
 
-    /* ABOUT */
+    /* GENERIC BOXES */
+    .about-box,
+    .journey-wrap,
+    .theme-head,
+    .series-card,
+    .comp-card,
+    .openhouse-box,
+    .guide-box,
+    .contact-card{
+      background:linear-gradient(180deg, var(--surface), var(--surface-2));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
     .about-box{
       max-width:980px;
       margin:26px auto 0;
       padding:30px;
+      border-radius:28px;
     }
 
     .about-box p{
@@ -698,11 +762,12 @@
       line-height:1.9;
     }
 
-    /* JOURNEY CONSTELLATION */
+    /* JOURNEY */
     .journey-wrap{
       max-width:1040px;
       margin:28px auto 0;
       padding:30px;
+      border-radius:28px;
     }
 
     .journey-line{
@@ -768,11 +833,11 @@
       padding:22px;
       border-radius:22px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.05);
     }
 
     html[data-theme="light"] .journey-detail{
-      background:rgba(255,255,255,.72);
+      background:#fff;
     }
 
     .journey-detail h3{
@@ -794,6 +859,7 @@
     .theme-head{
       padding:26px 28px;
       margin-bottom:18px;
+      border-radius:28px;
       background:
         linear-gradient(135deg, rgba(3,27,102,.94), rgba(10,86,181,.80), rgba(123,97,255,.42));
     }
@@ -858,9 +924,6 @@
     .series-card{
       padding:28px;
       border-radius:28px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow:var(--shadow);
       position:relative;
       overflow:hidden;
       min-height:290px;
@@ -946,9 +1009,6 @@
     .comp-card{
       padding:28px;
       border-radius:28px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow:var(--shadow);
       position:relative;
       overflow:hidden;
     }
@@ -999,7 +1059,7 @@
     }
 
     html[data-theme="light"] .tag{
-      background:rgba(255,255,255,.82);
+      background:#fff;
     }
 
     .card-actions{
@@ -1015,6 +1075,7 @@
       max-width:1120px;
       margin:28px auto 0;
       padding:32px;
+      border-radius:28px;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
@@ -1138,7 +1199,7 @@
     }
 
     html[data-theme="light"] .doc-tab{
-      background:var(--surface);
+      background:#fff;
     }
 
     .doc-tab.active{
@@ -1200,6 +1261,7 @@
       max-width:980px;
       margin:28px auto 0;
       padding:30px;
+      border-radius:28px;
       display:grid;
       grid-template-columns:1fr auto;
       gap:18px;
@@ -1284,9 +1346,6 @@
     .contact-card{
       padding:22px;
       border-radius:24px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow:var(--shadow);
       text-align:center;
     }
 
@@ -1360,7 +1419,7 @@
       display:block;
     }
 
-    /* MODAL */
+    /* MODALS */
     .modal{
       position:fixed;
       inset:0;
@@ -1431,13 +1490,17 @@
     }
 
     html[data-theme="light"] .detail-card{
-      background:rgba(255,255,255,.78);
+      background:#fff;
     }
 
     .detail-card h4{
       margin-bottom:10px;
       color:var(--cyan);
       font-size:1rem;
+    }
+
+    html[data-theme="light"] .detail-card h4{
+      color:var(--blue);
     }
 
     .detail-card ul{
@@ -1625,17 +1688,20 @@
 </head>
 <body>
   <!-- PRELOADER -->
-<div id="preloader">
-  <div class="loader">
-    <div class="loader-atom">
-      <div class="loader-core"></div>
-      <div class="loader-ring r1"></div>
-      <div class="loader-ring r2"></div>
-      <div class="loader-ring r3"></div>
+  <div id="preloader">
+    <div class="loader-shell">
+      <img src="assets/Logo3.png" alt="Logo Physics Summit" class="loader-logo">
+      <div class="loader-atom">
+        <div class="loader-core"></div>
+        <div class="loader-ring r1"></div>
+        <div class="loader-ring r2"></div>
+        <div class="loader-ring r3"></div>
+      </div>
+      <div class="loader-title">11th Physics Summit</div>
+      <div class="loader-sub">Preparing the summit...</div>
+      <div class="loader-bar"><span></span></div>
     </div>
-    <p>Preparing the summit...</p>
   </div>
-</div>
 
   <!-- MOBILE TOGGLE -->
   <button class="floating-menu-btn" id="floatingMenuBtn" aria-label="Toggle menu">
@@ -1692,6 +1758,7 @@
   </div>
 
   <main class="page">
+    <!-- HERO -->
     <section class="hero container">
       <div class="hero-left">
         <div class="hero-badge">11th Physics Summit</div>
@@ -1730,7 +1797,7 @@
           Physics Summit merupakan rangkaian acara tahunan yang menggabungkan kompetisi, eksplorasi akademik, dan pengenalan Departemen Fisika ITS dalam satu pengalaman yang utuh.
         </p>
 
-        <div class="glass about-box">
+        <div class="about-box">
           <p>
             Melalui rangkaian kompetisi dan open house, Physics Summit hadir sebagai ruang bagi pelajar, mahasiswa, dan masyarakat umum untuk mengenal fisika secara lebih dekat, mengembangkan potensi, serta merasakan atmosfer akademik dan inovasi yang lebih luas.
           </p>
@@ -1746,7 +1813,7 @@
           Klik tahun untuk melihat tonggak perjalanan Physics Summit.
         </p>
 
-        <div class="glass journey-wrap">
+        <div class="journey-wrap">
           <div class="journey-line">
             <button class="year-node active" data-year="2011">
               <div class="year-dot"></div>
@@ -1791,7 +1858,7 @@
         </p>
 
         <div class="theme-wrap">
-          <div class="theme-head glass">
+          <div class="theme-head">
             <h3>Atomic Horizon</h3>
             <p>Expanding the Frontiers of Physics</p>
           </div>
@@ -1933,7 +2000,7 @@
           Open House merupakan bagian dari Physics Summit yang dibuka untuk umum. Pengunjung dapat hadir secara gratis, namun wajib melakukan RSVP terlebih dahulu sebelum datang.
         </p>
 
-        <div class="glass openhouse-box">
+        <div class="openhouse-box">
           <div class="openhouse-copy">
             <h3>Terbuka untuk Umum, Gratis, dan Interaktif</h3>
             <p>
@@ -2066,7 +2133,7 @@
           Guidebook memuat informasi lengkap mengenai mekanisme pendaftaran, ketentuan peserta, alur kompetisi, jadwal kegiatan, serta berbagai informasi penting lain yang berkaitan dengan pelaksanaan 11th Physics Summit.
         </p>
 
-        <div class="glass guide-box">
+        <div class="guide-box">
           <div>
             <h3>Panduan Resmi 11th Physics Summit</h3>
             <p>Satu link guidebook digunakan untuk seluruh rangkaian kompetisi dan informasi utama Physics Summit.</p>
@@ -2232,7 +2299,7 @@
     </div>
   </footer>
 
-  <!-- DETAIL MODAL PSEC -->
+  <!-- MODAL PSEC -->
   <div class="modal" id="modalPSEC">
     <div class="modal-box">
       <div class="modal-top">
@@ -2298,7 +2365,7 @@
     </div>
   </div>
 
-  <!-- DETAIL MODAL PSO -->
+  <!-- MODAL PSO -->
   <div class="modal" id="modalPSO">
     <div class="modal-box">
       <div class="modal-top">
@@ -2411,7 +2478,7 @@
   <script>
     const GUIDEBOOK_LINK = "#";
     const PSEC_REGISTER_LINK = "#";
-    const PSO_REGISTER_LINK = "https://example.com/register-pso";
+    const PSO_REGISTER_LINK = "#";
     const OPENHOUSE_RSVP_LINK = "#";
 
     const contacts = {
@@ -2479,6 +2546,21 @@
       }
     };
 
+    function hidePreloader() {
+      const preloader = document.getElementById("preloader");
+      if (preloader) preloader.classList.add("hide");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(hidePreloader, 350);
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(hidePreloader, 100);
+    });
+
+    setTimeout(hidePreloader, 1600);
+
     const guidebookIds = [
       "navGuidebook",
       "mobileGuidebook",
@@ -2506,33 +2588,11 @@
     const openhouseRsvpBtn = document.getElementById("openhouseRsvpBtn");
     if (openhouseRsvpBtn) openhouseRsvpBtn.href = OPENHOUSE_RSVP_LINK;
 
-    /* PRELOADER */
-<script>
-  function hidePreloader() {
-    const preloader = document.getElementById("preloader");
-    if (preloader) {
-      preloader.classList.add("hide");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(hidePreloader, 300);
-  });
-
-  window.addEventListener("load", () => {
-    setTimeout(hidePreloader, 100);
-  });
-
-  setTimeout(hidePreloader, 1500);
-</script>
-
-    /* HEADER SHADOW */
     const headerShell = document.getElementById("headerShell");
     window.addEventListener("scroll", () => {
       headerShell.classList.toggle("scrolled", window.scrollY > 10);
     });
 
-    /* THEME TOGGLE */
     const root = document.documentElement;
     const themeToggle = document.getElementById("themeToggle");
     const mobileThemeToggle = document.getElementById("mobileThemeToggle");
@@ -2555,7 +2615,6 @@
       applyTheme(next);
     });
 
-    /* MOBILE DRAWER */
     const floatingMenuBtn = document.getElementById("floatingMenuBtn");
     const mobileDrawer = document.getElementById("mobileDrawer");
 
@@ -2575,7 +2634,6 @@
       link.addEventListener("click", closeDrawer);
     });
 
-    /* JOURNEY */
     const yearNodes = document.querySelectorAll(".year-node");
     const journeyDetail = document.getElementById("journeyDetail");
 
@@ -2594,7 +2652,6 @@
       });
     });
 
-    /* DETAIL MODAL */
     function openDetailModal(id){
       document.getElementById(id).style.display = "flex";
       document.body.style.overflow = "hidden";
@@ -2606,13 +2663,11 @@
       document.body.style.overflow = "";
     }
 
-    /* WA MODAL */
     const waModal = document.getElementById("waModal");
     const waForm = document.getElementById("waForm");
     const waName = document.getElementById("waName");
     const waOrigin = document.getElementById("waOrigin");
     const waTarget = document.getElementById("waTarget");
-    constwaTarget");
     const waMessage = document.getElementById("waMessage");
     const originLabel = document.getElementById("originLabel");
 
@@ -2663,7 +2718,6 @@ Terima kasih.`;
       closeWaModal();
     });
 
-    /* CLICK OUTSIDE */
     window.addEventListener("click", function(e){
       document.querySelectorAll(".modal").forEach(modal => {
         if (e.target === modal) {
@@ -2681,7 +2735,6 @@ Terima kasih.`;
       }
     });
 
-    /* REVEAL */
     const sections = document.querySelectorAll(".fade-section");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2693,7 +2746,6 @@ Terima kasih.`;
 
     sections.forEach(section => observer.observe(section));
 
-    /* DOC TABS */
     const tabs = document.querySelectorAll(".doc-tab");
     const panels = document.querySelectorAll(".doc-panel");
 
