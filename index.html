@@ -1,5 +1,5 @@
-\<!DOCTYPE html>
-<html lang="id" data-theme="light">
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,13 +11,13 @@
 
   <style>
     :root{
-      --bg:#eef4ff;
-      --bg-soft:#f8fbff;
-      --surface:#ffffff;
-      --surface-2:#f5f8ff;
-      --text:#102556;
-      --muted:#5f7398;
-      --line:rgba(16,37,86,.10);
+      --bg:#071125;
+      --bg-soft:#0d1730;
+      --surface:#101c37;
+      --surface-2:#132244;
+      --text:#eef7ff;
+      --muted:#b8cae8;
+      --line:rgba(255,255,255,.10);
 
       --navy:#031B66;
       --blue:#0A56B5;
@@ -26,21 +26,21 @@
       --violet:#7B61FF;
       --purple:#9B7CFF;
 
-      --shadow:0 18px 48px rgba(10,35,90,.12);
+      --shadow:0 18px 54px rgba(0,0,0,.35);
       --radius:28px;
       --radius-sm:20px;
       --max-width:1180px;
     }
 
-    html[data-theme="dark"]{
-      --bg:#071125;
-      --bg-soft:#0d1730;
-      --surface:#101c37;
-      --surface-2:#132244;
-      --text:#eef7ff;
-      --muted:#b8cae8;
-      --line:rgba(255,255,255,.10);
-      --shadow:0 18px 54px rgba(0,0,0,.35);
+    html[data-theme="light"]{
+      --bg:#eef4ff;
+      --bg-soft:#f8fbff;
+      --surface:#ffffff;
+      --surface-2:#f5f8ff;
+      --text:#102556;
+      --muted:#5f7398;
+      --line:rgba(16,37,86,.10);
+      --shadow:0 18px 48px rgba(10,35,90,.12);
     }
 
     *{
@@ -67,20 +67,20 @@
       inset:0;
       pointer-events:none;
       z-index:-1;
-      opacity:.45;
+      opacity:.42;
       background:
-        radial-gradient(circle at 12% 24%, rgba(255,255,255,.5) 0 1px, transparent 2px),
-        radial-gradient(circle at 34% 72%, rgba(255,255,255,.45) 0 1px, transparent 2px),
-        radial-gradient(circle at 86% 26%, rgba(255,255,255,.45) 0 1px, transparent 2px),
-        radial-gradient(circle at 76% 82%, rgba(255,255,255,.42) 0 1px, transparent 2px),
-        radial-gradient(circle at 56% 16%, rgba(255,255,255,.45) 0 1px, transparent 2px);
+        radial-gradient(circle at 12% 24%, rgba(255,255,255,.45) 0 1px, transparent 2px),
+        radial-gradient(circle at 34% 72%, rgba(255,255,255,.40) 0 1px, transparent 2px),
+        radial-gradient(circle at 86% 26%, rgba(255,255,255,.40) 0 1px, transparent 2px),
+        radial-gradient(circle at 76% 82%, rgba(255,255,255,.38) 0 1px, transparent 2px),
+        radial-gradient(circle at 56% 16%, rgba(255,255,255,.42) 0 1px, transparent 2px);
       background-size:220px 220px, 280px 280px, 260px 260px, 320px 320px, 300px 300px;
       animation:floatStars 18s linear infinite alternate;
     }
 
     @keyframes floatStars{
       from{transform:translateY(0)}
-      to{transform:translateY(-12px)}
+      to{transform:translateY(-10px)}
     }
 
     a{
@@ -99,7 +99,7 @@
     }
 
     .section{
-      padding:88px 0;
+      padding:84px 0;
       position:relative;
     }
 
@@ -152,7 +152,7 @@
     }
 
     .btn-secondary{
-      background:var(--surface);
+      background:rgba(255,255,255,.05);
       color:var(--text);
       border:1px solid var(--line);
     }
@@ -168,16 +168,15 @@
       gap:8px;
       padding:10px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,.65);
+      background:rgba(255,255,255,.05);
       border:1px solid var(--line);
       color:var(--text);
       font-weight:600;
       font-size:.95rem;
-      box-shadow:0 10px 24px rgba(10,35,90,.06);
     }
 
-    html[data-theme="dark"] .pill{
-      background:rgba(255,255,255,.05);
+    html[data-theme="light"] .pill{
+      background:rgba(255,255,255,.82);
     }
 
     .pill::before{
@@ -199,14 +198,14 @@
       justify-content:center;
       background:
         radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
-        linear-gradient(180deg, #dfe9ff 0%, #eef4ff 100%);
-      transition:opacity .45s ease, visibility .45s ease;
+        linear-gradient(180deg, #031B66 0%, #071125 100%);
+      transition:opacity .4s ease, visibility .4s ease;
     }
 
-    html[data-theme="dark"] #preloader{
+    html[data-theme="light"] #preloader{
       background:
         radial-gradient(circle at center, rgba(30,199,243,.18), transparent 28%),
-        linear-gradient(180deg, #031B66 0%, #071125 100%);
+        linear-gradient(180deg, #dfe9ff 0%, #eef4ff 100%);
     }
 
     #preloader.hide{
@@ -219,8 +218,8 @@
     }
 
     .loader-atom{
-      width:95px;
-      height:95px;
+      width:90px;
+      height:90px;
       margin:0 auto 14px;
       position:relative;
     }
@@ -228,37 +227,37 @@
     .loader-core{
       position:absolute;
       inset:50%;
-      width:22px;
-      height:22px;
-      margin:-11px;
+      width:20px;
+      height:20px;
+      margin:-10px;
       border-radius:50%;
       background:linear-gradient(135deg, var(--pink), var(--cyan));
-      box-shadow:0 0 20px rgba(241,91,181,.35);
+      box-shadow:0 0 18px rgba(241,91,181,.35);
     }
 
     .loader-ring{
       position:absolute;
       inset:0;
-      border:2px solid rgba(16,37,86,.14);
+      border:2px solid rgba(255,255,255,.16);
       border-radius:50%;
     }
 
-    html[data-theme="dark"] .loader-ring{
-      border-color:rgba(255,255,255,.18);
+    html[data-theme="light"] .loader-ring{
+      border-color:rgba(16,37,86,.14);
     }
 
     .loader-ring.r1{ animation:spin 2.1s linear infinite; }
     .loader-ring.r2{
       inset:12px 0;
       transform:rotate(60deg);
-      border-color:rgba(30,199,243,.4);
+      border-color:rgba(30,199,243,.35);
       animation:spinTiltA 1.8s linear infinite;
     }
     .loader-ring.r3{
       inset:0 12px;
       transform:rotate(-60deg);
-      border-color:rgba(241,91,181,.35);
-      animation:spinTiltB 1.5s linear infinite;
+      border-color:rgba(241,91,181,.34);
+      animation:spinTiltB 1.55s linear infinite;
     }
 
     .loader p{
@@ -271,31 +270,40 @@
     @keyframes spinTiltA{from{transform:rotate(60deg)} to{transform:rotate(420deg)}}
     @keyframes spinTiltB{from{transform:rotate(-60deg)} to{transform:rotate(300deg)}}
 
-    /* HEADER */
+    /* FLOATING NAVBAR */
     .header-shell{
-      position:sticky;
-      top:0;
+      position:fixed;
+      top:10px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(var(--max-width), calc(100% - 20px));
       z-index:1000;
-      background:rgba(255,255,255,.78);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line);
+      border-radius:28px;
+      background:rgba(8,17,37,.86);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 14px 40px rgba(0,0,0,.22);
+      backdrop-filter:blur(16px);
       transition:.25s ease;
     }
 
-    html[data-theme="dark"] .header-shell{
-      background:rgba(7,17,37,.75);
+    html[data-theme="light"] .header-shell{
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(16,37,86,.08);
+      box-shadow:0 14px 34px rgba(10,35,90,.10);
     }
 
     .header-shell.scrolled{
-      box-shadow:0 8px 28px rgba(10,35,90,.08);
+      transform:translateX(-50%) translateY(0);
+      box-shadow:0 18px 44px rgba(0,0,0,.26);
     }
 
     header{
-      min-height:84px;
+      min-height:82px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:18px;
+      padding:0 18px;
     }
 
     .brand{
@@ -329,7 +337,7 @@
     .nav-center{
       display:flex;
       align-items:center;
-      gap:30px;
+      gap:28px;
       color:var(--muted);
       font-weight:600;
     }
@@ -349,11 +357,15 @@
       height:48px;
       border-radius:50%;
       border:1px solid var(--line);
-      background:var(--surface);
+      background:rgba(255,255,255,.04);
       color:var(--text);
       cursor:pointer;
       position:relative;
       overflow:hidden;
+    }
+
+    html[data-theme="light"] .theme-toggle{
+      background:var(--surface);
     }
 
     .theme-toggle span{
@@ -365,21 +377,21 @@
       font-size:1.08rem;
     }
 
-    .theme-toggle .sun{opacity:1; transform:translateY(0);}
-    .theme-toggle .moon{opacity:0; transform:translateY(-12px);}
-    html[data-theme="dark"] .theme-toggle .sun{opacity:0; transform:translateY(12px);}
-    html[data-theme="dark"] .theme-toggle .moon{opacity:1; transform:translateY(0);}
+    .theme-toggle .sun{opacity:0; transform:translateY(12px);}
+    .theme-toggle .moon{opacity:1; transform:translateY(0);}
+    html[data-theme="light"] .theme-toggle .sun{opacity:1; transform:translateY(0);}
+    html[data-theme="light"] .theme-toggle .moon{opacity:0; transform:translateY(-12px);}
 
-    /* MOBILE TOGGLE */
+    /* MOBILE MENU BUTTON RIGHT */
     .floating-menu-btn{
       position:fixed;
-      top:18px;
-      left:18px;
+      top:16px;
+      right:16px;
       width:56px;
       height:56px;
       border-radius:50%;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.92);
+      background:rgba(8,17,37,.92);
       box-shadow:var(--shadow);
       display:none;
       align-items:center;
@@ -388,8 +400,8 @@
       cursor:pointer;
     }
 
-    html[data-theme="dark"] .floating-menu-btn{
-      background:rgba(16,28,55,.94);
+    html[data-theme="light"] .floating-menu-btn{
+      background:rgba(255,255,255,.96);
     }
 
     .floating-menu-btn .lines,
@@ -431,19 +443,20 @@
 
     .mobile-drawer{
       position:fixed;
-      inset:0 auto 0 0;
+      inset:0 0 0 auto;
       width:min(320px, 86%);
-      background:rgba(255,255,255,.98);
-      border-right:1px solid var(--line);
-      transform:translateX(-100%);
+      background:rgba(10,18,35,.98);
+      border-left:1px solid rgba(255,255,255,.08);
+      transform:translateX(100%);
       transition:.28s ease;
       z-index:1090;
-      padding:92px 22px 28px;
+      padding:88px 22px 28px;
       box-shadow:var(--shadow);
     }
 
-    html[data-theme="dark"] .mobile-drawer{
-      background:rgba(10,18,35,.98);
+    html[data-theme="light"] .mobile-drawer{
+      background:rgba(255,255,255,.98);
+      border-left:1px solid rgba(16,37,86,.08);
     }
 
     .mobile-drawer.open{
@@ -469,14 +482,19 @@
       gap:12px;
     }
 
+    /* MAIN */
+    .page{
+      padding-top:98px;
+    }
+
     /* HERO */
     .hero{
-      min-height:100vh;
+      min-height:calc(100vh - 110px);
       display:grid;
       grid-template-columns:1.05fr .95fr;
       gap:28px;
       align-items:center;
-      padding:42px 0 28px;
+      padding:18px 0 12px;
       position:relative;
     }
 
@@ -495,15 +513,11 @@
       gap:10px;
       padding:10px 16px;
       border-radius:999px;
-      background:rgba(30,199,243,.10);
-      border:1px solid rgba(30,199,243,.2);
-      color:var(--blue);
+      background:rgba(30,199,243,.08);
+      border:1px solid rgba(30,199,243,.18);
+      color:var(--cyan);
       font-weight:700;
       margin-bottom:18px;
-    }
-
-    html[data-theme="dark"] .hero-badge{
-      color:var(--cyan);
     }
 
     .hero-badge::before{
@@ -516,15 +530,10 @@
     }
 
     .hero h1{
-      font-size:clamp(3.2rem, 7vw, 5.7rem);
+      font-size:clamp(3.2rem, 7vw, 5.8rem);
       line-height:.92;
       letter-spacing:-.05em;
       margin-bottom:16px;
-      color:var(--navy);
-    }
-
-    html[data-theme="dark"] .hero h1{
-      color:#eef8ff;
     }
 
     .hero-short{
@@ -532,7 +541,7 @@
       color:var(--muted);
       line-height:1.9;
       font-size:1.08rem;
-      margin-bottom:24px;
+      margin-bottom:22px;
     }
 
     .hero-pills{
@@ -559,7 +568,7 @@
       position:absolute;
       border-radius:50%;
       filter:blur(16px);
-      opacity:.6;
+      opacity:.62;
     }
 
     .glow-a{
@@ -588,12 +597,12 @@
 
     .orbit{
       position:absolute;
-      border:2px solid rgba(10,86,181,.18);
+      border:2px solid rgba(255,255,255,.12);
       border-radius:50%;
     }
 
-    html[data-theme="dark"] .orbit{
-      border-color:rgba(255,255,255,.12);
+    html[data-theme="light"] .orbit{
+      border-color:rgba(10,86,181,.16);
     }
 
     .orbit.one{
@@ -606,7 +615,7 @@
       width:82%;
       height:42%;
       transform:rotate(58deg);
-      border-color:rgba(30,199,243,.26);
+      border-color:rgba(30,199,243,.24);
       animation:spinOrbitA 12s linear infinite;
     }
 
@@ -686,11 +695,160 @@
       line-height:1.9;
     }
 
-    /* SERIES */
+    /* JOURNEY CONSTELLATION */
+    .journey-wrap{
+      max-width:1040px;
+      margin:28px auto 0;
+      padding:30px;
+    }
+
+    .journey-line{
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:14px;
+      align-items:center;
+      margin-bottom:24px;
+    }
+
+    .journey-line::before{
+      content:"";
+      position:absolute;
+      left:6%;
+      right:6%;
+      top:50%;
+      height:2px;
+      background:linear-gradient(90deg, rgba(30,199,243,.15), rgba(123,97,255,.35), rgba(241,91,181,.18));
+      transform:translateY(-50%);
+      z-index:0;
+    }
+
+    .year-node{
+      position:relative;
+      z-index:1;
+      background:transparent;
+      border:none;
+      cursor:pointer;
+      display:grid;
+      justify-items:center;
+      gap:10px;
+      font:inherit;
+      color:var(--muted);
+    }
+
+    .year-dot{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--cyan), var(--pink));
+      box-shadow:0 0 0 8px rgba(30,199,243,.08);
+      border:2px solid rgba(255,255,255,.18);
+      transition:.25s ease;
+    }
+
+    .year-node span{
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .year-node.active{
+      color:var(--text);
+    }
+
+    .year-node.active .year-dot{
+      transform:scale(1.2);
+      box-shadow:0 0 0 10px rgba(30,199,243,.14);
+    }
+
+    .journey-detail{
+      min-height:120px;
+      padding:22px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+    }
+
+    html[data-theme="light"] .journey-detail{
+      background:rgba(255,255,255,.72);
+    }
+
+    .journey-detail h3{
+      margin-bottom:8px;
+      font-size:1.25rem;
+    }
+
+    .journey-detail p{
+      color:var(--muted);
+      line-height:1.85;
+    }
+
+    /* THEME */
+    .theme-wrap{
+      max-width:1120px;
+      margin:26px auto 0;
+    }
+
+    .theme-head{
+      padding:26px 28px;
+      margin-bottom:18px;
+      background:
+        linear-gradient(135deg, rgba(3,27,102,.94), rgba(10,86,181,.80), rgba(123,97,255,.42));
+    }
+
+    .theme-head h3{
+      font-size:2rem;
+      margin-bottom:6px;
+      color:#f3faff;
+    }
+
+    .theme-head p{
+      color:#e3f4ff;
+      line-height:1.85;
+    }
+
+    .theme-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .theme-card{
+      padding:24px;
+      border-radius:24px;
+      background:linear-gradient(180deg, var(--surface), var(--surface-2));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .theme-card::after{
+      content:"";
+      position:absolute;
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      right:-30px;
+      bottom:-30px;
+      background:radial-gradient(circle, rgba(30,199,243,.14), transparent 70%);
+    }
+
+    .theme-card h4{
+      margin-bottom:10px;
+      font-size:1.3rem;
+    }
+
+    .theme-card p{
+      color:var(--muted);
+      line-height:1.9;
+      font-size:.97rem;
+    }
+
+    /* EVENT SERIES */
     .series-grid{
       margin-top:28px;
       display:grid;
-      grid-template-columns:repeat(2, 1fr);
+      grid-template-columns:repeat(2,1fr);
       gap:22px;
     }
 
@@ -705,22 +863,6 @@
       min-height:290px;
     }
 
-    .series-card h3{
-      font-size:1.6rem;
-      margin-bottom:12px;
-      color:var(--navy);
-    }
-
-    html[data-theme="dark"] .series-card h3{
-      color:#eef8ff;
-    }
-
-    .series-card p{
-      color:var(--muted);
-      line-height:1.9;
-      max-width:88%;
-    }
-
     .series-label{
       display:inline-block;
       margin-bottom:12px;
@@ -729,6 +871,17 @@
       font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
+    }
+
+    .series-card h3{
+      font-size:1.6rem;
+      margin-bottom:12px;
+    }
+
+    .series-card p{
+      color:var(--muted);
+      line-height:1.9;
+      max-width:88%;
     }
 
     .series-list{
@@ -763,19 +916,9 @@
       border-radius:50%;
     }
 
-    .series-deco .r1{
-      width:122px; height:122px; right:18px; bottom:30px;
-    }
-    .series-deco .r2{
-      width:104px; height:48px; right:8px; bottom:54px;
-      transform:rotate(44deg);
-      border-color:rgba(241,91,181,.22);
-    }
-    .series-deco .r3{
-      width:48px; height:104px; right:64px; bottom:18px;
-      transform:rotate(-42deg);
-      border-color:rgba(123,97,255,.22);
-    }
+    .series-deco .r1{ width:122px; height:122px; right:18px; bottom:30px; }
+    .series-deco .r2{ width:104px; height:48px; right:8px; bottom:54px; transform:rotate(44deg); border-color:rgba(241,91,181,.22); }
+    .series-deco .r3{ width:48px; height:104px; right:64px; bottom:18px; transform:rotate(-42deg); border-color:rgba(123,97,255,.22); }
 
     .series-deco .dot{
       position:absolute;
@@ -786,8 +929,8 @@
       box-shadow:0 0 0 8px rgba(30,199,243,.08);
     }
 
-    .series-deco .d1{right:30px; bottom:96px;}
-    .series-deco .d2{right:84px; bottom:18px;}
+    .series-deco .d1{ right:30px; bottom:96px; }
+    .series-deco .d2{ right:84px; bottom:18px; }
 
     /* COMPETITION */
     .competition-grid{
@@ -821,13 +964,8 @@
     .comp-card h3{
       font-size:1.7rem;
       margin-bottom:10px;
-      color:var(--navy);
       position:relative;
       z-index:1;
-    }
-
-    html[data-theme="dark"] .comp-card h3{
-      color:#eef8ff;
     }
 
     .comp-card p{
@@ -851,14 +989,14 @@
       padding:8px 12px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.7);
+      background:rgba(255,255,255,.05);
       color:var(--text);
       font-weight:600;
       font-size:.86rem;
     }
 
-    html[data-theme="dark"] .tag{
-      background:rgba(255,255,255,.06);
+    html[data-theme="light"] .tag{
+      background:rgba(255,255,255,.82);
     }
 
     .card-actions{
@@ -883,11 +1021,6 @@
     .openhouse-copy h3{
       font-size:1.9rem;
       margin-bottom:12px;
-      color:var(--navy);
-    }
-
-    html[data-theme="dark"] .openhouse-copy h3{
-      color:#eef8ff;
     }
 
     .openhouse-copy p{
@@ -980,72 +1113,6 @@
       border-color:rgba(241,91,181,.18);
     }
 
-    /* HISTORY */
-    .history-wrap{
-      max-width:960px;
-      margin:28px auto 0;
-      display:grid;
-      gap:14px;
-    }
-
-    .acc-item{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, var(--surface), var(--surface-2));
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-
-    .acc-btn{
-      width:100%;
-      background:none;
-      border:none;
-      color:var(--text);
-      padding:22px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      cursor:pointer;
-      font:inherit;
-      font-weight:700;
-      text-align:left;
-    }
-
-    .acc-icon{
-      width:38px;
-      height:38px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:rgba(30,199,243,.10);
-      border:1px solid rgba(30,199,243,.18);
-      color:var(--blue);
-      flex-shrink:0;
-      transition:.25s ease;
-    }
-
-    html[data-theme="dark"] .acc-icon{
-      color:var(--cyan);
-    }
-
-    .acc-content{
-      max-height:0;
-      overflow:hidden;
-      transition:max-height .35s ease;
-      padding:0 22px;
-    }
-
-    .acc-content p{
-      color:var(--muted);
-      line-height:1.9;
-      padding:0 0 20px;
-    }
-
-    .acc-item.active .acc-icon{
-      transform:rotate(45deg);
-    }
-
     /* DOCS */
     .doc-tabs{
       display:flex;
@@ -1057,7 +1124,7 @@
 
     .doc-tab{
       border:1px solid var(--line);
-      background:var(--surface);
+      background:rgba(255,255,255,.05);
       color:var(--text);
       padding:12px 18px;
       border-radius:999px;
@@ -1067,16 +1134,17 @@
       transition:.25s ease;
     }
 
+    html[data-theme="light"] .doc-tab{
+      background:var(--surface);
+    }
+
     .doc-tab.active{
       background:linear-gradient(135deg, var(--cyan), var(--blue));
       color:#07203b;
       border-color:transparent;
     }
 
-    .doc-panel{
-      display:none;
-    }
-
+    .doc-panel{ display:none; }
     .doc-panel.active{
       display:block;
       animation:fadeUp .4s ease;
@@ -1138,11 +1206,6 @@
     .guide-box h3{
       font-size:1.85rem;
       margin-bottom:8px;
-      color:var(--navy);
-    }
-
-    html[data-theme="dark"] .guide-box h3{
-      color:#eef8ff;
     }
 
     .guide-box p{
@@ -1231,23 +1294,14 @@
       border-radius:999px;
       background:rgba(30,199,243,.08);
       border:1px solid rgba(30,199,243,.14);
-      color:var(--blue);
+      color:var(--cyan);
       font-size:.8rem;
       font-weight:700;
-    }
-
-    html[data-theme="dark"] .contact-role{
-      color:var(--cyan);
     }
 
     .contact-card h3{
       margin-bottom:6px;
       font-size:1.12rem;
-      color:var(--navy);
-    }
-
-    html[data-theme="dark"] .contact-card h3{
-      color:#eef8ff;
     }
 
     .contact-card p{
@@ -1326,10 +1380,6 @@
       box-shadow:0 28px 70px rgba(0,0,0,.24);
     }
 
-    html[data-theme="dark"] .modal-box{
-      background:linear-gradient(180deg, #0f1c36, #132447);
-    }
-
     .modal-top{
       display:flex;
       justify-content:space-between;
@@ -1340,11 +1390,6 @@
 
     .modal-top h3{
       font-size:1.85rem;
-      color:var(--navy);
-    }
-
-    html[data-theme="dark"] .modal-top h3{
-      color:#eef8ff;
     }
 
     .close-btn{
@@ -1353,15 +1398,14 @@
       border:none;
       border-radius:50%;
       cursor:pointer;
-      background:rgba(16,37,86,.08);
+      background:rgba(255,255,255,.08);
       color:var(--text);
       font-size:1.2rem;
       flex-shrink:0;
     }
 
-    html[data-theme="dark"] .close-btn{
-      background:rgba(255,255,255,.08);
-      color:#fff;
+    html[data-theme="light"] .close-btn{
+      background:rgba(16,37,86,.08);
     }
 
     .modal-desc{
@@ -1380,21 +1424,17 @@
       padding:18px;
       border-radius:20px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.6);
+      background:rgba(255,255,255,.05);
     }
 
-    html[data-theme="dark"] .detail-card{
-      background:rgba(255,255,255,.05);
+    html[data-theme="light"] .detail-card{
+      background:rgba(255,255,255,.78);
     }
 
     .detail-card h4{
       margin-bottom:10px;
-      color:var(--blue);
-      font-size:1rem;
-    }
-
-    html[data-theme="dark"] .detail-card h4{
       color:var(--cyan);
+      font-size:1rem;
     }
 
     .detail-card ul{
@@ -1420,9 +1460,7 @@
       gap:14px;
     }
 
-    .wa-full{
-      grid-column:1 / -1;
-    }
+    .wa-full{ grid-column:1 / -1; }
 
     .wa-field{
       display:flex;
@@ -1442,16 +1480,15 @@
       padding:14px 16px;
       border-radius:16px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.86);
+      background:rgba(255,255,255,.08);
       color:var(--text);
       font:inherit;
       outline:none;
     }
 
-    html[data-theme="dark"] .wa-field input,
-    html[data-theme="dark"] .wa-field textarea{
-      background:rgba(255,255,255,.08);
-      color:#fff;
+    html[data-theme="light"] .wa-field input,
+    html[data-theme="light"] .wa-field textarea{
+      background:#ffffff;
     }
 
     .wa-field textarea{
@@ -1462,7 +1499,7 @@
     /* REVEAL */
     .fade-section{
       opacity:0;
-      transform:translateY(26px);
+      transform:translateY(24px);
       transition:.8s ease;
     }
 
@@ -1474,6 +1511,7 @@
     /* RESPONSIVE */
     @media (max-width: 1080px){
       .hero,
+      .theme-grid,
       .series-grid,
       .competition-grid,
       .openhouse-box,
@@ -1487,7 +1525,7 @@
 
       .hero{
         min-height:auto;
-        padding:36px 0 18px;
+        padding:12px 0 8px;
       }
 
       .hero-left{
@@ -1503,8 +1541,14 @@
         justify-content:center;
       }
 
-      .contact-card p{
-        min-height:auto;
+      .journey-line{
+        grid-template-columns:repeat(3,1fr);
+        row-gap:24px;
+      }
+
+      .journey-line::before{
+        left:10%;
+        right:10%;
       }
     }
 
@@ -1519,7 +1563,11 @@
       }
 
       .header-shell{
-        position:static;
+        width:calc(100% - 20px);
+      }
+
+      .page{
+        padding-top:94px;
       }
     }
 
@@ -1529,7 +1577,7 @@
       }
 
       .section{
-        padding:72px 0;
+        padding:70px 0;
       }
 
       .hero h1{
@@ -1540,7 +1588,14 @@
         min-width:128px;
       }
 
+      .journey-line{
+        grid-template-columns:repeat(2,1fr);
+      }
+
       .about-box,
+      .journey-wrap,
+      .theme-head,
+      .theme-card,
       .series-card,
       .comp-card,
       .openhouse-box,
@@ -1579,7 +1634,7 @@
     </div>
   </div>
 
-  <!-- MOBILE BUTTON -->
+  <!-- MOBILE TOGGLE -->
   <button class="floating-menu-btn" id="floatingMenuBtn" aria-label="Toggle menu">
     <span class="lines"></span>
   </button>
@@ -1588,7 +1643,9 @@
   <aside class="mobile-drawer" id="mobileDrawer">
     <div class="mobile-links">
       <a href="#about">About</a>
-      <a href="#series">Rangkaian Acara</a>
+      <a href="#journey">Journey</a>
+      <a href="#theme">Theme</a>
+      <a href="#series">Event Series</a>
       <a href="#competition">Competition</a>
       <a href="#openhouse">Open House</a>
       <a href="#contact">Contact</a>
@@ -1596,14 +1653,13 @@
 
     <div class="mobile-actions">
       <a class="btn btn-secondary" id="mobileGuidebook" href="#" target="_blank">Guidebook</a>
-      <a class="btn btn-primary" href="#competition">Register Now</a>
       <button class="btn btn-secondary" id="mobileThemeToggle" type="button">Mode Gelap/Terang</button>
     </div>
   </aside>
 
   <!-- HEADER -->
   <div class="header-shell" id="headerShell">
-    <header class="container">
+    <header>
       <div class="brand">
         <img src="assets/Logo3.png" alt="Logo Physics Summit">
         <div class="brand-copy">
@@ -1614,7 +1670,9 @@
 
       <nav class="nav-center">
         <a href="#about">About</a>
-        <a href="#series">Rangkaian Acara</a>
+        <a href="#journey">Journey</a>
+        <a href="#theme">Theme</a>
+        <a href="#series">Event Series</a>
         <a href="#competition">Competition</a>
         <a href="#openhouse">Open House</a>
         <a href="#contact">Contact</a>
@@ -1626,14 +1684,12 @@
           <span class="moon">🌙</span>
         </button>
         <a class="btn btn-secondary" id="navGuidebook" href="#" target="_blank">Guidebook</a>
-        <a class="btn btn-primary" href="#competition">Register Now</a>
       </div>
     </header>
   </div>
 
-  <main class="container">
-    <!-- HERO -->
-    <section class="hero">
+  <main class="page">
+    <section class="hero container">
       <div class="hero-left">
         <div class="hero-badge">11th Physics Summit</div>
         <h1>11th Physics Summit</h1>
@@ -1645,7 +1701,6 @@
           <div class="pill">PSEC</div>
           <div class="pill">PSO</div>
           <div class="pill">Open House Fisika ITS</div>
-          <div class="pill">Untuk Umum</div>
         </div>
       </div>
 
@@ -1666,66 +1721,154 @@
 
     <!-- ABOUT -->
     <section id="about" class="section fade-section">
-      <h2 class="section-title">About Physics Summit</h2>
-      <p class="section-desc">
-        Physics Summit merupakan rangkaian acara tahunan yang menggabungkan kompetisi, eksplorasi akademik, dan pengenalan Departemen Fisika ITS dalam satu pengalaman yang utuh.
-      </p>
-
-      <div class="glass about-box">
-        <p>
-          Melalui rangkaian kompetisi dan open house, Physics Summit hadir sebagai ruang bagi pelajar, mahasiswa, dan masyarakat umum untuk mengenal fisika secara lebih dekat, mengembangkan potensi, serta merasakan atmosfer akademik dan inovasi yang lebih luas.
+      <div class="container">
+        <h2 class="section-title">About Physics Summit</h2>
+        <p class="section-desc">
+          Physics Summit merupakan rangkaian acara tahunan yang menggabungkan kompetisi, eksplorasi akademik, dan pengenalan Departemen Fisika ITS dalam satu pengalaman yang utuh.
         </p>
+
+        <div class="glass about-box">
+          <p>
+            Melalui rangkaian kompetisi dan open house, Physics Summit hadir sebagai ruang bagi pelajar, mahasiswa, dan masyarakat umum untuk mengenal fisika secara lebih dekat, mengembangkan potensi, serta merasakan atmosfer akademik dan inovasi yang lebih luas.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- RANGKAIAN ACARA -->
-    <section id="series" class="section fade-section">
-      <h2 class="section-title">Rangkaian Acara</h2>
-      <p class="section-desc">
-        11th Physics Summit menghadirkan dua rangkaian utama yang saling terhubung, yaitu kompetisi dan open house. Kegiatan ini terbuka untuk peserta dan pengunjung umum, dengan beberapa bagian yang dapat dihadiri gratis.
-      </p>
+    <!-- JOURNEY -->
+    <section id="journey" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Journey</h2>
+        <p class="section-desc">
+          Klik tahun untuk melihat tonggak perjalanan Physics Summit.
+        </p>
 
-      <div class="series-grid">
-        <div class="series-card">
-          <div class="series-label">01 · Competition</div>
-          <h3>Kompetisi Physics Summit</h3>
-          <p>
-            Rangkaian kompetisi terdiri dari <strong>PSEC</strong> dan <strong>PSO</strong>. Kedua kompetisi ini dirancang untuk mengembangkan kemampuan akademik, kreativitas, dan daya saing peserta dari berbagai jenjang.
-          </p>
-
-          <div class="series-list">
-            <div>PSEC · SMA/SMK & Mahasiswa</div>
-            <div>PSO · SMA/SMK Sederajat</div>
+        <div class="glass journey-wrap">
+          <div class="journey-line">
+            <button class="year-node active" data-year="2011">
+              <div class="year-dot"></div>
+              <span>2011</span>
+            </button>
+            <button class="year-node" data-year="2014">
+              <div class="year-dot"></div>
+              <span>2014</span>
+            </button>
+            <button class="year-node" data-year="2018">
+              <div class="year-dot"></div>
+              <span>2018</span>
+            </button>
+            <button class="year-node" data-year="2020">
+              <div class="year-dot"></div>
+              <span>2020</span>
+            </button>
+            <button class="year-node" data-year="2024">
+              <div class="year-dot"></div>
+              <span>2024</span>
+            </button>
+            <button class="year-node" data-year="2026">
+              <div class="year-dot"></div>
+              <span>2026</span>
+            </button>
           </div>
 
-          <div class="series-deco">
-            <div class="ring r1"></div>
-            <div class="ring r2"></div>
-            <div class="ring r3"></div>
-            <div class="dot d1"></div>
-            <div class="dot d2"></div>
+          <div class="journey-detail" id="journeyDetail">
+            <h3>2011 · Awal Mula Physics Summit</h3>
+            <p>Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="series-card">
-          <div class="series-label">02 · Open House</div>
-          <h3>Open House Fisika ITS</h3>
-          <p>
-            Open House Departemen Fisika ITS dibuka untuk umum dan dapat dihadiri secara gratis. Pengunjung wajib mengisi RSVP terlebih dahulu untuk mengikuti rangkaian open house dan menikmati tenant serta showcase yang tersedia.
-          </p>
+    <!-- THEME -->
+    <section id="theme" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Theme</h2>
+        <p class="section-desc">
+          Tema tahun ini membawa semangat untuk memahami dasar-dasar ilmu sekaligus melangkah menuju cakrawala pengetahuan yang lebih luas.
+        </p>
 
-          <div class="series-list">
-            <div>Terbuka untuk Umum</div>
-            <div>Gratis Hadir</div>
-            <div>RSVP Wajib Diisi</div>
+        <div class="theme-wrap">
+          <div class="theme-head glass">
+            <h3>Atomic Horizon</h3>
+            <p>Expanding the Frontiers of Physics</p>
           </div>
 
-          <div class="series-deco">
-            <div class="ring r1"></div>
-            <div class="ring r2"></div>
-            <div class="ring r3"></div>
-            <div class="dot d1"></div>
-            <div class="dot d2"></div>
+          <div class="theme-grid">
+            <div class="theme-card">
+              <h4>Atomic</h4>
+              <p>
+                Atomic melambangkan hal-hal mendasar, ketelitian, serta semangat untuk memahami inti dari ilmu pengetahuan. Dalam fisika, atom merupakan fondasi bagi pemahaman tentang alam semesta.
+              </p>
+            </div>
+
+            <div class="theme-card">
+              <h4>Horizon</h4>
+              <p>
+                Horizon melambangkan cakrawala baru yang terus terbuka, kesempatan untuk memperluas wawasan, melihat kemungkinan baru, dan melangkah menuju pemahaman yang lebih jauh.
+              </p>
+            </div>
+
+            <div class="theme-card">
+              <h4>Expanding the Frontiers of Physics</h4>
+              <p>
+                Frasa ini menegaskan dorongan untuk terus memperluas batas-batas pemahaman dalam fisika melalui eksplorasi ilmiah, ide baru, dan perkembangan pengetahuan yang berdampak luas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT SERIES -->
+    <section id="series" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Event Series</h2>
+        <p class="section-desc">
+          11th Physics Summit menghadirkan dua rangkaian utama yang saling terhubung, yaitu kompetisi dan open house.
+        </p>
+
+        <div class="series-grid">
+          <div class="series-card">
+            <div class="series-label">01 · Competition</div>
+            <h3>Kompetisi Physics Summit</h3>
+            <p>
+              Rangkaian kompetisi terdiri dari <strong>PSEC</strong> dan <strong>PSO</strong>. Kedua kompetisi ini dirancang untuk mengembangkan kemampuan akademik, kreativitas, dan daya saing peserta dari berbagai jenjang.
+            </p>
+
+            <div class="series-list">
+              <div>PSEC · SMA/SMK & Mahasiswa</div>
+              <div>PSO · SMA/SMK Sederajat</div>
+            </div>
+
+            <div class="series-deco">
+              <div class="ring r1"></div>
+              <div class="ring r2"></div>
+              <div class="ring r3"></div>
+              <div class="dot d1"></div>
+              <div class="dot d2"></div>
+            </div>
+          </div>
+
+          <div class="series-card">
+            <div class="series-label">02 · Open House</div>
+            <h3>Open House Fisika ITS</h3>
+            <p>
+              Open House Departemen Fisika ITS dibuka untuk umum dan dapat dihadiri secara gratis. Pengunjung wajib mengisi RSVP terlebih dahulu untuk mengikuti rangkaian open house dan menikmati tenant serta showcase yang tersedia.
+            </p>
+
+            <div class="series-list">
+              <div>Terbuka untuk Umum</div>
+              <div>Gratis Hadir</div>
+              <div>RSVP Wajib Diisi</div>
+            </div>
+
+            <div class="series-deco">
+              <div class="ring r1"></div>
+              <div class="ring r2"></div>
+              <div class="ring r3"></div>
+              <div class="dot d1"></div>
+              <div class="dot d2"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1733,46 +1876,47 @@
 
     <!-- COMPETITION -->
     <section id="competition" class="section fade-section">
-      <h2 class="section-title">Competition</h2>
-      <p class="section-desc">
-        Physics Summit menghadirkan dua kompetisi utama yang dirancang untuk mengembangkan potensi peserta dalam bidang fisika, baik melalui gagasan tertulis maupun kemampuan analitis dan pemecahan masalah.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Competition</h2>
+        <p class="section-desc">
+          Physics Summit menghadirkan dua kompetisi utama yang dirancang untuk mengembangkan potensi peserta dalam bidang fisika, baik melalui gagasan tertulis maupun kemampuan analitis dan pemecahan masalah.
+        </p>
 
-      <div class="competition-grid">
-        <div class="comp-card">
-          <h3>Physics Summit Essay Competition</h3>
-          <p>
-            Kompetisi esai tingkat nasional yang menjadi wadah bagi peserta SMA/SMK dan mahasiswa untuk menuangkan ide, solusi, dan inovasi berbasis fisika melalui tahapan abstrak, full paper, hingga presentasi final.
-          </p>
+        <div class="competition-grid">
+          <div class="comp-card">
+            <h3>Physics Summit Essay Competition</h3>
+            <p>
+              Kompetisi esai tingkat nasional yang menjadi wadah bagi peserta SMA/SMK dan mahasiswa untuk menuangkan ide, solusi, dan inovasi berbasis fisika melalui tahapan abstrak, full paper, hingga presentasi final.
+            </p>
 
-          <div class="tag-row">
-            <div class="tag">SMA/SMK</div>
-            <div class="tag">Mahasiswa</div>
-            <div class="tag">Nasional</div>
-            <div class="tag">Final Offline</div>
+            <div class="tag-row">
+              <div class="tag">SMA/SMK</div>
+              <div class="tag">Mahasiswa</div>
+              <div class="tag">Nasional</div>
+            </div>
+
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openDetailModal('modalPSEC')">Detail PSEC</button>
+              <a class="btn btn-secondary" id="psecRegisterBtn" href="#" target="_blank">Daftar PSEC</a>
+            </div>
           </div>
 
-          <div class="card-actions">
-            <button class="btn btn-primary" onclick="openDetailModal('modalPSEC')">Detail PSEC</button>
-            <a class="btn btn-secondary" id="psecRegisterBtn" href="#" target="_blank">Daftar PSEC</a>
-          </div>
-        </div>
+          <div class="comp-card">
+            <h3>Physics Summit Olympiad</h3>
+            <p>
+              Kompetisi olimpiade fisika berjenjang yang menantang peserta untuk menunjukkan kemampuan terbaiknya melalui try out, penyisihan, semifinal, hingga final.
+            </p>
 
-        <div class="comp-card">
-          <h3>Physics Summit Olympiad</h3>
-          <p>
-            Kompetisi olimpiade fisika berjenjang yang menantang peserta untuk menunjukkan kemampuan terbaiknya melalui try out, penyisihan, semifinal, hingga final.
-          </p>
+            <div class="tag-row">
+              <div class="tag">SMA/SMK Sederajat</div>
+              <div class="tag">Nasional</div>
+              <div class="tag">Bundling Available</div>
+            </div>
 
-          <div class="tag-row">
-            <div class="tag">SMA/SMK Sederajat</div>
-            <div class="tag">Nasional</div>
-            <div class="tag">Bundling Available</div>
-          </div>
-
-          <div class="card-actions">
-            <button class="btn btn-primary" onclick="openDetailModal('modalPSO')">Detail PSO</button>
-            <a class="btn btn-secondary" id="psoRegisterBtn" href="#" target="_blank">Daftar PSO</a>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openDetailModal('modalPSO')">Detail PSO</button>
+              <a class="btn btn-secondary" id="psoRegisterBtn" href="#" target="_blank">Daftar PSO</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1780,112 +1924,44 @@
 
     <!-- OPEN HOUSE -->
     <section id="openhouse" class="section fade-section">
-      <h2 class="section-title">Open House Departemen Fisika ITS</h2>
-      <p class="section-desc">
-        Open House merupakan bagian dari Physics Summit yang dibuka untuk umum. Pengunjung dapat hadir secara gratis, namun wajib melakukan RSVP terlebih dahulu sebelum datang.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Open House Departemen Fisika ITS</h2>
+        <p class="section-desc">
+          Open House merupakan bagian dari Physics Summit yang dibuka untuk umum. Pengunjung dapat hadir secara gratis, namun wajib melakukan RSVP terlebih dahulu sebelum datang.
+        </p>
 
-      <div class="glass openhouse-box">
-        <div class="openhouse-copy">
-          <h3>Terbuka untuk Umum, Gratis, dan Interaktif</h3>
-          <p>
-            Melalui open house ini, pengunjung dapat mengenal Departemen Fisika ITS secara lebih dekat melalui tenant laboratorium peminatan, Physics Project Showcase, tenant finalis, dan berbagai aktivitas interaktif lainnya.
-          </p>
-          <p>
-            Kegiatan ini terbuka untuk masyarakat umum dan menjadi ruang eksplorasi yang memperlihatkan fisika tidak hanya dari sisi teori, tetapi juga dari karya, alat, dan penerapannya secara nyata.
-          </p>
+        <div class="glass openhouse-box">
+          <div class="openhouse-copy">
+            <h3>Terbuka untuk Umum, Gratis, dan Interaktif</h3>
+            <p>
+              Melalui open house ini, pengunjung dapat mengenal Departemen Fisika ITS secara lebih dekat melalui tenant laboratorium peminatan, Physics Project Showcase, tenant finalis, dan berbagai aktivitas interaktif lainnya.
+            </p>
+            <p>
+              Kegiatan ini terbuka untuk masyarakat umum dan menjadi ruang eksplorasi yang memperlihatkan fisika tidak hanya dari sisi teori, tetapi juga dari karya, alat, dan penerapannya secara nyata.
+            </p>
 
-          <div class="openhouse-meta">
-            <div class="pill">Dibuka untuk Umum</div>
-            <div class="pill">Gratis Hadir</div>
-            <div class="pill">RSVP Wajib</div>
+            <div class="openhouse-meta">
+              <div class="pill">Dibuka untuk Umum</div>
+              <div class="pill">Gratis Hadir</div>
+              <div class="pill">RSVP Wajib</div>
+            </div>
+
+            <div class="openhouse-actions">
+              <a class="btn btn-primary" id="openhouseRsvpBtn" href="#" target="_blank">Isi RSVP</a>
+              <button class="btn btn-secondary" onclick="openWaModal('openhouse')">Hubungi Salwa</button>
+            </div>
           </div>
 
-          <div class="openhouse-actions">
-            <a class="btn btn-primary" id="openhouseRsvpBtn" href="#" target="_blank">Isi RSVP</a>
-            <button class="btn btn-secondary" onclick="openWaModal('openhouse')">Hubungi Salwa</button>
-          </div>
-        </div>
+          <div class="openhouse-visual">
+            <img class="logo-center" src="assets/Logo3.png" alt="Logo Physics Summit">
+            <div class="visual-orbit v1"></div>
+            <div class="visual-orbit v2"></div>
+            <div class="visual-orbit v3"></div>
 
-        <div class="openhouse-visual">
-          <img class="logo-center" src="assets/Logo3.png" alt="Logo Physics Summit">
-          <div class="visual-orbit v1"></div>
-          <div class="visual-orbit v2"></div>
-          <div class="visual-orbit v3"></div>
-
-          <div class="booth-card booth-1">Open Tenant Lab</div>
-          <div class="booth-card booth-2">Project Showcase</div>
-          <div class="booth-card booth-3">Finalist Booth</div>
-          <div class="booth-card booth-4">Interactive Area</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HISTORY -->
-    <section id="history" class="section fade-section">
-      <h2 class="section-title">Perjalanan Physics Summit</h2>
-      <p class="section-desc">
-        Physics Summit bukan hanya sebuah kompetisi, tetapi juga perjalanan panjang yang dibangun oleh semangat, dedikasi, dan komitmen untuk terus menghadirkan ruang berkembang bagi generasi muda.
-      </p>
-
-      <div class="history-wrap">
-        <div class="acc-item">
-          <button class="acc-btn" type="button">
-            <span>2011 · Awal Mula Physics Summit</span>
-            <div class="acc-icon">+</div>
-          </button>
-          <div class="acc-content">
-            <p>Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS.</p>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-btn" type="button">
-            <span>2014 · Berganti Nama, Membawa Identitas Baru</span>
-            <div class="acc-icon">+</div>
-          </button>
-          <div class="acc-content">
-            <p>Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif.</p>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-btn" type="button">
-            <span>2018 · Penetapan Dirut Physics Summit</span>
-            <div class="acc-icon">+</div>
-          </button>
-          <div class="acc-content">
-            <p>Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur serta arah penyelenggaraan acara.</p>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-btn" type="button">
-            <span>2020 · Vakum karena Pandemi Covid-19</span>
-            <div class="acc-icon">+</div>
-          </button>
-          <div class="acc-content">
-            <p>Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga.</p>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-btn" type="button">
-            <span>2024 · Kembali Hadir dengan Semangat Baru</span>
-            <div class="acc-icon">+</div>
-          </button>
-          <div class="acc-content">
-            <p>Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda.</p>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-btn" type="button">
-            <span>2026 · 11th Physics Summit</span>
-            <div class="acc-icon">+</div>
-          </button>
-          <div class="acc-content">
-            <p>Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda.</p>
+            <div class="booth-card booth-1">Open Tenant Lab</div>
+            <div class="booth-card booth-2">Project Showcase</div>
+            <div class="booth-card booth-3">Finalist Booth</div>
+            <div class="booth-card booth-4">Interactive Area</div>
           </div>
         </div>
       </div>
@@ -1893,84 +1969,86 @@
 
     <!-- DOCUMENTATION -->
     <section id="documentation" class="section fade-section">
-      <h2 class="section-title">Dokumentasi Tahun Lalu</h2>
-      <p class="section-desc">
-        Beberapa momen berkesan dari pelaksanaan Physics Summit, mulai dari final kompetisi hingga awarding session.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Dokumentasi Tahun Lalu</h2>
+        <p class="section-desc">
+          Beberapa momen berkesan dari pelaksanaan Physics Summit, mulai dari final kompetisi hingga awarding session.
+        </p>
 
-      <div class="doc-tabs">
-        <button class="doc-tab active" data-tab="pso">Final PSO</button>
-        <button class="doc-tab" data-tab="psec">Final PSEC</button>
-        <button class="doc-tab" data-tab="awarding">Awarding</button>
-      </div>
+        <div class="doc-tabs">
+          <button class="doc-tab active" data-tab="pso">Final PSO</button>
+          <button class="doc-tab" data-tab="psec">Final PSEC</button>
+          <button class="doc-tab" data-tab="awarding">Awarding</button>
+        </div>
 
-      <div class="doc-panel active" id="panel-pso">
-        <div class="docs-grid">
-          <div class="doc-card">
-            <div class="doc-image">
-              <img src="Final PSO.JPG" alt="Final PSO 1">
+        <div class="doc-panel active" id="panel-pso">
+          <div class="docs-grid">
+            <div class="doc-card">
+              <div class="doc-image">
+                <img src="Final PSO.JPG" alt="Final PSO 1">
+              </div>
+              <div class="doc-body">
+                <h4>Final PSO · Foto 1</h4>
+                <p>Suasana babak final Physics Summit Olympiad yang memperlihatkan semangat kompetitif dan fokus peserta.</p>
+              </div>
             </div>
-            <div class="doc-body">
-              <h4>Final PSO · Foto 1</h4>
-              <p>Suasana babak final Physics Summit Olympiad yang memperlihatkan semangat kompetitif dan fokus peserta.</p>
-            </div>
-          </div>
 
-          <div class="doc-card">
-            <div class="doc-image">
-              <img src="Final PSO 1.JPG" alt="Final PSO 2">
-            </div>
-            <div class="doc-body">
-              <h4>Final PSO · Foto 2</h4>
-              <p>Momen peserta menunjukkan kemampuan terbaiknya dalam menyelesaikan tantangan pada tahap final.</p>
+            <div class="doc-card">
+              <div class="doc-image">
+                <img src="Final PSO 1.JPG" alt="Final PSO 2">
+              </div>
+              <div class="doc-body">
+                <h4>Final PSO · Foto 2</h4>
+                <p>Momen peserta menunjukkan kemampuan terbaiknya dalam menyelesaikan tantangan pada tahap final.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="doc-panel" id="panel-psec">
-        <div class="docs-grid">
-          <div class="doc-card">
-            <div class="doc-image">
-              <img src="Final PSEC 1.jpg" alt="Final PSEC 1">
+        <div class="doc-panel" id="panel-psec">
+          <div class="docs-grid">
+            <div class="doc-card">
+              <div class="doc-image">
+                <img src="Final PSEC 1.jpg" alt="Final PSEC 1">
+              </div>
+              <div class="doc-body">
+                <h4>Final PSEC · Foto 1</h4>
+                <p>Potret presentasi dan penyampaian gagasan terbaik dari finalis Physics Summit Essay Competition.</p>
+              </div>
             </div>
-            <div class="doc-body">
-              <h4>Final PSEC · Foto 1</h4>
-              <p>Potret presentasi dan penyampaian gagasan terbaik dari finalis Physics Summit Essay Competition.</p>
-            </div>
-          </div>
 
-          <div class="doc-card">
-            <div class="doc-image">
-              <img src="Final PSEC Juri.jpg" alt="Final PSEC 2">
-            </div>
-            <div class="doc-body">
-              <h4>Final PSEC · Foto 2</h4>
-              <p>Suasana penilaian dan interaksi ilmiah yang memperlihatkan kualitas gagasan peserta pada tahap final.</p>
+            <div class="doc-card">
+              <div class="doc-image">
+                <img src="Final PSEC Juri.jpg" alt="Final PSEC 2">
+              </div>
+              <div class="doc-body">
+                <h4>Final PSEC · Foto 2</h4>
+                <p>Suasana penilaian dan interaksi ilmiah yang memperlihatkan kualitas gagasan peserta pada tahap final.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="doc-panel" id="panel-awarding">
-        <div class="docs-grid">
-          <div class="doc-card">
-            <div class="doc-image">
-              <img src="EWARDING.jpg" alt="Awarding 1">
+        <div class="doc-panel" id="panel-awarding">
+          <div class="docs-grid">
+            <div class="doc-card">
+              <div class="doc-image">
+                <img src="EWARDING.jpg" alt="Awarding 1">
+              </div>
+              <div class="doc-body">
+                <h4>Awarding · Foto 1</h4>
+                <p>Momen apresiasi bagi para pemenang sebagai bentuk penghargaan atas usaha dan prestasi yang diraih.</p>
+              </div>
             </div>
-            <div class="doc-body">
-              <h4>Awarding · Foto 1</h4>
-              <p>Momen apresiasi bagi para pemenang sebagai bentuk penghargaan atas usaha dan prestasi yang diraih.</p>
-            </div>
-          </div>
 
-          <div class="doc-card">
-            <div class="doc-image">
-              <img src="EWARDING 2.jpg" alt="Awarding 2">
-            </div>
-            <div class="doc-body">
-              <h4>Awarding · Foto 2</h4>
-              <p>Dokumentasi suasana awarding yang menjadi salah satu puncak paling berkesan dalam rangkaian acara.</p>
+            <div class="doc-card">
+              <div class="doc-image">
+                <img src="EWARDING 2.jpg" alt="Awarding 2">
+              </div>
+              <div class="doc-body">
+                <h4>Awarding · Foto 2</h4>
+                <p>Dokumentasi suasana awarding yang menjadi salah satu puncak paling berkesan dalam rangkaian acara.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1979,126 +2057,134 @@
 
     <!-- GUIDEBOOK -->
     <section id="guidebook" class="section fade-section">
-      <h2 class="section-title">Guidebook</h2>
-      <p class="section-desc">
-        Guidebook memuat informasi lengkap mengenai mekanisme pendaftaran, ketentuan peserta, alur kompetisi, jadwal kegiatan, serta berbagai informasi penting lain yang berkaitan dengan pelaksanaan 11th Physics Summit.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Guidebook</h2>
+        <p class="section-desc">
+          Guidebook memuat informasi lengkap mengenai mekanisme pendaftaran, ketentuan peserta, alur kompetisi, jadwal kegiatan, serta berbagai informasi penting lain yang berkaitan dengan pelaksanaan 11th Physics Summit.
+        </p>
 
-      <div class="glass guide-box">
-        <div>
-          <h3>Panduan Resmi 11th Physics Summit</h3>
-          <p>Satu link guidebook digunakan untuk seluruh rangkaian kompetisi dan informasi utama Physics Summit.</p>
+        <div class="glass guide-box">
+          <div>
+            <h3>Panduan Resmi 11th Physics Summit</h3>
+            <p>Satu link guidebook digunakan untuk seluruh rangkaian kompetisi dan informasi utama Physics Summit.</p>
+          </div>
+
+          <a class="btn btn-primary" id="guidebookBtn" href="#" target="_blank">Akses Guidebook</a>
         </div>
-
-        <a class="btn btn-primary" id="guidebookBtn" href="#" target="_blank">Akses Guidebook</a>
       </div>
     </section>
 
     <!-- MEDIA PARTNER -->
     <section id="media-partner" class="section fade-section">
-      <h2 class="section-title">Media Partner</h2>
-      <p class="section-desc">
-        11th Physics Summit didukung oleh berbagai media partner yang turut membantu menyebarluaskan semangat kompetisi dan pengembangan ilmu pengetahuan kepada audiens yang lebih luas.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Media Partner</h2>
+        <p class="section-desc">
+          11th Physics Summit didukung oleh berbagai media partner yang turut membantu menyebarluaskan semangat kompetisi dan pengembangan ilmu pengetahuan kepada audiens yang lebih luas.
+        </p>
 
-      <div class="marquee-wrap">
-        <div class="marquee">
-          <div class="partner-item"><img src="assets/Ikut Event Transparent.png" alt="Ikut Event"></div>
-          <div class="partner-item"><img src="assets/LOGO UMM ESPORTS.png" alt="UMM Esports"></div>
-          <div class="partner-item"><img src="assets/Logo Brawijaya Esports.png" alt="Brawijaya Esports"></div>
-          <div class="partner-item"><img src="assets/Logo EventSurabaya.png" alt="Event Surabaya"></div>
-          <div class="partner-item"><img src="assets/Logo Eventjatimraya.png" alt="Event Jatim Raya"></div>
-          <div class="partner-item"><img src="assets/Logo UKM UNAIR Esports.png" alt="UKM UNAIR Esports"></div>
-          <div class="partner-item"><img src="assets/Logo UM Esport.png" alt="UM Esport"></div>
-          <div class="partner-item"><img src="assets/Official Logo EJT.png" alt="Official Logo EJT"></div>
-          <div class="partner-item"><img src="assets/Ubhara.JPG" alt="Ubhara"></div>
-          <div class="partner-item"><img src="assets/event game sby.jpg" alt="Event Game SBY"></div>
-          <div class="partner-item"><img src="assets/logo eventmahasiswa8.png" alt="Event Mahasiswa"></div>
-          <div class="partner-item"><img src="assets/logo media event.png" alt="Media Event"></div>
+        <div class="marquee-wrap">
+          <div class="marquee">
+            <div class="partner-item"><img src="assets/Ikut Event Transparent.png" alt="Ikut Event"></div>
+            <div class="partner-item"><img src="assets/LOGO UMM ESPORTS.png" alt="UMM Esports"></div>
+            <div class="partner-item"><img src="assets/Logo Brawijaya Esports.png" alt="Brawijaya Esports"></div>
+            <div class="partner-item"><img src="assets/Logo EventSurabaya.png" alt="Event Surabaya"></div>
+            <div class="partner-item"><img src="assets/Logo Eventjatimraya.png" alt="Event Jatim Raya"></div>
+            <div class="partner-item"><img src="assets/Logo UKM UNAIR Esports.png" alt="UKM UNAIR Esports"></div>
+            <div class="partner-item"><img src="assets/Logo UM Esport.png" alt="UM Esport"></div>
+            <div class="partner-item"><img src="assets/Official Logo EJT.png" alt="Official Logo EJT"></div>
+            <div class="partner-item"><img src="assets/Ubhara.JPG" alt="Ubhara"></div>
+            <div class="partner-item"><img src="assets/event game sby.jpg" alt="Event Game SBY"></div>
+            <div class="partner-item"><img src="assets/logo eventmahasiswa8.png" alt="Event Mahasiswa"></div>
+            <div class="partner-item"><img src="assets/logo media event.png" alt="Media Event"></div>
 
-          <div class="partner-item"><img src="assets/Ikut Event Transparent.png" alt="Ikut Event"></div>
-          <div class="partner-item"><img src="assets/LOGO UMM ESPORTS.png" alt="UMM Esports"></div>
-          <div class="partner-item"><img src="assets/Logo Brawijaya Esports.png" alt="Brawijaya Esports"></div>
-          <div class="partner-item"><img src="assets/Logo EventSurabaya.png" alt="Event Surabaya"></div>
-          <div class="partner-item"><img src="assets/Logo Eventjatimraya.png" alt="Event Jatim Raya"></div>
-          <div class="partner-item"><img src="assets/Logo UKM UNAIR Esports.png" alt="UKM UNAIR Esports"></div>
-          <div class="partner-item"><img src="assets/Logo UM Esport.png" alt="UM Esport"></div>
-          <div class="partner-item"><img src="assets/Official Logo EJT.png" alt="Official Logo EJT"></div>
-          <div class="partner-item"><img src="assets/Ubhara.JPG" alt="Ubhara"></div>
-          <div class="partner-item"><img src="assets/event game sby.jpg" alt="Event Game SBY"></div>
-          <div class="partner-item"><img src="assets/logo eventmahasiswa8.png" alt="Event Mahasiswa"></div>
-          <div class="partner-item"><img src="assets/logo media event.png" alt="Media Event"></div>
+            <div class="partner-item"><img src="assets/Ikut Event Transparent.png" alt="Ikut Event"></div>
+            <div class="partner-item"><img src="assets/LOGO UMM ESPORTS.png" alt="UMM Esports"></div>
+            <div class="partner-item"><img src="assets/Logo Brawijaya Esports.png" alt="Brawijaya Esports"></div>
+            <div class="partner-item"><img src="assets/Logo EventSurabaya.png" alt="Event Surabaya"></div>
+            <div class="partner-item"><img src="assets/Logo Eventjatimraya.png" alt="Event Jatim Raya"></div>
+            <div class="partner-item"><img src="assets/Logo UKM UNAIR Esports.png" alt="UKM UNAIR Esports"></div>
+            <div class="partner-item"><img src="assets/Logo UM Esport.png" alt="UM Esport"></div>
+            <div class="partner-item"><img src="assets/Official Logo EJT.png" alt="Official Logo EJT"></div>
+            <div class="partner-item"><img src="assets/Ubhara.JPG" alt="Ubhara"></div>
+            <div class="partner-item"><img src="assets/event game sby.jpg" alt="Event Game SBY"></div>
+            <div class="partner-item"><img src="assets/logo eventmahasiswa8.png" alt="Event Mahasiswa"></div>
+            <div class="partner-item"><img src="assets/logo media event.png" alt="Media Event"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- SPONSOR -->
     <section id="sponsor" class="section fade-section">
-      <h2 class="section-title">Sponsor</h2>
-      <p class="section-desc">
-        Section sponsor sudah siap dibuat berjalan otomatis seperti media partner. Tinggal ganti placeholder dengan logo sponsor yang sudah final.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Sponsor</h2>
+        <p class="section-desc">
+          Section sponsor sudah siap dibuat berjalan otomatis seperti media partner. Tinggal ganti placeholder dengan logo sponsor yang sudah final.
+        </p>
 
-      <div class="marquee-wrap">
-        <div class="marquee reverse">
-          <div class="partner-item placeholder">Sponsor Slot 01</div>
-          <div class="partner-item placeholder">Sponsor Slot 02</div>
-          <div class="partner-item placeholder">Sponsor Slot 03</div>
-          <div class="partner-item placeholder">Sponsor Slot 04</div>
-          <div class="partner-item placeholder">Sponsor Slot 05</div>
-          <div class="partner-item placeholder">Sponsor Slot 06</div>
+        <div class="marquee-wrap">
+          <div class="marquee reverse">
+            <div class="partner-item placeholder">Sponsor Slot 01</div>
+            <div class="partner-item placeholder">Sponsor Slot 02</div>
+            <div class="partner-item placeholder">Sponsor Slot 03</div>
+            <div class="partner-item placeholder">Sponsor Slot 04</div>
+            <div class="partner-item placeholder">Sponsor Slot 05</div>
+            <div class="partner-item placeholder">Sponsor Slot 06</div>
 
-          <div class="partner-item placeholder">Sponsor Slot 01</div>
-          <div class="partner-item placeholder">Sponsor Slot 02</div>
-          <div class="partner-item placeholder">Sponsor Slot 03</div>
-          <div class="partner-item placeholder">Sponsor Slot 04</div>
-          <div class="partner-item placeholder">Sponsor Slot 05</div>
-          <div class="partner-item placeholder">Sponsor Slot 06</div>
+            <div class="partner-item placeholder">Sponsor Slot 01</div>
+            <div class="partner-item placeholder">Sponsor Slot 02</div>
+            <div class="partner-item placeholder">Sponsor Slot 03</div>
+            <div class="partner-item placeholder">Sponsor Slot 04</div>
+            <div class="partner-item placeholder">Sponsor Slot 05</div>
+            <div class="partner-item placeholder">Sponsor Slot 06</div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section fade-section">
-      <h2 class="section-title">Contact Person</h2>
-      <p class="section-desc">
-        Punya pertanyaan seputar kompetisi, open house, sponsor, atau media partner? Hubungi contact person Physics Summit melalui WhatsApp dan isi form kontak singkat terlebih dahulu.
-      </p>
+      <div class="container">
+        <h2 class="section-title">Contact Person</h2>
+        <p class="section-desc">
+          Punya pertanyaan seputar kompetisi, open house, sponsor, atau media partner? Hubungi contact person Physics Summit melalui WhatsApp dan isi form kontak singkat terlebih dahulu.
+        </p>
 
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-role">Competition</div>
-          <h3>PSEC</h3>
-          <p>Hubungi Ika untuk pertanyaan seputar Physics Summit Essay Competition.</p>
-          <button class="btn btn-primary" onclick="openWaModal('psec')">Hubungi PSEC</button>
-        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-role">Competition</div>
+            <h3>PSEC</h3>
+            <p>Hubungi Ika untuk pertanyaan seputar Physics Summit Essay Competition.</p>
+            <button class="btn btn-primary" onclick="openWaModal('psec')">Hubungi PSEC</button>
+          </div>
 
-        <div class="contact-card">
-          <div class="contact-role">Competition</div>
-          <h3>PSO</h3>
-          <p>Hubungi Icha untuk pertanyaan seputar Physics Summit Olympiad.</p>
-          <button class="btn btn-primary" onclick="openWaModal('pso')">Hubungi PSO</button>
-        </div>
+          <div class="contact-card">
+            <div class="contact-role">Competition</div>
+            <h3>PSO</h3>
+            <p>Hubungi Icha untuk pertanyaan seputar Physics Summit Olympiad.</p>
+            <button class="btn btn-primary" onclick="openWaModal('pso')">Hubungi PSO</button>
+          </div>
 
-        <div class="contact-card">
-          <div class="contact-role">Open House</div>
-          <h3>Open House</h3>
-          <p>Hubungi Salwa untuk pertanyaan seputar open house dan RSVP pengunjung.</p>
-          <button class="btn btn-primary" onclick="openWaModal('openhouse')">Hubungi Salwa</button>
-        </div>
+          <div class="contact-card">
+            <div class="contact-role">Open House</div>
+            <h3>Open House</h3>
+            <p>Hubungi Salwa untuk pertanyaan seputar open house dan RSVP pengunjung.</p>
+            <button class="btn btn-primary" onclick="openWaModal('openhouse')">Hubungi Salwa</button>
+          </div>
 
-        <div class="contact-card">
-          <div class="contact-role">Partnership</div>
-          <h3>Sponsor</h3>
-          <p>Hubungi Ilyas untuk kebutuhan kerja sama sponsor Physics Summit.</p>
-          <button class="btn btn-primary" onclick="openWaModal('sponsor')">Hubungi Sponsor</button>
-        </div>
+          <div class="contact-card">
+            <div class="contact-role">Partnership</div>
+            <h3>Sponsor</h3>
+            <p>Hubungi Ilyas untuk kebutuhan kerja sama sponsor Physics Summit.</p>
+            <button class="btn btn-primary" onclick="openWaModal('sponsor')">Hubungi Sponsor</button>
+          </div>
 
-        <div class="contact-card">
-          <div class="contact-role">Partnership</div>
-          <h3>Media Partner</h3>
-          <p>Hubungi Rendy untuk kebutuhan kerja sama media partner Physics Summit.</p>
-          <button class="btn btn-primary" onclick="openWaModal('medpart')">Hubungi Media Partner</button>
+          <div class="contact-card">
+            <div class="contact-role">Partnership</div>
+            <h3>Media Partner</h3>
+            <p>Hubungi Rendy untuk kebutuhan kerja sama media partner Physics Summit.</p>
+            <button class="btn btn-primary" onclick="openWaModal('medpart')">Hubungi Media Partner</button>
+          </div>
         </div>
       </div>
     </section>
@@ -2119,9 +2205,9 @@
       <div>
         <h4>Navigasi</h4>
         <a href="#about">About</a>
-        <a href="#series">Rangkaian Acara</a>
-        <a href="#competition">Competition</a>
-        <a href="#openhouse">Open House</a>
+        <a href="#journey">Journey</a>
+        <a href="#theme">Theme</a>
+        <a href="#series">Event Series</a>
       </div>
 
       <div>
@@ -2363,6 +2449,33 @@
       }
     };
 
+    const journeyContent = {
+      "2011": {
+        title: "2011 · Awal Mula Physics Summit",
+        text: "Tahun 2011 menjadi titik awal lahirnya Physics Summit sebagai wadah yang membawa semangat kompetisi, keilmuan, dan kebersamaan di lingkungan Departemen Fisika ITS."
+      },
+      "2014": {
+        title: "2014 · Berganti Nama, Membawa Identitas Baru",
+        text: "Pada tahun 2014, Physics Summit memasuki fase baru melalui perubahan nama yang mencerminkan identitas acara secara lebih kuat dan lebih representatif."
+      },
+      "2018": {
+        title: "2018 · Penetapan Dirut Physics Summit",
+        text: "Tahun 2018 menjadi salah satu tonggak penting dalam perjalanan Physics Summit melalui penetapan direktur utama sebagai bagian dari penguatan struktur dan arah penyelenggaraan acara."
+      },
+      "2020": {
+        title: "2020 · Vakum karena Pandemi Covid-19",
+        text: "Pandemi Covid-19 menjadi tantangan besar yang membuat Physics Summit harus berhenti sejenak. Walaupun demikian, semangat dan cita-cita besar dari acara ini tetap terjaga."
+      },
+      "2024": {
+        title: "2024 · Kembali Hadir dengan Semangat Baru",
+        text: "Setelah masa vakum, Physics Summit kembali hadir pada tahun 2024 dengan semangat baru, membawa harapan baru, dan melanjutkan perjalanan yang sempat tertunda."
+      },
+      "2026": {
+        title: "2026 · 11th Physics Summit",
+        text: "Memasuki tahun 2026, Physics Summit hadir sebagai penyelenggaraan ke-11, menjadi simbol keberlanjutan, pertumbuhan, dan komitmen untuk terus membuka ruang pengembangan potensi serta prestasi generasi muda."
+      }
+    };
+
     const guidebookIds = [
       "navGuidebook",
       "mobileGuidebook",
@@ -2395,10 +2508,10 @@
       const preloader = document.getElementById("preloader");
       setTimeout(() => {
         preloader.classList.add("hide");
-      }, 400);
+      }, 350);
     });
 
-    /* STICKY HEADER SHADOW */
+    /* HEADER SHADOW */
     const headerShell = document.getElementById("headerShell");
     window.addEventListener("scroll", () => {
       headerShell.classList.toggle("scrolled", window.scrollY > 10);
@@ -2447,6 +2560,25 @@
       link.addEventListener("click", closeDrawer);
     });
 
+    /* JOURNEY */
+    const yearNodes = document.querySelectorAll(".year-node");
+    const journeyDetail = document.getElementById("journeyDetail");
+
+    yearNodes.forEach(node => {
+      node.addEventListener("click", () => {
+        const year = node.dataset.year;
+        const item = journeyContent[year];
+
+        yearNodes.forEach(n => n.classList.remove("active"));
+        node.classList.add("active");
+
+        journeyDetail.innerHTML = `
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        `;
+      });
+    });
+
     /* DETAIL MODAL */
     function openDetailModal(id){
       document.getElementById(id).style.display = "flex";
@@ -2465,6 +2597,7 @@
     const waName = document.getElementById("waName");
     const waOrigin = document.getElementById("waOrigin");
     const waTarget = document.getElementById("waTarget");
+    constwaTarget");
     const waMessage = document.getElementById("waMessage");
     const originLabel = document.getElementById("originLabel");
 
@@ -2544,26 +2677,6 @@ Terima kasih.`;
     }, { threshold: 0.14 });
 
     sections.forEach(section => observer.observe(section));
-
-    /* ACCORDION */
-    document.querySelectorAll(".acc-item").forEach(item => {
-      const btn = item.querySelector(".acc-btn");
-      const content = item.querySelector(".acc-content");
-
-      btn.addEventListener("click", () => {
-        const isActive = item.classList.contains("active");
-
-        document.querySelectorAll(".acc-item").forEach(other => {
-          other.classList.remove("active");
-          other.querySelector(".acc-content").style.maxHeight = null;
-        });
-
-        if (!isActive) {
-          item.classList.add("active");
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      });
-    });
 
     /* DOC TABS */
     const tabs = document.querySelectorAll(".doc-tab");
