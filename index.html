@@ -13,7 +13,6 @@
     :root{
       --navy:#0C0F21;
       --indigo:#1B2246;
-      --brown:#6A5252;
       --cyan:#00E6FF;
       --violet:#A44DFF;
       --white:#F3F4FF;
@@ -32,103 +31,115 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+    html,body{overflow-x:hidden}
     body{
       font-family:var(--body);
       color:var(--text);
       background:
-        radial-gradient(circle at 12% 6%, rgba(164,77,255,.30), transparent 25%),
-        radial-gradient(circle at 78% 12%, rgba(0,230,255,.16), transparent 24%),
-        radial-gradient(circle at 80% 72%, rgba(255,77,166,.16), transparent 24%),
-        linear-gradient(180deg, var(--navy), var(--indigo) 52%, #2a1454 100%);
-      overflow-x:hidden;
+        radial-gradient(circle at 12% 6%, rgba(164,77,255,.32), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(0,230,255,.18), transparent 24%),
+        radial-gradient(circle at 78% 72%, rgba(255,77,166,.16), transparent 24%),
+        linear-gradient(180deg, var(--navy), var(--indigo) 54%, #2b1555 100%);
+      min-height:100vh;
     }
+
     body::before{
       content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;opacity:.55;
       background-image:
         radial-gradient(circle at 10% 20%, rgba(255,255,255,.9) 0 1px, transparent 2px),
-        radial-gradient(circle at 30% 70%, rgba(255,255,255,.7) 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,.75) 0 1px, transparent 2px),
         radial-gradient(circle at 80% 30%, rgba(255,255,255,.75) 0 1px, transparent 2px),
         radial-gradient(circle at 60% 90%, rgba(255,196,61,.75) 0 1px, transparent 2px);
       background-size:240px 240px, 320px 320px, 280px 280px, 360px 360px;
       animation:stars 18s linear infinite alternate;
     }
+
     body::after{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.11;
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.10;
       background-image:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
       background-size:48px 48px;
       mask-image:linear-gradient(180deg, transparent, #000 18%, #000 84%, transparent);
+      -webkit-mask-image:linear-gradient(180deg, transparent, #000 18%, #000 84%, transparent);
     }
+
     @keyframes stars{to{transform:translateY(-18px)}}
 
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{width:min(var(--max), calc(100% - 32px));margin:auto}
-    .section{position:relative;padding:84px 0;scroll-margin-top:90px}
+    .section{position:relative;padding:82px 0;scroll-margin-top:90px}
+
+    h1,h2,h3{font-family:var(--heading);font-weight:700;letter-spacing:-.035em}
+    h1{font-size:clamp(4rem,9vw,8.4rem);line-height:.82;margin-bottom:14px}
+    h2{font-size:clamp(3rem,6vw,5.6rem);line-height:.92;text-align:center}
+    h3{font-size:2rem;line-height:1.05}
+    p{line-height:1.9;color:var(--muted)}
+    .script{font-family:var(--script);color:var(--pink);font-size:clamp(2.5rem,5.4vw,4.8rem);line-height:.78;display:block;letter-spacing:.01em;font-weight:400;text-align:center}
 
     .nav{
       position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;
       width:min(1100px, calc(100% - 32px));
       display:flex;align-items:center;justify-content:space-between;gap:18px;
       padding:12px 16px;border:1px solid var(--line);border-radius:999px;
-      background:rgba(12,15,33,.72);backdrop-filter:blur(18px);box-shadow:var(--shadow);
+      background:rgba(12,15,33,.74);backdrop-filter:blur(18px);box-shadow:var(--shadow);
     }
-    .brand{display:flex;align-items:center;gap:12px;min-width:190px}
-    .brand-mark{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--cyan));box-shadow:0 0 28px rgba(0,230,255,.25);font-weight:900;color:var(--navy)}
+    .brand{display:flex;align-items:center;gap:12px;min-width:210px}
+    .brand img{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(0,230,255,.2))}
     .brand strong{display:block;font-size:.94rem}.brand span{display:block;color:var(--muted);font-size:.75rem}
     .navlinks{display:flex;gap:18px;align-items:center;color:var(--muted);font-weight:700;font-size:.9rem}
     .navlinks a:hover{color:var(--white)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:999px;padding:13px 20px;font-weight:800;font-family:inherit;cursor:pointer;transition:.25s ease}
+    .hamburger{display:none;background:transparent;border:none;color:white;font-size:1.5rem}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:999px;padding:13px 20px;font-weight:800;font-family:inherit;cursor:pointer;transition:.25s ease;text-align:center}
     .btn:hover{transform:translateY(-2px)}
     .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));color:white;box-shadow:0 14px 32px rgba(164,77,255,.28)}
     .btn-ghost{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text)}
-    .hamburger{display:none;background:transparent;border:none;color:white;font-size:1.5rem}
+    .btn-yellow{background:var(--yellow);color:#17112b}
 
-    .hero{min-height:100vh;display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:40px;padding-top:104px}
+    .hero{min-height:100vh;display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:40px;padding-top:104px}
     .eyebrow{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,230,255,.28);background:rgba(0,230,255,.08);color:var(--cyan);border-radius:999px;padding:10px 15px;font-weight:800;margin-bottom:20px}
     .eyebrow::before{content:"✦";color:var(--yellow)}
-    h1,h2,h3{font-family:var(--heading);font-weight:700;letter-spacing:-.035em}
-    h1{font-size:clamp(4rem,9vw,8.4rem);line-height:.82;margin-bottom:14px}
-    .script{font-family:var(--script);color:var(--pink);font-size:clamp(2.6rem,6vw,5rem);line-height:.7;display:block;letter-spacing:.01em;font-weight:400}
-    .hero p,.lead{color:var(--muted);font-size:1.05rem;line-height:1.9;max-width:760px}
+    .hero p{font-size:1.05rem;max-width:760px}
     .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);font-weight:800;font-size:.9rem}
+    .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);font-weight:800;font-size:.9rem}
 
     .space-card{position:relative;min-height:560px;border-radius:42px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.025));box-shadow:var(--shadow);overflow:hidden;display:grid;place-items:center}
-    .atom{position:relative;width:min(430px,82vw);aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 25px 50px rgba(0,0,0,.28))}
-    .nucleus{width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 38% 38%, #fff 0 4px, var(--pink) 10%, var(--violet) 58%, var(--cyan));box-shadow:0 0 42px rgba(255,77,166,.55);z-index:3}
-    .orbit{position:absolute;border:3px solid;border-radius:50%;inset:21%;animation:spin 18s linear infinite}.orbit.o1{border-color:rgba(0,230,255,.82);transform:rotate(-18deg);height:38%;top:31%}.orbit.o2{border-color:rgba(164,77,255,.82);transform:rotate(65deg);width:42%;left:29%;animation-duration:14s}.orbit.o3{border-color:rgba(255,255,255,.65);transform:rotate(25deg);height:44%;top:28%;animation-duration:22s}.orbit.o4{border-color:rgba(255,77,166,.72);transform:rotate(-42deg);height:32%;top:34%;animation-duration:16s}
-    .electron{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}.e1{top:26%;right:12%}.e2{bottom:16%;left:25%;background:var(--pink);box-shadow:0 0 18px var(--pink)}.e3{bottom:18%;right:22%;background:var(--white);box-shadow:0 0 18px white}
+    .space-card::before{content:"";position:absolute;inset:26px;border-radius:34px;border:1px dashed rgba(255,255,255,.18)}
+    .logo-main{width:min(330px,70%);position:relative;z-index:3;filter:drop-shadow(0 26px 44px rgba(0,0,0,.35))}
+    .orbit{position:absolute;border:3px solid;border-radius:50%;inset:22%;animation:spin 18s linear infinite}.orbit.o1{border-color:rgba(0,230,255,.78);transform:rotate(-18deg);height:38%;top:31%}.orbit.o2{border-color:rgba(164,77,255,.82);transform:rotate(65deg);width:42%;left:29%;animation-duration:14s}.orbit.o3{border-color:rgba(255,255,255,.55);transform:rotate(25deg);height:44%;top:28%;animation-duration:22s}
+    .sparkle{position:absolute;color:var(--yellow);font-size:4rem;filter:drop-shadow(0 0 18px rgba(255,196,61,.55));z-index:2}.sp1{top:50px;right:60px}.sp2{bottom:58px;left:58px;color:var(--pink)}.sp3{top:54%;right:28px;color:var(--cyan);font-size:2rem}
     @keyframes spin{to{rotate:360deg}}
-    .sparkle{position:absolute;color:var(--yellow);font-size:4rem;filter:drop-shadow(0 0 18px rgba(255,196,61,.55))}.sp1{top:50px;right:60px}.sp2{bottom:58px;left:58px;color:var(--pink)}.sp3{top:54%;right:28px;color:var(--cyan);font-size:2rem}
 
-    .section-head{text-align:center;margin-bottom:34px}.section-head h2{font-size:clamp(3rem,6vw,5.6rem);line-height:.92}.section-head .script{font-size:clamp(2.4rem,4.5vw,4rem);margin-top:2px}.section-head p{margin:18px auto 0;color:var(--muted);max-width:850px;line-height:1.9}
+    .section-head{text-align:center;margin-bottom:34px}.section-head p{margin:18px auto 0;max-width:850px}
     .card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.045));box-shadow:var(--shadow);border-radius:var(--radius)}
     .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .info{padding:28px}.info h3{font-size:2rem;margin-bottom:12px}.info p,.info li{color:var(--muted);line-height:1.85}.info ul{padding-left:18px;margin-top:10px}.accent-cyan{border-top:6px solid var(--cyan)}.accent-pink{border-top:6px solid var(--pink)}.accent-violet{border-top:6px solid var(--violet)}.accent-yellow{border-top:6px solid var(--yellow)}
+    .info{padding:28px}.info h3{margin-bottom:12px}.info ul{padding-left:18px;margin-top:10px;color:var(--muted);line-height:1.85}.accent-cyan{border-top:6px solid var(--cyan)}.accent-pink{border-top:6px solid var(--pink)}.accent-violet{border-top:6px solid var(--violet)}.accent-yellow{border-top:6px solid var(--yellow)}
 
-    .timeline{position:relative;margin-top:28px;padding:28px}.timeline::before{content:"";position:absolute;left:50%;top:46px;bottom:46px;width:3px;background:linear-gradient(var(--cyan),var(--pink),var(--yellow));border-radius:999px}.timeline-item{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:22px 0}.timeline-item:nth-child(even) .timeline-content{grid-column:2}.timeline-dot{position:absolute;left:50%;top:24px;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 8px rgba(255,196,61,.15)}.timeline-content{padding:22px;border-radius:22px;background:rgba(255,255,255,.07);border:1px solid var(--line)}.timeline-content b{color:var(--cyan)}
+    .event-card{padding:30px;position:relative;overflow:hidden}.event-card::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-70px;top:-70px;background:radial-gradient(circle,rgba(255,77,166,.18),transparent 70%)}.event-card h3{font-size:2.35rem}.event-card .label{color:var(--cyan);font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem}.steps{display:grid;gap:10px;margin-top:16px}.step{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.075);border:1px solid var(--line);font-weight:700;color:var(--white)}
 
-    .event-card{padding:28px;position:relative;overflow:hidden}.event-card::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-70px;top:-70px;background:radial-gradient(circle,rgba(255,77,166,.18),transparent 70%)}.event-card h3{font-size:2.25rem}.event-card .label{color:var(--cyan);font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem}.steps{display:grid;gap:10px;margin-top:16px}.step{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.075);border:1px solid var(--line);font-weight:700;color:var(--white)}
+    .cta-box{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:28px;margin-top:24px}.cta-box h3{font-size:2.4rem}.cta-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .logo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}.logo-box{min-height:120px;border-radius:22px;background:rgba(255,255,255,.07);border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted);font-weight:800}.logo-box img{max-height:80px;object-fit:contain}
 
-    table{width:100%;border-collapse:separate;border-spacing:0 10px}.table-wrap{overflow:auto;padding:18px}th,td{text-align:left;padding:15px 16px;background:rgba(243,244,255,.92);color:#14193A;border-right:3px solid #14193A;white-space:nowrap}th{background:#b9b0ff;font-weight:900}td:first-child,th:first-child{border-radius:14px 0 0 14px}td:last-child,th:last-child{border-right:0;border-radius:0 14px 14px 0}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;padding:18px;z-index:99}.modal.show{display:flex}.modal-content{width:min(520px,100%);padding:32px;text-align:center}.modal-content h3{font-size:2.6rem;margin-bottom:10px}.modal-content .script{font-size:3.4rem;margin-bottom:6px}.close{margin-top:20px}
 
     .footer{padding:58px 0;margin-top:50px;background:linear-gradient(135deg,rgba(255,77,166,.26),rgba(0,230,255,.18),rgba(164,77,255,.25));border-top:1px solid var(--line)}.footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:24px}.footer h3{font-size:2rem}.footer a,.footer p{display:block;color:var(--muted);line-height:1.9}.mini-title{font-weight:900;color:white;margin-bottom:10px}
 
-    @media (max-width:980px){.navlinks,.nav .btn{display:none}.hamburger{display:block}.hero,.grid-2,.grid-3,.grid-4,.footer-grid{grid-template-columns:1fr}.hero{text-align:center}.hero p{margin:auto}.hero-actions,.hero-pills{justify-content:center}.space-card{min-height:420px}.timeline::before{left:20px}.timeline-item,.timeline-item:nth-child(even) .timeline-content{grid-template-columns:1fr;grid-column:auto;margin-left:34px}.timeline-dot{left:20px}.nav.open{border-radius:26px;align-items:flex-start}.nav.open .navlinks{display:grid;position:absolute;left:16px;right:16px;top:72px;background:rgba(12,15,33,.96);border:1px solid var(--line);border-radius:24px;padding:18px}.section{padding:64px 0}}
-    @media (max-width:560px){h1{font-size:4.1rem}.script{font-size:3rem}.section-head h2{font-size:3.1rem}.info,.event-card{padding:22px}.nav{top:12px}.brand span{display:none}}
+    @media (max-width:980px){.navlinks,.nav>.btn{display:none}.hamburger{display:block}.hero,.grid-2,.grid-3,.grid-4,.footer-grid{grid-template-columns:1fr}.hero{text-align:center}.hero p{margin:auto}.hero-actions,.hero-pills{justify-content:center}.space-card{min-height:420px}.nav.open{border-radius:26px;align-items:flex-start}.nav.open .navlinks{display:grid;position:absolute;left:16px;right:16px;top:72px;background:rgba(12,15,33,.96);border:1px solid var(--line);border-radius:24px;padding:18px}.section{padding:64px 0}.cta-box{display:block;text-align:center}.cta-actions{justify-content:center;margin-top:18px}}
+    @media (max-width:560px){h1{font-size:4.1rem}.script{font-size:3rem}.section-head h2{font-size:3.1rem}.info,.event-card{padding:22px}.nav{top:12px}.brand span span{display:none}}
   </style>
 </head>
 <body>
   <nav class="nav" id="nav">
-    <a class="brand" href="#home" aria-label="Physics Summit Home">
-      <span class="brand-mark">PS</span>
+    <a class="brand" href="#home">
+      <img src="assets/logookk (2).png" alt="Logo Physics Summit">
       <span><strong>11th Physics Summit</strong><span>Atomic Horizon</span></span>
     </a>
     <div class="navlinks">
-      <a href="#about">About</a><a href="#theme">Tema</a><a href="#events">Rangkaian</a><a href="#timeline">Timeline</a><a href="#management">Manajemen</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#events">Lomba</a><a href="#guidebook">Guidebook</a><a href="#partner">Partner</a><a href="#contact">CP</a>
     </div>
-    <a class="btn btn-primary" href="#events">Explore</a>
-    <button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button>
+    <a class="btn btn-primary" href="#events">Daftar</a>
+    <button class="hamburger" id="hamburger">☰</button>
   </nav>
 
   <main id="home">
@@ -138,106 +149,89 @@
         <h1>Physics <span class="script">Summit 11th</span></h1>
         <p>Physics Summit hadir sebagai wadah kompetisi dan pengenalan akademik untuk menghadirkan fisika secara lebih menarik, aplikatif, dan relevan dengan kebutuhan masa depan.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#events">Lihat Rangkaian</a>
-          <a class="btn btn-ghost" href="#timeline">Timeline 2026</a>
+          <a class="btn btn-primary" href="#events">Lihat Lomba</a>
+          <button class="btn btn-ghost" onclick="comingSoon()">RSVP Open House</button>
         </div>
         <div class="hero-pills"><span class="pill">PSO</span><span class="pill">PSEC</span><span class="pill">Open House</span><span class="pill">Roadshow</span><span class="pill">Student Ambassador</span></div>
       </div>
-      <div class="space-card" aria-hidden="true">
+      <div class="space-card">
         <span class="sparkle sp1">✦</span><span class="sparkle sp2">✧</span><span class="sparkle sp3">✦</span>
-        <div class="atom">
-          <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div><div class="orbit o4"></div>
-          <span class="electron e1"></span><span class="electron e2"></span><span class="electron e3"></span>
-          <div class="nucleus"></div>
-        </div>
+        <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+        <img class="logo-main" src="assets/logookk (2).png" alt="Logo Physics Summit">
       </div>
     </section>
 
     <section id="about" class="section">
       <div class="container">
-        <div class="section-head"><h2>About</h2><span class="script">Physics Summit</span><p>Perkembangan IPTEK menempatkan fisika sebagai ilmu dasar yang berperan penting dalam teknologi, kesehatan, energi, dan kebencanaan. 11th Physics Summit menghubungkan teori fisika dengan aplikasi nyata melalui kompetisi, eksplorasi, dan pengenalan Departemen Fisika ITS.</p></div>
+        <div class="section-head"><h2>About</h2><span class="script">Physics Summit</span><p>11th Physics Summit mengusung tema Atomic Horizon: dasar keilmuan fisika sebagai titik awal untuk menjangkau cakrawala ilmu pengetahuan yang lebih luas.</p></div>
         <div class="grid-3">
-          <article class="info card accent-cyan"><h3>Tujuan 01</h3><p>Memperkuat citra baik Departemen Fisika ITS dan Himpunan Mahasiswa Fisika ITS (HIMASIKA).</p></article>
-          <article class="info card accent-pink"><h3>Tujuan 02</h3><p>Memperkenalkan Departemen Fisika ITS kepada peserta didik tingkat SMA/SMK/sederajat.</p></article>
-          <article class="info card accent-violet"><h3>Tujuan 03</h3><p>Menyediakan wadah pengembangan kemampuan berpikir kritis, kreativitas, dan inovasi dalam bidang fisika.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="journey" class="section">
-      <div class="container">
-        <div class="section-head"><h2>Perjalanan</h2><span class="script">Physics Summit</span></div>
-        <div class="timeline card">
-          <div class="timeline-item"><span class="timeline-dot"></span><div class="timeline-content"><b>2011</b><p>Pertama kali dilaksanakan dengan nama Gebyar.</p></div></div>
-          <div class="timeline-item"><span class="timeline-dot"></span><div class="timeline-content"><b>2014</b><p>Rebranding menjadi Physics Summit.</p></div></div>
-          <div class="timeline-item"><span class="timeline-dot"></span><div class="timeline-content"><b>2016–2018</b><p>Menghadirkan PSPC, Olimpiade Fisika Nasional, PSIT, Open Lab, dan PSBE.</p></div></div>
-          <div class="timeline-item"><span class="timeline-dot"></span><div class="timeline-content"><b>2019–2021</b><p>Vakum akibat pandemi, lalu hadir melalui esai, paper, webinar, dan talkshow.</p></div></div>
-          <div class="timeline-item"><span class="timeline-dot"></span><div class="timeline-content"><b>2024–2025</b><p>9th PS: PSO dan PSEC. 10th PS: PSO, PSEC, dan Feslab.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="theme" class="section">
-      <div class="container">
-        <div class="section-head"><h2>Atomic Horizon</h2><span class="script">tema besar</span><p>Tema ini merepresentasikan semangat menjadikan dasar keilmuan fisika sebagai titik awal untuk menjangkau cakrawala ilmu pengetahuan yang lebih luas.</p></div>
-        <div class="grid-3">
-          <article class="info card accent-violet"><h3>Atomic</h3><p>Dasar keilmuan fisika, ketelitian, inti pengetahuan, dan fondasi eksplorasi ilmiah.</p></article>
-          <article class="info card accent-cyan"><h3>Horizon</h3><p>Cakrawala, peluang, perluasan wawasan, dan keberanian melangkah ke pengetahuan baru.</p></article>
-          <article class="info card accent-yellow"><h3>Logo</h3><p>Inti atom melambangkan fisika sebagai pusat ilmu pengetahuan. Orbit elektron melambangkan dinamika, pergerakan, dan semangat eksplorasi.</p></article>
+          <article class="info card accent-cyan"><h3>Atomic</h3><p>Melambangkan dasar keilmuan fisika, ketelitian, dan inti pengetahuan.</p></article>
+          <article class="info card accent-pink"><h3>Horizon</h3><p>Melambangkan cakrawala, peluang, dan perluasan wawasan peserta.</p></article>
+          <article class="info card accent-yellow"><h3>Tujuan</h3><p>Memperkenalkan Departemen Fisika ITS dan menjadi wadah kreativitas, inovasi, serta berpikir kritis.</p></article>
         </div>
       </div>
     </section>
 
     <section id="events" class="section">
       <div class="container">
-        <div class="section-head"><h2>Rangkaian</h2><span class="script">kegiatan utama</span><p>Main Event terdiri dari PSO, PSEC, dan Open House Departemen Fisika ITS. Supporting Event terdiri dari Roadshow dan Student Ambassador.</p></div>
+        <div class="section-head"><h2>Detail Lomba</h2><span class="script">main event</span><p>Pilih rangkaian yang ingin kamu ikuti. Link pendaftaran dan RSVP akan dibuka saat periode pendaftaran dimulai.</p></div>
         <div class="grid-2">
-          <article class="event-card card accent-pink"><span class="label">Main Event</span><h3>Physics Summit Olympiad</h3><p class="lead">Olimpiade fisika tingkat nasional untuk siswa SMA/SMK sederajat, dilaksanakan berkelompok dengan 2 orang dalam satu tim.</p><div class="steps"><span class="step">Pendaftaran</span><span class="step">TM Penyisihan</span><span class="step">Try Out</span><span class="step">Penyisihan</span><span class="step">Semifinal</span><span class="step">Final Offline di Fisika ITS</span></div></article>
-          <article class="event-card card accent-cyan"><span class="label">Main Event</span><h3>Physics Summit Essay Competition</h3><p class="lead">Kompetisi esai berbasis inovasi fisika untuk siswa SMA/SMK sederajat, berkelompok maksimal 2 orang dalam satu tim.</p><div class="steps"><span class="step">Pendaftaran</span><span class="step">Pengumpulan Full Paper</span><span class="step">Seleksi Full Paper</span><span class="step">TM Finalis</span><span class="step">Presentasi Final</span><span class="step">Tenant Finalis & Voting Favorit</span></div></article>
-          <article class="event-card card accent-yellow"><span class="label">Main Event</span><h3>Open House Departemen Fisika ITS</h3><p class="lead">Kegiatan terbuka untuk umum melalui sistem RSVP untuk mengenalkan bidang minat, laboratorium, karya mahasiswa, dan lingkungan akademik Fisika ITS secara interaktif.</p><div class="steps"><span class="step">Tenant Bidang Minat/Laboratorium</span><span class="step">Physics Project Showcase</span><span class="step">Tenant Finalis PSEC</span><span class="step">Sponsor, Bazar, dan Photobooth</span></div></article>
-          <article class="event-card card accent-violet"><span class="label">Supporting Event</span><h3>Roadshow & Student Ambassador</h3><p class="lead">Sosialisasi Physics Summit 11th ke sekolah sasaran secara online maupun offline, dibantu program Student Ambassador External dengan sistem referral dan apresiasi.</p><div class="steps"><span class="step">Roadshow Online via Zoom</span><span class="step">Roadshow Offline aula/kelas</span><span class="step">PSHC Challenge</span><span class="step">Kode Referral SA</span></div></article>
+          <article class="event-card card accent-pink">
+            <span class="label">Competition</span><h3>Physics Summit Olympiad</h3>
+            <p>Olimpiade fisika tingkat nasional untuk siswa SMA/SMK sederajat, berkelompok 2 orang dalam satu tim.</p>
+            <div class="steps"><span class="step">Pendaftaran</span><span class="step">TM Penyisihan</span><span class="step">Try Out</span><span class="step">Penyisihan</span><span class="step">Semifinal</span><span class="step">Final Offline di Fisika ITS</span></div>
+            <br><button class="btn btn-primary" onclick="comingSoon()">Daftar PSO</button>
+          </article>
+          <article class="event-card card accent-cyan">
+            <span class="label">Competition</span><h3>Physics Summit Essay Competition</h3>
+            <p>Kompetisi esai berbasis inovasi fisika untuk siswa SMA/SMK sederajat, berkelompok maksimal 2 orang dalam satu tim.</p>
+            <div class="steps"><span class="step">Pendaftaran</span><span class="step">Pengumpulan Full Paper</span><span class="step">Seleksi Full Paper</span><span class="step">TM Finalis</span><span class="step">Presentasi Final</span><span class="step">Tenant Finalis</span></div>
+            <br><button class="btn btn-primary" onclick="comingSoon()">Daftar PSEC</button>
+          </article>
+          <article class="event-card card accent-yellow">
+            <span class="label">Open House</span><h3>Open House Fisika ITS</h3>
+            <p>Kegiatan terbuka untuk umum melalui sistem RSVP untuk mengenalkan bidang minat, laboratorium, karya mahasiswa, dan lingkungan akademik Fisika ITS secara interaktif.</p>
+            <div class="steps"><span class="step">Tenant Laboratorium</span><span class="step">Physics Project Showcase</span><span class="step">Tenant Finalis PSEC</span><span class="step">Sponsor, Bazar, dan Photobooth</span></div>
+            <br><button class="btn btn-yellow" onclick="comingSoon()">RSVP Open House</button>
+          </article>
+          <article class="event-card card accent-violet">
+            <span class="label">Supporting Event</span><h3>Roadshow & Student Ambassador</h3>
+            <p>Sosialisasi Physics Summit 11th ke sekolah secara online maupun offline, dibantu Student Ambassador External dengan sistem referral.</p>
+            <div class="steps"><span class="step">Roadshow Online via Zoom</span><span class="step">Roadshow Offline aula/kelas</span><span class="step">PSHC Challenge</span><span class="step">Kode Referral SA</span></div>
+            <br><button class="btn btn-primary" onclick="comingSoon()">Info SA</button>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="timeline" class="section">
+    <section id="guidebook" class="section">
       <div class="container">
-        <div class="section-head"><h2>Timeline</h2><span class="script">11th Physics Summit</span></div>
-        <div class="table-wrap card">
-          <table>
-            <thead><tr><th>Bulan</th><th>Agenda Utama</th></tr></thead>
-            <tbody>
-              <tr><td>Mei</td><td>Persiapan awal dan open recruitment staff.</td></tr>
-              <tr><td>Juni</td><td>Welcome Party Staff Partner, Upgrading, persiapan open pendaftaran lomba.</td></tr>
-              <tr><td>Juli</td><td>Open recruitment Student Ambassador External dan pengiriman surat izin roadshow.</td></tr>
-              <tr><td>Agustus</td><td>Penugasan SA, Roadshow, open pendaftaran lomba dan Open House.</td></tr>
-              <tr><td>September</td><td>Penutupan pendaftaran, pengumpulan full paper PSEC, TM, Tryout, Penyisihan PSO.</td></tr>
-              <tr><td>Oktober</td><td>Semifinal, TM hari-H, gladi bersih, final, dan Open House.</td></tr>
-            </tbody>
-          </table>
+        <div class="section-head"><h2>Guidebook</h2><span class="script">coming soon</span><p>Guidebook akan berisi ketentuan peserta, timeline, teknis lomba, sistem penilaian, dan informasi administrasi.</p></div>
+        <div class="cta-box card">
+          <div><h3>Guidebook belum dibuka</h3><p>Karena pendaftaran lomba dimulai bulan Agustus, tombol guidebook sementara menampilkan informasi Coming Soon.</p></div>
+          <div class="cta-actions"><button class="btn btn-primary" onclick="comingSoon()">Download Guidebook</button><button class="btn btn-ghost" onclick="comingSoon()">Cek Timeline</button></div>
         </div>
       </div>
     </section>
 
-    <section id="management" class="section">
+    <section id="partner" class="section">
       <div class="container">
-        <div class="section-head"><h2>Rencana</h2><span class="script">manajemen kegiatan</span></div>
-        <div class="grid-4">
-          <article class="info card accent-cyan"><h3>Planning</h3><p>Penyusunan konsep, timeline, program kerja divisi, WBS, kebutuhan teknis, dan pembagian kerja.</p></article>
-          <article class="info card accent-pink"><h3>Executing</h3><p>Pelaksanaan program kerja berdasarkan WBS, koordinasi lintas divisi, publikasi, pendaftaran, Roadshow, SA, PSO, PSEC, dan Open House.</p></article>
-          <article class="info card accent-violet"><h3>Monitoring</h3><p>Pengecekan progres WBS, laporan divisi, rapat koordinasi, kontrol timeline, pemantauan pendaftar, serta pengawalan SOP.</p></article>
-          <article class="info card accent-yellow"><h3>Closing</h3><p>Rekap data peserta, hasil lomba, laporan keuangan, dokumentasi, administrasi, dan evaluasi tiap divisi.</p></article>
+        <div class="section-head"><h2>Sponsor</h2><span class="script">& media partner</span><p>Logo sponsor dan media partner dapat dimasukkan pada area berikut saat sudah final.</p></div>
+        <div class="grid-2">
+          <div class="card info accent-yellow"><h3>Sponsor</h3><div class="logo-grid"><div class="logo-box">Logo Sponsor</div><div class="logo-box">Logo Sponsor</div><div class="logo-box">Logo Sponsor</div></div></div>
+          <div class="card info accent-cyan"><h3>Media Partner</h3><div class="logo-grid"><div class="logo-box">Logo Medpart</div><div class="logo-box">Logo Medpart</div><div class="logo-box">Logo Medpart</div></div></div>
         </div>
       </div>
     </section>
 
     <section id="contact" class="section">
       <div class="container">
-        <div class="section-head"><h2>Contact</h2><span class="script">Physics Summit</span><p>Ganti tombol di bawah dengan link pendaftaran, RSVP, guidebook, dan WhatsApp contact person saat sudah final.</p></div>
-        <div class="grid-3">
-          <article class="info card accent-pink"><h3>Competition</h3><p>Informasi pendaftaran PSO dan PSEC.</p><br><a class="btn btn-primary" href="#">Daftar Sekarang</a></article>
-          <article class="info card accent-cyan"><h3>Open House</h3><p>RSVP pengunjung Open House Departemen Fisika ITS.</p><br><a class="btn btn-primary" href="#">Isi RSVP</a></article>
-          <article class="info card accent-yellow"><h3>Sponsor & Medpart</h3><p>Kolaborasi sponsorship dan media partner.</p><br><a class="btn btn-primary" href="#">Hubungi CP</a></article>
+        <div class="section-head"><h2>Contact Person</h2><span class="script">need help?</span><p>Hubungi contact person sesuai kebutuhan. Nomor WhatsApp bisa diganti saat CP resmi sudah final.</p></div>
+        <div class="grid-4">
+          <article class="info card accent-pink"><h3>CP PSO</h3><p>Untuk pertanyaan terkait Physics Summit Olympiad.</p><br><a class="btn btn-primary" href="https://wa.me/6281234567890?text=Halo%20kak%2C%20saya%20mau%20bertanya%20tentang%20PSO%2011th%20Physics%20Summit" target="_blank">Chat WA</a></article>
+          <article class="info card accent-cyan"><h3>CP PSEC</h3><p>Untuk pertanyaan terkait Physics Summit Essay Competition.</p><br><a class="btn btn-primary" href="https://wa.me/6281234567890?text=Halo%20kak%2C%20saya%20mau%20bertanya%20tentang%20PSEC%2011th%20Physics%20Summit" target="_blank">Chat WA</a></article>
+          <article class="info card accent-yellow"><h3>CP Open House</h3><p>Untuk pertanyaan terkait RSVP dan kegiatan Open House.</p><br><a class="btn btn-primary" href="https://wa.me/6281234567890?text=Halo%20kak%2C%20saya%20mau%20bertanya%20tentang%20Open%20House%20Fisika%20ITS" target="_blank">Chat WA</a></article>
+          <article class="info card accent-violet"><h3>CP Sponsor</h3><p>Untuk kerja sama sponsor dan media partner.</p><br><a class="btn btn-primary" href="https://wa.me/6281234567890?text=Halo%20kak%2C%20saya%20mau%20bertanya%20tentang%20kerja%20sama%2011th%20Physics%20Summit" target="_blank">Chat WA</a></article>
         </div>
       </div>
     </section>
@@ -246,17 +240,36 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div><h3>11th Physics Summit</h3><p>Atomic Horizon · Department of Physics ITS · HIMASIKA ITS.</p></div>
-      <div><div class="mini-title">Navigasi</div><a href="#about">About</a><a href="#theme">Tema</a><a href="#events">Rangkaian</a></div>
+      <div><div class="mini-title">Navigasi</div><a href="#about">About</a><a href="#events">Detail Lomba</a><a href="#guidebook">Guidebook</a></div>
       <div><div class="mini-title">Main Event</div><p>PSO</p><p>PSEC</p><p>Open House</p></div>
       <div><div class="mini-title">Supporting Event</div><p>Roadshow</p><p>Student Ambassador</p><p>PSHC</p></div>
     </div>
   </footer>
+
+  <div class="modal" id="comingSoonModal">
+    <div class="modal-content card">
+      <h3>Coming Soon</h3>
+      <span class="script">see you in August!</span>
+      <p>Pendaftaran lomba, RSVP Open House, dan guidebook akan dibuka saat periode pendaftaran dimulai.</p>
+      <button class="btn btn-primary close" onclick="closeComingSoon()">Oke</button>
+    </div>
+  </div>
 
   <script>
     const nav = document.getElementById('nav');
     const hamburger = document.getElementById('hamburger');
     hamburger.addEventListener('click', () => nav.classList.toggle('open'));
     document.querySelectorAll('.navlinks a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+
+    function comingSoon(){
+      document.getElementById('comingSoonModal').classList.add('show');
+    }
+    function closeComingSoon(){
+      document.getElementById('comingSoonModal').classList.remove('show');
+    }
+    document.getElementById('comingSoonModal').addEventListener('click', function(e){
+      if(e.target === this) closeComingSoon();
+    });
   </script>
 </body>
 </html>
