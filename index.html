@@ -1,9 +1,117 @@
 <!DOCTYPE html>
 <html lang="id" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>11th Physics Summit · Atomic Horizon</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics Summit Hero</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink1:#ff4da6;
+  --pink2:#ff7ac6;
+  --purple:#7b2cff;
+  --dark:#0b0b1a;
+  --text:#1a1a1a;
+  --white:#ffffff;
+}
+
+html[data-theme="dark"]{
+  --text:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  transition:0.3s ease;
+  background: radial-gradient(circle at top, var(--pink2), var(--purple));
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* DARK MODE OVERRIDE */
+html[data-theme="dark"] body{
+  background: radial-gradient(circle at top, #2b0a3d, #0b0b1a);
+}
+
+.hero{
+  text-align:center;
+  color:white;
+}
+
+.title{
+  font-size:80px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.subtitle{
+  font-size:20px;
+  opacity:0.9;
+  margin-top:10px;
+}
+
+.tagline{
+  font-family:cursive;
+  font-size:28px;
+  color:#fff;
+  margin-top:10px;
+  opacity:0.9;
+}
+
+.glow{
+  position:absolute;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+  border-radius:50%;
+  filter:blur(40px);
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:-1;
+}
+
+.toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  padding:10px 16px;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:700;
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleTheme()">☀ / ☾</button>
+
+<div class="glow"></div>
+
+<div class="hero">
+  <div class="title">11th<br>PHYSICS SUMMIT</div>
+  <div class="tagline">Explore • Innovate • Impact</div>
+  <div class="subtitle">Departemen Fisika ITS</div>
+</div>
+
+<script>
+function toggleTheme(){
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+}
+</script>
+
+</body>
+</html>
 
   <!-- EDIT FONT DI SINI -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
